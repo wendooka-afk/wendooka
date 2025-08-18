@@ -38,8 +38,8 @@ const HeroSection: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="grid lg:grid-cols-12 gap-8 items-end mt-12">
-            <div className="lg:col-span-8 relative">
+        <div className="grid lg:grid-cols-12 gap-4 items-end mt-20">
+            <div className="lg:col-span-7 relative">
                 <img src="https://cdn.leonardo.ai/users/f36e5340-387b-44c7-8263-9ee6cef52eac/generations/c8d76178-82cb-4011-bbf1-b234ae3cdb4c/segments/1:1:1/Default_A_team_of_young_African_developers_in_a_modern_office__0.jpg" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 bg-dark-gray/80 backdrop-blur-sm p-4 rounded-xl flex items-center gap-4 border border-gray-700">
                     <div className="flex -space-x-4">
@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
                 </div>
                 <Sparkles className="absolute top-8 left-8 h-12 w-12 text-lime-accent animate-pulse" />
             </div>
-            <div className="lg:col-span-4 bg-lime-accent text-dark-black p-8 rounded-2xl space-y-6">
+            <div className="lg:col-span-5 bg-lime-accent text-dark-black p-8 rounded-2xl space-y-6">
               <div>
                 <h3 className="text-4xl font-bold font-poppins">+150</h3>
                 <p className="font-semibold">Projets réalisés</p>
