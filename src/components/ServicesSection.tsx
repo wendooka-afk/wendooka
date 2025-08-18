@@ -5,32 +5,32 @@ import { Globe, Palette, LayoutTemplate, Megaphone, Wrench, FileText, ArrowRight
 
 const services = [
   {
-    icon: <Globe className="h-8 w-8 text-lime-accent" />,
+    icon: <Globe className="h-8 w-8 text-white" />,
     title: "Création de sites web",
     description: "Des sites vitrines et e-commerce modernes, optimisés pour générer des ventes et inspirer confiance."
   },
   {
-    icon: <Palette className="h-8 w-8 text-lime-accent" />,
+    icon: <Palette className="h-8 w-8 text-white" />,
     title: "Design graphique",
     description: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits."
   },
   {
-    icon: <LayoutTemplate className="h-8 w-8 text-lime-accent" />,
+    icon: <LayoutTemplate className="h-8 w-8 text-white" />,
     title: "UI/UX Design",
     description: "Expériences fluides et intuitives qui fidélisent vos utilisateurs."
   },
   {
-    icon: <Megaphone className="h-8 w-8 text-lime-accent" />,
+    icon: <Megaphone className="h-8 w-8 text-white" />,
     title: "Marketing digital",
     description: "Campagnes ciblées qui boostent votre visibilité et vos conversions."
   },
   {
-    icon: <Wrench className="h-8 w-8 text-lime-accent" />,
+    icon: <Wrench className="h-8 w-8 text-white" />,
     title: "Maintenance & support",
     description: "Un suivi complet pour assurer la performance et la sécurité de votre site."
   },
   {
-    icon: <FileText className="h-8 w-8 text-lime-accent" />,
+    icon: <FileText className="h-8 w-8 text-white" />,
     title: "Création de contenu",
     description: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs."
   }
@@ -50,7 +50,7 @@ const ServicesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="bg-white border border-gray-200 rounded-2xl p-6 text-center flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-4 bg-lime-accent/20 p-4 rounded-full">
+              <div className="mb-4 bg-green-900 p-4 rounded-full">
                 {service.icon}
               </div>
               <CardHeader className="p-0 mb-2">
@@ -59,7 +59,7 @@ const ServicesSection: React.FC = () => {
               <CardContent className="p-0 flex-grow">
                 <p className="text-gray-600">{service.description}</p>
               </CardContent>
-              <Button variant="link" className="mt-4 text-lime-accent font-bold hover:text-dark-black group">
+              <Button className="mt-4 bg-green-900 text-white font-bold group hover:bg-green-800">
                 En savoir plus <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Card>
