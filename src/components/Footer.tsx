@@ -18,12 +18,13 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">Navigation</h3>
+            <h3 className="text-lg font-bold text-white mb-4">Liens utiles</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:text-lime-accent transition-colors">Accueil</a></li>
               <li><a href="#" className="hover:text-lime-accent transition-colors">Services</a></li>
               <li><a href="#" className="hover:text-lime-accent transition-colors">Réalisations</a></li>
               <li><a href="#" className="hover:text-lime-accent transition-colors">Contact</a></li>
+              <li><a href="#" className="hover:text-lime-accent transition-colors">A Propos</a></li>
             </ul>
           </div>
 

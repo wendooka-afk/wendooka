@@ -7,73 +7,64 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 
 const services = [
   { 
     title: "Création de sites web", 
-    description: "Nous créons des sites web sur mesure, des designs graphiques et des campagnes de marketing digital pour répondre aux besoins de nos clients.",
-    tags: ["Développement React.js", "Développement Angular", "Développement Laravel"]
+    description: "Des sites vitrines et e-commerce modernes, optimisés pour générer des ventes et inspirer confiance."
   },
   { 
     title: "Design graphique",
-    description: "Design graphique créatif pour une identité percutante qui vous démarque de la concurrence.",
-    tags: ["Identité de marque", "Conception d'imprimés", "Conception numérique"]
+    description: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits."
+  },
+  { 
+    title: "UI/UX Design",
+    description: "Expériences fluides et intuitives qui fidélisent vos utilisateurs."
   },
   { 
     title: "Marketing digital",
-    description: "Marketing digital stratégique pour toucher votre audience cible et augmenter votre visibilité en ligne.",
-    tags: ["SEO", "Marketing des médias sociaux", "Marketing par courriel"]
+    description: "Campagnes ciblées qui boostent votre visibilité et vos conversions."
   },
-  { 
-    title: "E-commerce",
-    description: "Solutions e-commerce complètes pour vendre vos produits en ligne de manière efficace et sécurisée.",
-    tags: ["Shopify", "WooCommerce", "Magento"]
-  },
+  {
+    title: "Maintenance & support",
+    description: "Un suivi complet pour assurer la performance et la sécurité de votre site."
+  }
 ];
 
 const ServicesSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white text-dark-black">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-12 gap-8 items-start">
-          <div className="md:col-span-4">
-            <p className="font-semibold text-lime-accent mb-2">Nos Services</p>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins">Nos services sur mésure</h2>
+        <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+          <div>
+            <p className="font-semibold text-lime-accent mb-2">Nos solutions digitales</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins">💡 Découvrez nos solutions digitales sur-mesure</h2>
           </div>
-          <div className="md:col-span-8">
+          <div>
             <p className="text-lg text-gray-600">
-              Chez Wendooka, nous offrons une gamme complète de services de web design pour aider nos clients à réussir en ligne.
+              Nous combinons stratégie, créativité et technologie pour offrir des solutions qui répondent à vos besoins réels et vous démarquent de la concurrence.
             </p>
           </div>
         </div>
-        <div className="mt-12">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full space-y-4">
-            {services.map((service, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl px-6">
-                <AccordionTrigger className="text-2xl font-bold hover:no-underline py-6">
-                  <span className="flex items-center gap-4">
-                    <span className="text-gray-300">0{index + 1}.</span>
-                    {service.title}
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-6">
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {service.tags.map(tag => <Badge key={tag} variant="outline" className="border-gray-300">{tag}</Badge>)}
-                      </div>
-                      <p className="text-gray-600 mb-6">{service.description}</p>
-                      <img src="/public/placeholder.svg" alt={service.title} className="rounded-lg w-full h-auto object-cover" />
-                    </div>
-                    <div className="hidden md:block">
-                       {/* This space can be used for another image or more details if needed */}
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <Accordion type="single" collapsible defaultValue="item-0" className="w-full space-y-4">
+          {services.map((service, index) => (
+            <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl px-6">
+              <AccordionTrigger className="text-2xl font-bold hover:no-underline py-6">
+                <span className="flex items-center gap-4">
+                  <span className="text-gray-300">0{index + 1}.</span>
+                  {service.title}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-6 text-lg text-gray-700">
+                {service.description}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+        <div className="text-center mt-12">
+            <Button className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4">
+                Découvrir nos services <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
         </div>
       </div>
     </section>
