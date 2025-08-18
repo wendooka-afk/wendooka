@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MarqueeSection from '@/components/MarqueeSection';
 
 const services = [
   {
@@ -39,30 +40,32 @@ const ServicesPage: React.FC = () => {
     <div className="bg-dark-black text-white">
       <Header />
       <main>
-        <section className="py-20 md:py-32 text-center bg-dark-gray">
+        <section className="py-20 md:py-32 text-center bg-dark-black">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-4">Nos Services</h1>
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-              Des solutions sur mesure pour votre succès digital. Nous combinons créativité, technologie et stratégie pour donner vie à vos projets.
+            <p className="text-lg text-gray-400">
+              <Link to="/" className="hover:text-lime-accent">Accueil</Link> / <span className="text-white">Services</span>
             </p>
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        <MarqueeSection />
+
+        <section className="py-16 md:py-24 bg-white text-dark-black">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
-                <Card key={index} className="bg-dark-gray border-gray-800 rounded-2xl p-6 text-left flex flex-col hover:border-lime-accent transition-colors duration-300">
-                  <div className="mb-6">
+                <Card key={index} className="bg-light-gray border-gray-200 rounded-2xl p-6 text-left flex flex-col hover:shadow-xl transition-shadow duration-300">
+                  <div className="mb-6 bg-lime-accent text-dark-black rounded-full p-3 w-16 h-16 flex items-center justify-center">
                     {service.icon}
                   </div>
                   <CardHeader className="p-0 mb-4">
                     <CardTitle className="text-2xl font-bold font-poppins">{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="p-0 flex-grow">
-                    <p className="text-gray-400">{service.description}</p>
+                    <p className="text-gray-600">{service.description}</p>
                   </CardContent>
-                  <a href="#" className="mt-6 font-semibold text-lime-accent hover:underline flex items-center group">
+                  <a href="#" className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
                     Lire la suite <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Card>
