@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu }s from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
   const navLinks = ["Accueil", "Services", "Réalisations", "Contact", "A Propos"];
