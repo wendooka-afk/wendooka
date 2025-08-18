@@ -21,7 +21,7 @@ const projects = [
 
 const PortfolioSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-dark-black text-white">
+    <section id="portfolio" className="py-16 md:py-24 bg-dark-black text-white">
       <div className="container mx-auto px-4 text-center">
         <p className="font-semibold text-lime-accent mb-2">Nos réalisations</p>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 font-poppins">📂 Découvrez nos projets récents</h2>

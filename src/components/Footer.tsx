@@ -3,6 +3,14 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 const Footer: React.FC = () => {
+  const navLinks = [
+    { name: "Accueil", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Réalisations", href: "/#portfolio" },
+    { name: "Contact", href: "/#contact" },
+    { name: "A Propos", href: "/#about" },
+  ];
+
   return (
     <footer className="bg-dark-black text-gray-400 border-t border-gray-800">
       <div className="container mx-auto px-4 py-16">
@@ -20,11 +28,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold text-white mb-4">Liens utiles</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-lime-accent transition-colors">Accueil</a></li>
-              <li><a href="#" className="hover:text-lime-accent transition-colors">Services</a></li>
-              <li><a href="#" className="hover:text-lime-accent transition-colors">Réalisations</a></li>
-              <li><a href="#" className="hover:text-lime-accent transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-lime-accent transition-colors">A Propos</a></li>
+              {navLinks.map((link) => (
+                <li key={link.name}><a href={link.href} className="hover:text-lime-accent transition-colors">{link.name}</a></li>
+              ))}
             </ul>
           </div>
 

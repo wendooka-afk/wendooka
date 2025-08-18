@@ -3,7 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const navLinks = ["Accueil", "Services", "Réalisations", "Contact", "A Propos"];
+  const navLinks = [
+    { name: "Accueil", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Réalisations", href: "/#portfolio" },
+    { name: "Contact", href: "/#contact" },
+    { name: "A Propos", href: "/#about" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-dark-black/95 backdrop-blur-sm">
@@ -14,8 +20,8 @@ const Header: React.FC = () => {
         </a>
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link} href="#" className="text-gray-300 hover:text-lime-accent transition-colors text-lg">
-              {link}
+            <a key={link.name} href={link.href} className="text-gray-300 hover:text-lime-accent transition-colors text-lg">
+              {link.name}
             </a>
           ))}
         </nav>
