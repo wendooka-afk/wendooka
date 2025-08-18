@@ -40,12 +40,12 @@ const HeroSection: React.FC = () => {
         </div>
         <div className="grid lg:grid-cols-12 gap-8 items-end mt-12">
             <div className="lg:col-span-8 relative">
-                <img src="https://img.freepik.com/premium-photo/team-young-african-people-office_219728-4389.jpg" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
+                <img src="https://cdn.leonardo.ai/users/f36e5340-387b-44c7-8263-9ee6cef52eac/generations/c8d76178-82cb-4011-bbf1-b234ae3cdb4c/segments/1:1:1/Default_A_team_of_young_African_developers_in_a_modern_office__0.jpg" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 bg-dark-gray/80 backdrop-blur-sm p-4 rounded-xl flex items-center gap-4 border border-gray-700">
                     <div className="flex -space-x-4">
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://img.freepik.com/premium-photo/team-young-african-people-office_219728-4389.jpg" alt="Client satisfait 1"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://img.freepik.com/premium-photo/team-young-african-people-office_219728-4389.jpg" alt="Client satisfait 2"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://img.freepik.com/premium-photo/team-young-african-people-office_219728-4389.jpg" alt="Client satisfait 3"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://cdn.leonardo.ai/users/f36e5340-387b-44c7-8263-9ee6cef52eac/generations/c8d76178-82cb-4011-bbf1-b234ae3cdb4c/segments/1:1:1/Default_A_team_of_young_African_developers_in_a_modern_office__0.jpg" alt="Client satisfait 1"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://cdn.leonardo.ai/users/f36e5340-387b-44c7-8263-9ee6cef52eac/generations/c8d76178-82cb-4011-bbf1-b234ae3cdb4c/segments/1:1:1/Default_A_team_of_young_African_developers_in_a_modern_office__0.jpg" alt="Client satisfait 2"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray object-cover" src="https://cdn.leonardo.ai/users/f36e5340-387b-44c7-8263-9ee6cef52eac/generations/c8d76178-82cb-4011-bbf1-b234ae3cdb4c/segments/1:1:1/Default_A_team_of_young_African_developers_in_a_modern_office__0.jpg" alt="Client satisfait 3"/>
                     </div>
                     <div>
                         <div className="flex items-center">
