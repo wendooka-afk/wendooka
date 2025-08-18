@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => {
   const services = ["Création de sites web", "Design graphique", "UI/UX Design", "Marketing digital"];
 
   return (
-    <section className="bg-dark-black text-white pt-16 md:pt-24">
+    <section className="bg-dark-black text-white py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Left Column */}
