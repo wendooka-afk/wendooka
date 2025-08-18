@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
               <div className="w-8 h-px bg-lime-accent"></div>
               <p className="font-semibold text-lime-accent">Agence Digitale Primée</p>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 font-poppins">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 font-poppins">
               Là où l’innovation rencontre l’<span className="text-lime-accent">excellence digitale</span>
             </h1>
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
