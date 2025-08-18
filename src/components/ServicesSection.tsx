@@ -41,7 +41,7 @@ const ServicesSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-white text-dark-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <p className="font-semibold text-lime-accent mb-2">Nos solutions digitales</p>
+          <p className="font-semibold text-dark-black mb-2">Nos solutions digitales</p>
           <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">💡 Découvrez nos solutions digitales sur-mesure</h2>
           <p className="text-lg text-gray-600">
             Nous combinons stratégie, créativité et technologie pour offrir des solutions qui répondent à vos besoins réels et vous démarquent de la concurrence.
@@ -50,7 +50,7 @@ const ServicesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="bg-white border border-gray-200 rounded-2xl p-6 text-center flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-4 bg-green-900 p-4 rounded-full">
+              <div className="mb-4 bg-dark-black p-4 rounded-full">
                 {service.icon}
               </div>
               <CardHeader className="p-0 mb-2">
@@ -59,7 +59,7 @@ const ServicesSection: React.FC = () => {
               <CardContent className="p-0 flex-grow">
                 <p className="text-gray-600">{service.description}</p>
               </CardContent>
-              <Button className="mt-4 bg-green-900 text-white font-bold group hover:bg-green-800">
+              <Button className="mt-4 bg-dark-black text-white font-bold group hover:bg-dark-gray">
                 En savoir plus <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Card>
