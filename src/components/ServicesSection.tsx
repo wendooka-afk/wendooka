@@ -1,34 +1,79 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, Brush, Megaphone, ShoppingCart, Wrench } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const services = [
-  { title: "Création de sites web", icon: <Code className="h-8 w-8 text-lime-accent" /> },
-  { title: "Design graphique", icon: <Brush className="h-8 w-8 text-lime-accent" /> },
-  { title: "Marketing digital", icon: <Megaphone className="h-8 w-8 text-lime-accent" /> },
-  { title: "E-commerce", icon: <ShoppingCart className="h-8 w-8 text-lime-accent" /> },
-  { title: "Maintenance et support", icon: <Wrench className="h-8 w-8 text-lime-accent" /> },
+  { 
+    title: "Création de sites web", 
+    description: "Nous créons des sites web sur mesure, des designs graphiques et des campagnes de marketing digital pour répondre aux besoins de nos clients.",
+    tags: ["Développement React.js", "Développement Angular", "Développement Laravel"]
+  },
+  { 
+    title: "Design graphique",
+    description: "Design graphique créatif pour une identité percutante qui vous démarque de la concurrence.",
+    tags: ["Identité de marque", "Conception d'imprimés", "Conception numérique"]
+  },
+  { 
+    title: "Marketing digital",
+    description: "Marketing digital stratégique pour toucher votre audience cible et augmenter votre visibilité en ligne.",
+    tags: ["SEO", "Marketing des médias sociaux", "Marketing par courriel"]
+  },
+  { 
+    title: "E-commerce",
+    description: "Solutions e-commerce complètes pour vendre vos produits en ligne de manière efficace et sécurisée.",
+    tags: ["Shopify", "WooCommerce", "Magento"]
+  },
 ];
 
 const ServicesSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-dark-gray text-white">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-poppins">Nos services sur mésure</h2>
-        <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-          Nous offrons une gamme complète de services de web design pour aider nos clients à réussir en ligne.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="bg-dark-black border-gray-800 text-left hover:border-lime-accent hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center p-4">
-              <CardHeader>
-                {service.icon}
-              </CardHeader>
-              <CardContent>
-                <CardTitle className="text-xl font-bold text-white">{service.title}</CardTitle>
-              </CardContent>
-            </Card>
-          ))}
+    <section className="py-16 md:py-24 bg-white text-dark-black">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-12 gap-8 items-start">
+          <div className="md:col-span-4">
+            <p className="font-semibold text-lime-accent mb-2">Nos Services</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins">Nos services sur mésure</h2>
+          </div>
+          <div className="md:col-span-8">
+            <p className="text-lg text-gray-600">
+              Chez Wendooka, nous offrons une gamme complète de services de web design pour aider nos clients à réussir en ligne.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12">
+          <Accordion type="single" collapsible defaultValue="item-0" className="w-full space-y-4">
+            {services.map((service, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl px-6">
+                <AccordionTrigger className="text-2xl font-bold hover:no-underline py-6">
+                  <span className="flex items-center gap-4">
+                    <span className="text-gray-300">0{index + 1}.</span>
+                    {service.title}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6">
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {service.tags.map(tag => <Badge key={tag} variant="outline" className="border-gray-300">{tag}</Badge>)}
+                      </div>
+                      <p className="text-gray-600 mb-6">{service.description}</p>
+                      <img src="/public/placeholder.svg" alt={service.title} className="rounded-lg w-full h-auto object-cover" />
+                    </div>
+                    <div className="hidden md:block">
+                       {/* This space can be used for another image or more details if needed */}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>

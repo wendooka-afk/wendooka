@@ -13,39 +13,36 @@ const faqs = [
   },
   {
     question: "Combien de temps faut-il pour créer un site web ?",
-    answer: "La durée de création d'un site web varie en fonction de la complexité du projet. Nous travaillons en étroite collaboration avec vous pour établir un calendrier réaliste en fonction de vos exigences. Cela peut aller de quelques semaines à plusieurs mois."
+    answer: "La durée de création d'un site web varie en fonction de la complexité du projet. Nous travaillons en étroite collaboration avec vous pour établir un calendrier réaliste en fonction de vos exigences."
   },
   {
     question: "Proposez-vous des services de maintenance après la création du site web ?",
     answer: "Oui, nous offrons des services de maintenance pour assurer le bon fonctionnement de votre site web. Nous pouvons effectuer des mises à jour, des sauvegardes, et répondre à vos demandes de support technique."
   },
   {
-    question: "Comment travaillez-vous avec vos clients ?",
-    answer: "Nous adoptons une approche collaborative avec nos clients. Nous commençons par comprendre vos objectifs, vos besoins et votre identité de marque. Ensuite, nous vous impliquons tout au long du processus de création."
-  },
-  {
     question: "Proposez-vous des services de référencement (SEO) ?",
-    answer: "Oui, nous proposons des services de référencement pour améliorer la visibilité de votre site web sur les moteurs de recherche. Nous optimisons le contenu, la structure et les balises afin d'optimiser votre classement dans les résultats de recherche."
-  },
-  {
-    question: "Comment puis-je obtenir un devis pour mes besoins en web design ?",
-    answer: "Pour obtenir un devis personnalisé, vous pouvez nous contacter via notre formulaire de contact ou par téléphone. Nous serons ravis d'évaluer vos besoins et de vous fournir une estimation détaillée."
+    answer: "Oui, nous proposons des services de référencement pour améliorer la visibilité de votre site web sur les moteurs de recherche afin d'optimiser votre classement."
   }
 ];
 
 const FaqSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-dark-black text-white">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <section className="py-16 md:py-24 bg-white text-dark-black">
+      <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins">Foire aux questions (FAQ)</h2>
-          <p className="text-lg text-gray-400 mt-4">Vous avez une question? Trouvez la réponse ici.</p>
+          <p className="font-semibold text-lime-accent mb-2">FAQ</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins">Vous avez des questions ?</h2>
+          <p className="text-lg text-gray-600 mt-4">Trouvez les réponses ici.</p>
         </div>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible defaultValue="item-0" className="w-full space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-gray-800">
-              <AccordionTrigger className="text-left text-lg hover:no-underline">{faq.question}</AccordionTrigger>
-              <AccordionContent className="text-gray-400">
+            <AccordionItem 
+              key={index} 
+              value={`item-${index}`} 
+              className="border border-gray-200 rounded-2xl px-6 data-[state=open]:bg-lime-accent transition-colors"
+            >
+              <AccordionTrigger className="text-left text-xl font-bold hover:no-underline py-6">{faq.question}</AccordionTrigger>
+              <AccordionContent className="text-gray-800 data-[state=open]:text-dark-black pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
