@@ -62,6 +62,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        'lime-accent': '#C6FF00', // Primary accent color
+        'dark-black': '#0B0B0B', // Noir
+        'dark-gray': '#1A1A1A',  // Gris
+        'light-gray': '#F2F2F2', // Gris clair
+        'white': '#FFFFFF',      // Blanc
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,6 +94,10 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
     },
   },
