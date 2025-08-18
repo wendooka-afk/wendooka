@@ -1,12 +1,23 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
-import HeroSection from "@/components/HeroSection"; // Import the new HeroSection
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import CtaSection from "@/components/CtaSection";
+import FaqSection from "@/components/FaqSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <HeroSection />
-      {/* You can add more sections here as we build them */}
-      <MadeWithDyad />
+    <div className="bg-dark-black">
+      <Header />
+      <main>
+        <HeroSection />
+        <ServicesSection />
+        <PortfolioSection />
+        <CtaSection />
+        <FaqSection />
+      </main>
+      <Footer />
     </div>
   );
 };
