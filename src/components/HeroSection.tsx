@@ -1,40 +1,76 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Star, Sparkles } from 'lucide-react';
+import RotatingText from './RotatingText';
 
 const HeroSection: React.FC = () => {
+  const services = ["Création de sites web", "Design graphique", "UI/UX Design", "Marketing digital"];
+
   return (
-    <section className="bg-dark-black text-white">
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-center md:text-left">
+    <section className="bg-dark-black text-white pt-16 md:pt-24">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          {/* Left Column */}
+          <div className="lg:col-span-7 text-center lg:text-left">
+            <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+              <div className="w-8 h-px bg-lime-accent"></div>
+              <p className="font-semibold text-lime-accent">Agence Digitale Primée</p>
+            </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 font-poppins">
-              🚀 Là où l’innovation rencontre l’<span className="text-lime-accent">excellence digitale</span>
+              Là où l’innovation rencontre l’<span className="text-lime-accent">excellence digitale</span>
             </h1>
-            <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
-              Votre entreprise est unique, votre site web doit l’être aussi. Chez Wendooka, nous concevons des expériences digitales sur-mesure qui propulsent votre marque, captivent vos clients et transforment vos visiteurs en leads qualifiés.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 px-8 py-6 text-lg font-bold rounded-full">
-                Obtenir un devis gratuit
-              </Button>
-              <Button variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black px-8 py-6 text-lg font-bold rounded-full">
-                Découvrir nos réalisations
-              </Button>
-            </div>
-            <p className="mt-8 text-gray-500 text-sm">
-              +150 projets livrés • 10+ années d’expérience • Clients au Cameroun & à l’international
-            </p>
-          </div>
-          <div className="relative">
-            <img src="/public/placeholder.svg" alt="Wendooka Team" className="rounded-2xl w-full h-auto object-cover filter grayscale" />
-            <div className="absolute -bottom-8 -right-8 bg-lime-accent text-dark-black p-6 rounded-2xl shadow-lg w-64">
-              <h3 className="text-4xl font-bold font-poppins">+150</h3>
-              <p className="font-semibold">Projets Réalisés</p>
-              <div className="my-4 h-px bg-dark-black/20"></div>
-              <h3 className="text-4xl font-bold font-poppins">10+</h3>
-              <p className="font-semibold">Années d'Expérience</p>
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
+              {services.map(service => (
+                <Badge key={service} variant="outline" className="text-white border-gray-600 px-4 py-2 rounded-full text-base hover:bg-dark-gray cursor-pointer">
+                  {service}
+                </Badge>
+              ))}
             </div>
           </div>
+
+          {/* Right Column */}
+          <div className="lg:col-span-5">
+            <div className="flex justify-center lg:justify-end mb-8">
+              <RotatingText />
+            </div>
+            <p className="text-lg text-gray-400 mb-8 text-center lg:text-left max-w-md mx-auto lg:mx-0">
+              Votre entreprise est unique, votre site web doit l’être aussi. Chez Wendooka, nous concevons des expériences digitales sur-mesure qui propulsent votre marque.
+            </p>
+          </div>
+        </div>
+        <div className="grid lg:grid-cols-12 gap-8 items-end mt-12">
+            <div className="lg:col-span-8 relative">
+                <img src="/public/placeholder.svg" alt="Wendooka Team" className="rounded-2xl w-full h-auto object-cover" />
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 bg-dark-gray/80 backdrop-blur-sm p-4 rounded-xl flex items-center gap-4 border border-gray-700">
+                    <div className="flex -space-x-4">
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray" src="/public/placeholder.svg" alt="User 1"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray" src="/public/placeholder.svg" alt="User 2"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-dark-gray" src="/public/placeholder.svg" alt="User 3"/>
+                    </div>
+                    <div>
+                        <div className="flex items-center">
+                        <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                        <p className="font-bold text-white ml-1">4.9 Star</p>
+                        </div>
+                        <p className="text-gray-400 text-sm">Reviews</p>
+                    </div>
+                </div>
+                <Sparkles className="absolute top-8 left-8 h-12 w-12 text-lime-accent animate-pulse" />
+            </div>
+            <div className="lg:col-span-4 bg-lime-accent text-dark-black p-8 rounded-2xl space-y-6">
+              <div>
+                <h3 className="text-4xl font-bold font-poppins">+150</h3>
+                <p className="font-semibold">Projets réalisés</p>
+              </div>
+              <div>
+                <h3 className="text-4xl font-bold font-poppins">10+</h3>
+                <p className="font-semibold">Années d’expérience</p>
+              </div>
+              <div>
+                <h3 className="text-4xl font-bold font-poppins">95%</h3>
+                <p className="font-semibold">Satisfaction client</p>
+              </div>
+            </div>
         </div>
       </div>
     </section>
