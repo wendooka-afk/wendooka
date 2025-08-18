@@ -21,23 +21,23 @@ const features = [
 
 const TransformationSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-dark-black text-white">
+    <section className="py-16 md:py-24 bg-white text-dark-black">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">Transformez votre présence en ligne avec notre expertise en web design</h2>
-            <p className="text-gray-400 mb-8">
+            <p className="text-gray-600 mb-8">
               Découvrez comment notre agence de web design a donné une nouvelle vie à un site web existant. Nous avons appliqué notre savoir-faire et notre sens esthétique pour créer une expérience en ligne optimale qui reflète la vision et les valeurs de notre client.
             </p>
             <div className="space-y-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 bg-dark-gray p-3 rounded-full">
+                  <div className="flex-shrink-0 bg-gray-100 p-3 rounded-full">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
-                    <p className="text-gray-400">{feature.description}</p>
+                    <h3 className="text-xl font-bold text-dark-black mb-1">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
                   </div>
                 </div>
               ))}
