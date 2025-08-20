@@ -11,8 +11,8 @@ const Header: React.FC = () => {
     { name: "Services", href: "/services" },
     { name: "Réalisations", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
+    { name: "A Propos", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "A Propos", href: "/#about" },
   ];
 
   const toggleMenu = () => {
@@ -75,6 +75,3 @@ const Header: React.FC = () => {
       )}
     </header>
   );
-};
-
-export default Header;
