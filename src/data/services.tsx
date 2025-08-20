@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutTemplate, Palette, Code, Rocket, Search, ShieldCheck, Monitor, ShoppingCart, Target, Paintbrush, Wrench, TrendingUp } from 'lucide-react';
+import { LayoutTemplate, Palette, Code, Rocket, Search, ShieldCheck, Monitor, ShoppingCart, Target, Paintbrush, Wrench, TrendingUp, Users, Network, MousePointerClick, ClipboardCheck, Lightbulb, PlayCircle, RefreshCw } from 'lucide-react';
 
 export interface ServiceFeature {
   icon: React.ReactElement;
@@ -111,7 +111,66 @@ const webDevService: Service = {
       { quote: 'Grâce à Wendooka, notre site e-commerce a doublé son chiffre d’affaires en seulement 3 mois !', author: 'Client Satisfait', company: 'Entreprise X' }
     ]
   },
-  // Keep old properties for compatibility
+  features: [],
+  process: []
+};
+
+const uiUxService: Service = {
+  slug: 'ui-ux-design',
+  title: '🎨 Design d\'Interfaces (UI/UX) Qui Captivent et Convertissent',
+  subtitle: 'Nous créons des expériences utilisateur intuitives et mémorables qui transforment les clics en clients fidèles.',
+  shortDescription: "Expériences fluides et intuitives qui fidélisent vos utilisateurs.",
+  longDescription: "Nous concevons des interfaces centrées sur l'utilisateur pour une navigation agréable et efficace.",
+  heroImage: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop',
+  intro: {
+    title: 'Votre application ou site web ne convertit pas assez ?',
+    text: [
+      'Une mauvaise expérience utilisateur (UX) ou une interface (UI) peu attrayante peut frustrer vos visiteurs et les faire fuir vers la concurrence.',
+      'Chez Wendooka, nous plaçons l\'utilisateur au cœur de la conception pour créer des parcours fluides et engageants qui :'
+    ],
+    list: [
+        'Augmentent le taux de rétention des utilisateurs',
+        'Simplifient les parcours les plus complexes',
+        'Renforcent la crédibilité et l\'image de votre marque',
+        'Boostent significativement vos taux de conversion'
+    ],
+    image: 'https://images.unsplash.com/photo-1553877522-c36980345885?q=80&w=2070&auto=format&fit=crop'
+  },
+  prestations: {
+    title: 'Nos Services en Design UI/UX',
+    items: [
+      { icon: <Users className="h-8 w-8" />, title: 'Recherche Utilisateur & Personas', description: 'Nous identifions les besoins et motivations de votre public cible.' },
+      { icon: <Network className="h-8 w-8" />, title: 'Architecture de l\'Information', description: 'Nous structurons votre contenu de manière logique et intuitive.' },
+      { icon: <Palette className="h-8 w-8" />, title: 'Design d\'Interface (UI)', description: 'Nous créons des interfaces esthétiques et fonctionnelles sur Figma.' },
+      { icon: <MousePointerClick className="h-8 w-8" />, title: 'Prototypage Interactif', description: 'Donnez vie à vos maquettes avant même le développement.' },
+      { icon: <ClipboardCheck className="h-8 w-8" />, title: 'Tests d\'Utilisabilité', description: 'Nous validons nos concepts avec de vrais utilisateurs.' }
+    ]
+  },
+  processV2: {
+    title: 'Notre Approche du Design Centré sur l\'Utilisateur',
+    steps: [
+      { icon: <Search />, name: 'Immersion & Analyse', description: 'Compréhension de vos enjeux et de vos utilisateurs.' },
+      { icon: <Lightbulb />, name: 'Idéation & Conception', description: 'Wireframing et définition des parcours clés.' },
+      { icon: <PlayCircle />, name: 'Prototypage & Test', description: 'Création de prototypes interactifs et tests.' },
+      { icon: <Palette />, name: 'Design Final & Handoff', description: 'Création du design system et livraison aux développeurs.' },
+      { icon: <RefreshCw />, name: 'Itération & Suivi', description: 'Analyse des retours et amélioration continue.' }
+    ]
+  },
+  results: {
+    title: 'Des Interfaces Qui Font la Différence',
+    stats: [
+        { value: '+35%', label: 'de conversion' },
+        { value: '+50%', label: 'de rétention' }
+    ],
+    text: 'Nos clients constatent une amélioration significative de l\'engagement et de la satisfaction de leurs utilisateurs.',
+    cta: '👉 Découvrez nos études de cas UI/UX'
+  },
+  testimonials: {
+    title: 'Ce que nos clients disent',
+    items: [
+      { quote: 'L\'équipe de Wendooka a complètement repensé notre application. Le résultat est non seulement magnifique, mais nos utilisateurs adorent la nouvelle navigation !', author: 'Directeur Produit', company: 'App Innovante' }
+    ]
+  },
   features: [],
   process: []
 };
@@ -145,7 +204,7 @@ const otherServiceTemplate: Omit<Service, 'slug' | 'title' | 'shortDescription' 
 export const servicesData: Service[] = [
   webDevService,
   { ...otherServiceTemplate, slug: 'design-graphique', title: 'Design graphique', shortDescription: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits.", longDescription: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables." },
-  { ...otherServiceTemplate, slug: 'ui-ux-design', title: 'UI/UX Design', shortDescription: "Expériences fluides et intuitives qui fidélisent vos utilisateurs.", longDescription: "Nous concevons des interfaces centrées sur l'utilisateur pour une navigation agréable et efficace." },
+  uiUxService,
   { ...otherServiceTemplate, slug: 'marketing-digital', title: 'Marketing digital', shortDescription: "Campagnes ciblées qui boostent votre visibilité et vos conversions.", longDescription: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles." },
   { ...otherServiceTemplate, slug: 'maintenance-support', title: 'Maintenance & support', shortDescription: "Un suivi complet pour assurer la performance et la sécurité de votre site.", longDescription: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes." },
   { ...otherServiceTemplate, slug: 'creation-de-contenu', title: 'Création de contenu', shortDescription: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs.", longDescription: "Du blogging aux réseaux sociaux, nous créons du contenu qui parle à votre audience." },
