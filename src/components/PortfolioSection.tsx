@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 const projects = [
   {
@@ -50,8 +51,8 @@ const PortfolioSection: React.FC = () => {
           ))}
         </div>
         <div className="mt-12">
-            <Button variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-4">
-                Voir toutes nos réalisations
+            <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-4">
+                <Link to="/portfolio">Voir toutes nos réalisations</Link>
             </Button>
         </div>
       </div>

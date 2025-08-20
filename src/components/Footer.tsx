@@ -47,7 +47,13 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-bold text-lime-accent mb-4 font-poppins">Navigation</h3>
             <ul className="space-y-3">
               {navLinks.map((link) => (
-                <li key={link.name}><a href={link.href} className="hover:text-lime-accent transition-colors">{link.name}</a></li>
+                <li key={link.name}>
+                  {link.href.startsWith('/') && !link.href.startsWith('/#') ? (
+                    <Link to={link.href} className="hover:text-lime-accent transition-colors">{link.name}</Link>
+                  ) : (
+                    <a href={link.href} className="hover:text-lime-accent transition-colors">{link.name}</a>
+                  )}
+                </li>
               ))}
             </ul>
           </div>

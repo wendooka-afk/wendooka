@@ -18,6 +18,25 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const renderLink = (link: { name: string, href: string }, isMobile = false) => {
+    const className = isMobile 
+      ? "text-white hover:text-lime-accent transition-colors text-2xl font-medium"
+      : "text-white hover:text-lime-accent transition-colors text-lg font-medium";
+
+    if (link.href.startsWith('/') && !link.href.startsWith('/#')) {
+      return (
+        <Link key={link.name} to={link.href} className={className} onClick={isMobile ? toggleMenu : undefined}>
+          {link.name}
+        </Link>
+      );
+    }
+    return (
+      <a key={link.name} href={link.href} className={className} onClick={isMobile ? toggleMenu : undefined}>
+        {link.name}
+      </a>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full bg-dark-black">
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
@@ -28,13 +47,8 @@ const Header: React.FC = () => {
           <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
         </Link>
         
-        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-white hover:text-lime-accent transition-colors text-lg font-medium">
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map(link => renderLink(link))}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -42,27 +56,16 @@ const Header: React.FC = () => {
             Let's Talk
           </Button>
           
-          {/* Mobile Menu Button */}
           <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={toggleMenu}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-black h-screen">
           <nav className="flex flex-col items-center gap-8 pt-16">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-white hover:text-lime-accent transition-colors text-2xl font-medium"
-                onClick={toggleMenu} // Close menu on link click
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map(link => renderLink(link, true))}
             <Button className="mt-8 bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-8 py-4 font-bold text-lg">
               Let's Talk
             </Button>
