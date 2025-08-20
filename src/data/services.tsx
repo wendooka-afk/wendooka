@@ -3,7 +3,8 @@ import {
   LayoutTemplate, Palette, Code, Rocket, Search, ShieldCheck, Monitor, ShoppingCart, 
   Target, Paintbrush, Wrench, TrendingUp, Users, Network, MousePointerClick, 
   ClipboardCheck, Lightbulb, PlayCircle, RefreshCw, Sparkles, FileText, Share2, 
-  Package, ImageIcon, MessageSquare, Download 
+  Package, ImageIcon, MessageSquare, Download, Mail, BookOpen, PenTool, Calendar, 
+  CreditCard, Truck, Megaphone 
 } from 'lucide-react';
 
 export interface ServiceFeature {
@@ -240,38 +241,240 @@ const graphicDesignService: Service = {
   process: []
 };
 
-const otherServiceTemplate: Omit<Service, 'slug' | 'title' | 'shortDescription' | 'longDescription'> = {
-  heroImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop',
+const marketingDigitalService: Service = {
+  slug: 'marketing-digital',
+  title: '📈 Marketing Digital : Attirez, Engagez et Convertissez Votre Audience Cible',
+  subtitle: 'Boostez votre visibilité en ligne et générez des leads qualifiés grâce à nos stratégies de marketing digital sur-mesure.',
+  shortDescription: "Campagnes ciblées qui boostent votre visibilité et vos conversions.",
+  longDescription: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles.",
+  heroImage: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop',
   intro: {
-    title: 'Une présence en ligne qui vous ressemble',
+    title: 'Vous avez un super produit, mais personne ne le sait ?',
     text: [
-      'Votre site web est bien plus qu’une simple vitrine. C’est le cœur de votre stratégie digitale, un outil puissant pour attirer, engager et convertir vos clients. Chez Wendooka, nous concevons des sites web qui allient esthétique, fonctionnalité et performance.',
-      'Nous travaillons en étroite collaboration avec vous pour comprendre vos besoins, votre cible et vos objectifs. Le résultat : un site unique, à l’image de votre entreprise, optimisé pour les moteurs de recherche (SEO) et offrant une expérience utilisateur exceptionnelle sur tous les appareils.'
+      "Avoir un site web performant est la première étape. La seconde, et la plus cruciale, est d'y attirer les bonnes personnes. Sans une stratégie de marketing digital efficace, votre entreprise reste invisible aux yeux de vos clients potentiels.",
+      'Notre agence vous aide à construire une présence en ligne forte qui :'
     ],
-    image: 'https://images.unsplash.com/photo-1559028006-44a36b17a66b?q=80&w=1974&auto=format&fit=crop'
+    list: [
+      'Génère un trafic qualifié et constant vers votre site',
+      'Augmente votre notoriété et votre crédibilité',
+      'Transforme les visiteurs en clients et ambassadeurs',
+      'Optimise votre retour sur investissement (ROI)'
+    ],
+    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop'
   },
-  features: [
-    { icon: <LayoutTemplate />, title: 'Design sur mesure', description: 'Des maquettes uniques et créatives qui reflètent votre identité de marque.' },
-    { icon: <Palette />, title: 'Responsive Design', description: 'Une expérience parfaite sur mobiles, tablettes et ordinateurs de bureau.' },
-    { icon: <Code />, title: 'Développement robuste', description: 'Un code propre et performant pour un site rapide et fiable.' },
-    { icon: <Search />, title: 'Optimisation SEO', description: 'Les bases techniques pour un bon référencement sur Google.' },
-    { icon: <ShieldCheck />, title: 'Sécurité renforcée', description: 'Nous protégeons votre site contre les menaces et les vulnérabilités.' },
-    { icon: <Rocket />, title: 'Performances optimisées', description: 'Un site rapide pour une meilleure expérience utilisateur et un meilleur SEO.' }
-  ],
-  process: [
-      { name: 'Découverte', description: 'Nous analysons vos besoins et objectifs.' },
-      { name: 'Conception', description: 'Création des maquettes et de l’UX/UI.' },
-      { name: 'Développement', description: 'Transformation du design en site fonctionnel.' },
-      { name: 'Lancement', description: 'Déploiement et mise en ligne de votre site.' }
-  ]
+  prestations: {
+    title: 'Nos Services de Marketing Digital',
+    items: [
+      { icon: <Search />, title: 'Référencement Naturel (SEO)', description: 'Positionnez votre site en haut des résultats de Google.' },
+      { icon: <Megaphone />, title: 'Publicité en Ligne (SEA)', description: 'Campagnes Google Ads & Social Ads pour des résultats immédiats.' },
+      { icon: <Users />, title: 'Gestion des Réseaux Sociaux (SMM)', description: 'Engagez votre communauté et développez votre marque.' },
+      { icon: <FileText />, title: 'Marketing de Contenu', description: 'Créez du contenu de valeur qui attire et fidélise.' },
+      { icon: <Mail />, title: 'Email Marketing & Automation', description: 'Nourrissez vos prospects et automatisez vos ventes.' }
+    ]
+  },
+  processV2: {
+    title: 'Notre Approche Stratégique du Marketing Digital',
+    steps: [
+      { icon: <Target />, name: 'Audit & Stratégie', description: 'Analyse de votre marché et définition des KPIs.' },
+      { icon: <PlayCircle />, name: 'Mise en Place', description: 'Lancement des campagnes et optimisation des canaux.' },
+      { icon: <TrendingUp />, name: 'Gestion & Optimisation', description: 'Suivi des performances et ajustements continus.' },
+      { icon: <ClipboardCheck />, name: 'Analyse & Reporting', description: 'Rapports clairs pour mesurer le ROI.' },
+      { icon: <RefreshCw />, name: 'Itération', description: 'Amélioration continue pour maximiser les résultats.' }
+    ]
+  },
+  results: {
+    title: 'Des Stratégies Qui Portent Leurs Fruits',
+    stats: [ { value: '+200%', label: 'de trafic' }, { value: '+75%', label: 'de leads' } ],
+    text: 'Nous aidons nos clients à atteindre leurs objectifs de croissance grâce à des campagnes marketing ciblées et rentables.',
+    cta: '👉 Prêt à dominer votre marché en ligne ?'
+  },
+  testimonials: {
+    title: "Leurs résultats parlent d'eux-mêmes",
+    items: [
+      { quote: "L'équipe marketing de Wendooka a triplé notre génération de leads en 6 mois. Leur expertise en SEO est incomparable.", author: 'CEO', company: 'Tech Innovante' }
+    ]
+  },
+  features: [],
+  process: []
+};
+
+const maintenanceService: Service = {
+  slug: 'maintenance-support',
+  title: "🔧 Maintenance & Support : La Tranquillité d'Esprit Pour Votre Site Web",
+  subtitle: 'Concentrez-vous sur votre business, nous nous occupons de la santé technique, de la sécurité et des performances de votre site.',
+  shortDescription: "Un suivi complet pour assurer la performance et la sécurité de votre site.",
+  longDescription: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes.",
+  heroImage: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1974&auto=format&fit=crop',
+  intro: {
+    title: 'Votre site web est-il une bombe à retardement ?',
+    text: [
+      "Un site non entretenu est une porte ouverte aux pirates, aux bugs et aux baisses de performance qui peuvent coûter cher à votre entreprise.",
+      'Notre service de maintenance proactive vous assure que votre site reste :'
+    ],
+    list: [
+      'Sécurisé contre les dernières menaces',
+      'Rapide et performant pour une expérience utilisateur optimale',
+      'Toujours à jour avec les dernières technologies',
+      'Sauvegardé régulièrement pour une récupération rapide en cas de problème'
+    ],
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop'
+  },
+  prestations: {
+    title: 'Nos Forfaits de Maintenance Web',
+    items: [
+      { icon: <ShieldCheck />, title: 'Mises à Jour de Sécurité', description: 'Protection contre les vulnérabilités et les malwares.' },
+      { icon: <Rocket />, title: 'Optimisation des Performances', description: 'Surveillance et amélioration de la vitesse de chargement.' },
+      { icon: <RefreshCw />, title: 'Mises à Jour Techniques', description: 'Mise à jour du CMS, des thèmes et des plugins.' },
+      { icon: <Download />, title: 'Sauvegardes Quotidiennes', description: 'Sauvegardes automatiques et sécurisées de votre site.' },
+      { icon: <Wrench />, title: 'Support Technique Réactif', description: "Une équipe d'experts à votre écoute pour résoudre les problèmes." }
+    ]
+  },
+  processV2: {
+    title: 'Comment Nous Assurons la Stabilité de Votre Site',
+    steps: [
+      { icon: <ClipboardCheck />, name: 'Audit Initial', description: "Analyse complète de l'état de santé de votre site." },
+      { icon: <PlayCircle />, name: 'Mise en Place', description: 'Configuration des outils de monitoring et de sauvegarde.' },
+      { icon: <Monitor />, name: 'Surveillance 24/7', description: 'Monitoring continu de la disponibilité et de la sécurité.' },
+      { icon: <TrendingUp />, name: 'Intervention Proactive', description: 'Application des correctifs et optimisations.' },
+      { icon: <FileText />, name: 'Rapport Mensuel', description: 'Un résumé clair des actions menées et des performances.' }
+    ]
+  },
+  results: {
+    title: 'Un Site Sain, Une Entreprise Sereine',
+    stats: [ { value: '99.9%', label: 'de disponibilité' }, { value: '0', label: 'faille de sécurité' } ],
+    text: 'Nos clients dorment sur leurs deux oreilles, sachant que leur principal atout digital est entre de bonnes mains.',
+    cta: '👉 Sécurisez votre investissement dès aujourd\'hui'
+  },
+  testimonials: {
+    title: "Ils ne s'inquiètent plus pour leur site",
+    items: [
+      { quote: "Le service de maintenance de Wendooka est un must-have. Réactifs et professionnels, ils ont résolu un problème critique en moins d'une heure.", author: 'Gérant', company: 'PME Locale' }
+    ]
+  },
+  features: [],
+  process: []
+};
+
+const contenuService: Service = {
+  slug: 'creation-de-contenu',
+  title: "✍️ Création de Contenu : Racontez Votre Histoire, Engagez Votre Audience",
+  subtitle: "Du blogging aux réseaux sociaux, nous créons du contenu pertinent et à forte valeur ajoutée qui positionne votre marque comme un expert.",
+  shortDescription: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs.",
+  longDescription: "Du blogging aux réseaux sociaux, nous créons du contenu qui parle à votre audience.",
+  heroImage: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop',
+  intro: {
+    title: 'Vous manquez de temps pour créer du contenu de qualité ?',
+    text: [
+      "Le contenu est le carburant de votre marketing. Sans contenu frais et pertinent, il est difficile d'attirer l'attention sur Google ou d'engager une communauté sur les réseaux sociaux.",
+      'Nous vous aidons à développer une stratégie de contenu qui :'
+    ],
+    list: [
+      'Améliore votre référencement naturel (SEO)',
+      'Éduque votre audience et répond à ses questions',
+      'Génère des leads en proposant du contenu à forte valeur',
+      "Renforce votre autorité et votre image d'expert"
+    ],
+    image: 'https://images.unsplash.com/photo-1521737852577-686049a15049?q=80&w=2070&auto=format&fit=crop'
+  },
+  prestations: {
+    title: 'Nos Services de Création de Contenu',
+    items: [
+      { icon: <FileText />, title: "Rédaction d'Articles de Blog", description: 'Articles optimisés SEO pour attirer un trafic qualifié.' },
+      { icon: <Share2 />, title: 'Gestion de Réseaux Sociaux', description: 'Création de posts, stories et visuels engageants.' },
+      { icon: <Mail />, title: 'Rédaction de Newsletters', description: "Contenu exclusif pour fidéliser votre base d'abonnés." },
+      { icon: <BookOpen />, title: 'Création de Livres Blancs & Ebooks', description: 'Générez des leads avec des contenus premium.' },
+      { icon: <PenTool />, title: 'Copywriting & Pages de Vente', description: "Des textes persuasifs qui incitent à l'action." }
+    ]
+  },
+  processV2: {
+    title: 'De la Stratégie à la Publication',
+    steps: [
+      { icon: <Target />, name: 'Stratégie Éditoriale', description: "Définition de votre ligne éditoriale et de vos cibles." },
+      { icon: <Calendar />, name: 'Calendrier de Publication', description: 'Planification des contenus sur le court et long terme.' },
+      { icon: <PenTool />, name: 'Création & Rédaction', description: 'Production des contenus par nos experts.' },
+      { icon: <ClipboardCheck />, name: 'Validation & Révision', description: 'Allers-retours pour un contenu parfait.' },
+      { icon: <Rocket />, name: 'Diffusion & Promotion', description: 'Publication et promotion sur les canaux pertinents.' }
+    ]
+  },
+  results: {
+    title: 'Un Contenu Qui Travaille Pour Vous',
+    stats: [ { value: 'x3', label: 'trafic organique' }, { value: '+50%', label: 'engagement' } ],
+    text: 'Nos clients deviennent des références dans leur secteur grâce à un contenu de qualité qui attire et convertit.',
+    cta: '👉 Démarrez votre stratégie de contenu maintenant'
+  },
+  testimonials: {
+    title: 'Leurs audiences adorent',
+    items: [
+      { quote: "Wendooka a pris en charge notre blog et les résultats sont incroyables. Notre trafic a explosé et nous sommes enfin visibles sur Google.", author: 'Responsable Marketing', company: 'SaaS B2B' }
+    ]
+  },
+  features: [],
+  process: []
+};
+
+const ecommerceService: Service = {
+  slug: 'e-commerce',
+  title: "🛒 Solutions E-commerce : Vendez en Ligne, Développez Votre Chiffre d'Affaires",
+  subtitle: "Nous créons des boutiques en ligne performantes, sécurisées et optimisées pour la conversion, de la fiche produit au paiement.",
+  shortDescription: "Solutions personnalisées avec paniers d’achat, paiements en ligne et intégrations de systèmes de gestion des stocks.",
+  longDescription: "Lancez votre boutique en ligne avec une plateforme robuste, sécurisée et facile à gérer.",
+  heroImage: 'https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070&auto=format&fit=crop',
+  intro: {
+    title: 'Votre boutique en ligne ne décolle pas ?',
+    text: [
+      "Un parcours d'achat compliqué, des pages produits peu convaincantes ou un manque de confiance peuvent faire chuter vos ventes.",
+      'Nous construisons des plateformes e-commerce qui :'
+    ],
+    list: [
+      "Offrent une expérience d'achat fluide et agréable",
+      'Mettent en valeur vos produits avec des fiches optimisées',
+      'Simplifient le processus de paiement pour réduire les abandons de panier',
+      'Sont rapides, sécurisées et fiables pour inspirer confiance'
+    ],
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'
+  },
+  prestations: {
+    title: 'Nos Compétences en E-commerce',
+    items: [
+      { icon: <ShoppingCart />, title: 'Création de Boutique en Ligne', description: 'Développement sur Shopify, WooCommerce, ou sur-mesure.' },
+      { icon: <CreditCard />, title: 'Intégration de Paiements Sécurisés', description: 'Stripe, PayPal, et solutions de paiement locales.' },
+      { icon: <Package />, title: 'Gestion de Catalogue Produits', description: 'Import, optimisation des fiches produits et gestion des stocks.' },
+      { icon: <Truck />, title: 'Configuration Logistique', description: 'Mise en place des options de livraison et de suivi.' },
+      { icon: <TrendingUp />, title: 'Optimisation des Conversions (CRO)', description: "Analyse et amélioration du parcours d'achat pour vendre plus." }
+    ]
+  },
+  processV2: {
+    title: 'Le Chemin Vers Votre Succès en Ligne',
+    steps: [
+      { icon: <Search />, name: 'Analyse & Stratégie', description: 'Définition de vos objectifs et choix de la plateforme.' },
+      { icon: <Palette />, name: 'Design & UX', description: 'Conception d\'une boutique attrayante et facile à naviguer.' },
+      { icon: <Code />, name: 'Développement & Configuration', description: 'Mise en place technique de la boutique et de ses fonctionnalités.' },
+      { icon: <ClipboardCheck />, name: 'Tests & Recette', description: 'Vérification complète du parcours d\'achat et des paiements.' },
+      { icon: <Rocket />, name: 'Lancement & Suivi', description: 'Mise en ligne et analyse des premières ventes.' }
+    ]
+  },
+  results: {
+    title: 'Des Boutiques Qui Vendent Vraiment',
+    stats: [ { value: '+150%', label: 'de ventes' }, { value: '-40%', label: 'abandon panier' } ],
+    text: 'Nous aidons les commerçants à prospérer en ligne avec des boutiques qui transforment les visiteurs en clients fidèles.',
+    cta: '👉 Lancez ou optimisez votre boutique en ligne'
+  },
+  testimonials: {
+    title: 'Leurs ventes ont explosé',
+    items: [
+      { quote: "Notre nouvelle boutique conçue par Wendooka est un succès. Les ventes ont augmenté de 200% le premier mois. C'est simple, efficace et magnifique.", author: 'Fondatrice', company: 'Marque de Cosmétiques' }
+    ]
+  },
+  features: [],
+  process: []
 };
 
 export const servicesData: Service[] = [
   webDevService,
   graphicDesignService,
   uiUxService,
-  { ...otherServiceTemplate, slug: 'marketing-digital', title: 'Marketing digital', shortDescription: "Campagnes ciblées qui boostent votre visibilité et vos conversions.", longDescription: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles." },
-  { ...otherServiceTemplate, slug: 'maintenance-support', title: 'Maintenance & support', shortDescription: "Un suivi complet pour assurer la performance et la sécurité de votre site.", longDescription: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes." },
-  { ...otherServiceTemplate, slug: 'creation-de-contenu', title: 'Création de contenu', shortDescription: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs.", longDescription: "Du blogging aux réseaux sociaux, nous créons du contenu qui parle à votre audience." },
-  { ...otherServiceTemplate, slug: 'e-commerce', title: 'E-commerce', shortDescription: "Solutions personnalisées avec paniers d’achat, paiements en ligne et intégrations de systèmes de gestion des stocks.", longDescription: "Lancez votre boutique en ligne avec une plateforme robuste, sécurisée et facile à gérer." },
+  marketingDigitalService,
+  maintenanceService,
+  contenuService,
+  ecommerceService,
 ];
