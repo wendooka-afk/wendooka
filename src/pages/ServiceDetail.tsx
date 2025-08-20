@@ -29,7 +29,7 @@ const ServiceDetailPage: React.FC = () => {
             {service.subtitle && <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">{service.subtitle}</p>}
             {isUpdatedPage && (
                 <Button asChild className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4 text-lg">
-                    <a href="/#contact">📞 Demandez un devis gratuit</a>
+                    <Link to="/contact">📞 Demandez un devis gratuit</Link>
                 </Button>
             )}
             <p className="text-lg text-gray-300 mt-8">
@@ -51,8 +51,8 @@ const ServiceDetailPage: React.FC = () => {
                             <li key={i} className="flex items-center gap-3 text-lg"><CheckCircle className="h-6 w-6 text-lime-accent flex-shrink-0" /><span>{item}</span></li>
                         ))}
                     </ul>
-                    <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-green-900 font-bold rounded-full px-8 py-4 text-lg">
-                        <a href="/#portfolio">🚀 Améliorez votre présence en ligne</a>
+                    <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-4 text-lg">
+                        <Link to="/portfolio">🚀 Améliorez votre présence en ligne</Link>
                     </Button>
                 </div>
               ) : (

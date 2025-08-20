@@ -53,8 +53,8 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button className="hidden lg:inline-flex bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-6 py-3 font-bold">
-            Let's Talk
+          <Button asChild className="hidden lg:inline-flex bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-6 py-3 font-bold">
+            <Link to="/contact">Je veux un devis</Link>
           </Button>
           
           <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={toggleMenu}>
@@ -67,8 +67,8 @@ const Header: React.FC = () => {
         <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-black h-screen">
           <nav className="flex flex-col items-center gap-8 pt-16">
             {navLinks.map(link => renderLink(link, true))}
-            <Button className="mt-8 bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-8 py-4 font-bold text-lg">
-              Let's Talk
+            <Button asChild className="mt-8 bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-8 py-4 font-bold text-lg">
+              <Link to="/contact">Je veux un devis</Link>
             </Button>
           </nav>
         </div>
