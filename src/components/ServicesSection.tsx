@@ -2,34 +2,41 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import { Globe, Palette, LayoutTemplate, Megaphone, Wrench, FileText, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
+    slug: "creation-de-sites-web",
     icon: <Globe className="h-8 w-8 text-dark-black" />,
     title: "Création de sites web",
     description: "Des sites vitrines et e-commerce modernes, optimisés pour générer des ventes et inspirer confiance."
   },
   {
+    slug: "design-graphique",
     icon: <Palette className="h-8 w-8 text-dark-black" />,
     title: "Design graphique",
     description: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits."
   },
   {
+    slug: "ui-ux-design",
     icon: <LayoutTemplate className="h-8 w-8 text-dark-black" />,
     title: "UI/UX Design",
     description: "Expériences fluides et intuitives qui fidélisent vos utilisateurs."
   },
   {
+    slug: "marketing-digital",
     icon: <Megaphone className="h-8 w-8 text-dark-black" />,
     title: "Marketing digital",
     description: "Campagnes ciblées qui boostent votre visibilité et vos conversions."
   },
   {
+    slug: "maintenance-support",
     icon: <Wrench className="h-8 w-8 text-dark-black" />,
     title: "Maintenance & support",
     description: "Un suivi complet pour assurer la performance et la sécurité de votre site."
   },
   {
+    slug: "creation-de-contenu",
     icon: <FileText className="h-8 w-8 text-dark-black" />,
     title: "Création de contenu",
     description: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs."
@@ -59,8 +66,10 @@ const ServicesSection: React.FC = () => {
               <CardContent className="p-0 flex-grow">
                 <p className="text-gray-600">{service.description}</p>
               </CardContent>
-              <Button className="mt-4 bg-lime-accent text-dark-black font-bold group hover:bg-lime-accent/90">
-                En savoir plus <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button asChild className="mt-4 bg-lime-accent text-dark-black font-bold group hover:bg-lime-accent/90">
+                <Link to={`/services/${service.slug}`}>
+                  En savoir plus <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </Card>
           ))}

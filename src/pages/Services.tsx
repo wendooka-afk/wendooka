@@ -3,32 +3,43 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
-import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock, LayoutTemplate, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MarqueeSection from '@/components/MarqueeSection';
 
 const services = [
   {
+    slug: "creation-de-sites-web",
     icon: <Globe className="h-10 w-10 text-lime-accent" />,
     title: "Création de sites web",
     description: "Nous créons des sites web sur mesure qui captent l’essence de votre marque et répondent à vos objectifs commerciaux."
   },
   {
+    slug: "design-graphique",
     icon: <Palette className="h-10 w-10 text-lime-accent" />,
     title: "Design graphique",
     description: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables."
   },
   {
+    slug: "ui-ux-design",
+    icon: <LayoutTemplate className="h-10 w-10 text-lime-accent" />,
+    title: "UI/UX Design",
+    description: "Expériences fluides et intuitives qui fidélisent vos utilisateurs."
+  },
+  {
+    slug: "marketing-digital",
     icon: <Megaphone className="h-10 w-10 text-lime-accent" />,
     title: "Marketing digital",
     description: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles."
   },
   {
+    slug: "e-commerce",
     icon: <ShoppingCart className="h-10 w-10 text-lime-accent" />,
     title: "E-commerce",
     description: "Solutions personnalisées avec paniers d’achat, paiements en ligne et intégrations de systèmes de gestion des stocks."
   },
   {
+    slug: "maintenance-support",
     icon: <Wrench className="h-10 w-10 text-lime-accent" />,
     title: "Maintenance et support",
     description: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes."
@@ -65,9 +76,9 @@ const ServicesPage: React.FC = () => {
                   <CardContent className="p-0 flex-grow">
                     <p className="text-gray-600">{service.description}</p>
                   </CardContent>
-                  <a href="#" className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
+                  <Link to={`/services/${service.slug}`} className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
                     Lire la suite <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Card>
               ))}
             </div>
@@ -87,7 +98,7 @@ const ServicesPage: React.FC = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4 text-lg">
-                    <Link to="/#portfolio">Découvrez nos réalisations</Link>
+                    <Link to="/portfolio">Découvrez nos réalisations</Link>
                   </Button>
                 </div>
               </div>
