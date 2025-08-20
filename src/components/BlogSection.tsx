@@ -3,33 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { postsData } from '@/data/blog';
+import { Link } from 'react-router-dom';
 
-const posts = [
-  {
-    category: "Développement Mobile",
-    date: "21 Avril 2024",
-    title: "Les secrets d'un développement d'application mobile réussi",
-    description: "Découvrez les étapes clés pour créer une application mobile qui se démarque et engage vos utilisateurs.",
-    image: "/public/placeholder.svg",
-    link: "#"
-  },
-  {
-    category: "Développement Web",
-    date: "20 Avril 2024",
-    title: "Des pixels à la perfection : le processus de développement web",
-    description: "Un aperçu de notre processus de création de sites web, de la conception initiale au lancement final.",
-    image: "/public/placeholder.svg",
-    link: "#"
-  },
-  {
-    category: "UI/UX Design",
-    date: "19 Avril 2024",
-    title: "L'évolution de l'UX/UI : les tendances qui façonnent l'avenir",
-    description: "Explorez les dernières tendances en matière de design d'interface et d'expérience utilisateur.",
-    image: "/public/placeholder.svg",
-    link: "#"
-  }
-];
+const latestPosts = postsData.slice(0, 3);
 
 const BlogSection: React.FC = () => {
   return (
@@ -46,24 +23,26 @@ const BlogSection: React.FC = () => {
             </h2>
           </div>
           <Button asChild className="mt-4 md:mt-0 rounded-full p-0 bg-lime-accent hover:bg-lime-accent/90">
-            <a href="#" className="flex items-center">
+            <Link to="/blog" className="flex items-center">
               <span className="pl-6 pr-4 py-3 text-dark-black font-bold">Voir tous les articles</span>
               <div className="bg-dark-black text-white rounded-full p-2 mr-1">
                 <ArrowRight className="h-5 w-5" />
               </div>
-            </a>
+            </Link>
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
-            <Card key={index} className="bg-dark-gray border-gray-800 overflow-hidden group text-left rounded-2xl flex flex-col">
+          {latestPosts.map((post) => (
+            <Card key={post.slug} className="bg-dark-gray border-gray-800 overflow-hidden group text-left rounded-2xl flex flex-col">
               <div className="relative overflow-hidden">
-                <img src={post.image} alt={post.title} className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <Link to={`/blog/${post.slug}`}>
+                  <img src={post.image} alt={post.title} className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
+                </Link>
                 <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <a href={post.link} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
+                    <Link to={`/blog/${post.slug}`} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
                         <ArrowUpRight className="h-6 w-6" />
-                    </a>
+                    </Link>
                 </div>
               </div>
               <CardContent className="p-6 flex flex-col flex-grow">
@@ -71,11 +50,13 @@ const BlogSection: React.FC = () => {
                   <Badge variant="outline" className="border-gray-600 text-gray-300">{post.category}</Badge>
                   <span>{post.date}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 flex-grow">{post.title}</h3>
-                <p className="text-gray-400 mb-4">{post.description}</p>
-                <a href={post.link} className="font-semibold text-lime-accent hover:underline self-start">
+                <h3 className="text-xl font-bold text-white mb-2 flex-grow">
+                  <Link to={`/blog/${post.slug}`} className="hover:text-lime-accent transition-colors">{post.title}</Link>
+                </h3>
+                <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                <Link to={`/blog/${post.slug}`} className="font-semibold text-lime-accent hover:underline self-start">
                   Lire la suite
-                </a>
+                </Link>
               </CardContent>
             </Card>
           ))}

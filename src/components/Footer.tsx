@@ -9,6 +9,7 @@ const Footer: React.FC = () => {
     { name: "Accueil", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Réalisations", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
     { name: "A Propos", href: "/#about" },
   ];
