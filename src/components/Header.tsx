@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navLinks = [
     { name: "Accueil", href: "/" },
     { name: "Services", href: "/services" },
@@ -12,15 +14,21 @@ const Header: React.FC = () => {
     { name: "A Propos", href: "/#about" },
   ];
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full bg-dark-black">
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3" onClick={() => isMenuOpen && toggleMenu()}>
           <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
             <img src="/public/placeholder.svg" alt="Wendooka Logo" className="h-6 w-6" />
           </div>
           <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
         </Link>
+        
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} className="text-white hover:text-lime-accent transition-colors text-lg font-medium">
@@ -28,15 +36,39 @@ const Header: React.FC = () => {
             </a>
           ))}
         </nav>
+
         <div className="flex items-center gap-2">
           <Button className="hidden lg:inline-flex bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-6 py-3 font-bold">
             Let's Talk
           </Button>
-          <Button variant="ghost" size="icon" className="lg:hidden text-white">
-            <Menu className="h-6 w-6" />
+          
+          {/* Mobile Menu Button */}
+          <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={toggleMenu}>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-black h-screen">
+          <nav className="flex flex-col items-center gap-8 pt-16">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-white hover:text-lime-accent transition-colors text-2xl font-medium"
+                onClick={toggleMenu} // Close menu on link click
+              >
+                {link.name}
+              </a>
+            ))}
+            <Button className="mt-8 bg-lime-accent text-dark-black hover:bg-lime-accent/90 rounded-full px-8 py-4 font-bold text-lg">
+              Let's Talk
+            </Button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
