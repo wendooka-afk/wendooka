@@ -10,13 +10,13 @@ const projects = [
     title: "Commune de Belel",
     description: "Site institutionnel moderne et fonctionnel.",
     tags: ["UI/UX Design", "Développement Web"],
-    image: "/public/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1600195077909-46e573873d89?q=80&w=1974&auto=format&fit=crop"
   },
   {
     title: "Projet X",
     description: "Site e-commerce responsive qui a multiplié par 3 les ventes.",
     tags: ["E-commerce", "Développement Web"],
-    image: "/public/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 

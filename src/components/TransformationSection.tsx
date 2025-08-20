@@ -45,7 +45,7 @@ const TransformationSection: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src="/public/placeholder.svg" 
+              src="https://images.unsplash.com/photo-1559028006-44a36b17a66b?q=80&w=1974&auto=format&fit=crop" 
               alt="Web design transformation" 
               className="rounded-2xl w-full h-auto object-cover" 
             />
