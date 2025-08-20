@@ -1,5 +1,10 @@
 import React from 'react';
-import { LayoutTemplate, Palette, Code, Rocket, Search, ShieldCheck, Monitor, ShoppingCart, Target, Paintbrush, Wrench, TrendingUp, Users, Network, MousePointerClick, ClipboardCheck, Lightbulb, PlayCircle, RefreshCw } from 'lucide-react';
+import { 
+  LayoutTemplate, Palette, Code, Rocket, Search, ShieldCheck, Monitor, ShoppingCart, 
+  Target, Paintbrush, Wrench, TrendingUp, Users, Network, MousePointerClick, 
+  ClipboardCheck, Lightbulb, PlayCircle, RefreshCw, Sparkles, FileText, Share2, 
+  Package, ImageIcon, MessageSquare, Download 
+} from 'lucide-react';
 
 export interface ServiceFeature {
   icon: React.ReactElement;
@@ -175,6 +180,66 @@ const uiUxService: Service = {
   process: []
 };
 
+const graphicDesignService: Service = {
+  slug: 'design-graphique',
+  title: '🚀 Design Graphique Qui Raconte Votre Histoire et Captive Votre Audience',
+  subtitle: 'De la création de logo à l\'identité de marque complète, nous donnons vie à votre vision avec des visuels percutants.',
+  shortDescription: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits.",
+  longDescription: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables.",
+  heroImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop',
+  intro: {
+    title: 'Votre image de marque ne vous représente plus ?',
+    text: [
+      'Un logo amateur ou des visuels incohérents peuvent nuire à votre crédibilité et ne pas attirer les bons clients.',
+      'Notre pôle design crée des identités visuelles qui :'
+    ],
+    list: [
+        'Reflètent parfaitement vos valeurs et votre mission',
+        'Vous différencient instantanément de la concurrence',
+        'Créent une connexion émotionnelle avec votre audience',
+        'Assurent une cohérence sur tous vos supports de communication'
+    ],
+    image: 'https://images.unsplash.com/photo-1609923223054-9475c078f175?q=80&w=1974&auto=format&fit=crop'
+  },
+  prestations: {
+    title: 'Nos Prestations en Design Graphique',
+    items: [
+      { icon: <Sparkles className="h-8 w-8" />, title: 'Création de Logo & Identité Visuelle', description: 'Un logo unique et une charte graphique complète pour une marque forte.' },
+      { icon: <FileText className="h-8 w-8" />, title: 'Supports de Communication Print & Web', description: 'Cartes de visite, flyers, bannières, brochures, et plus encore.' },
+      { icon: <Share2 className="h-8 w-8" />, title: 'Visuels pour les Réseaux Sociaux', description: 'Des templates et publications engageantes pour booster votre présence.' },
+      { icon: <Package className="h-8 w-8" />, title: 'Packaging & Design Produit', description: 'Un emballage attractif qui met en valeur vos produits.' },
+      { icon: <ImageIcon className="h-8 w-8" />, title: 'Illustrations & Iconographie sur Mesure', description: 'Des visuels uniques pour enrichir votre communication.' }
+    ]
+  },
+  processV2: {
+    title: 'Notre Processus Créatif, de l\'Idée à la Réalité',
+    steps: [
+      { icon: <MessageSquare />, name: 'Briefing Créatif', description: 'Nous échangeons pour comprendre votre vision et vos objectifs.' },
+      { icon: <Search />, name: 'Recherche & Inspiration', description: 'Analyse de votre marché et exploration des tendances.' },
+      { icon: <Lightbulb />, name: 'Concepts & Propositions', description: 'Présentation de plusieurs pistes créatives pour votre logo/design.' },
+      { icon: <RefreshCw />, name: 'Révisions & Finalisation', description: 'Nous affinons la proposition choisie selon vos retours.' },
+      { icon: <Download />, name: 'Livraison & Guide', description: 'Vous recevez tous les fichiers et une guide d\'utilisation.' }
+    ]
+  },
+  results: {
+    title: 'Un Design Qui a de l\'Impact',
+    stats: [
+        { value: '+40%', label: 'd\'engagement' },
+        { value: '100%', label: 'de cohérence' }
+    ],
+    text: 'Nos clients bénéficient d\'une image de marque professionnelle qui renforce leur notoriété et leur croissance.',
+    cta: '👉 Prêt à créer une marque inoubliable ?'
+  },
+  testimonials: {
+    title: 'Ils sont fiers de leur nouvelle image',
+    items: [
+      { quote: 'Wendooka a su capturer l\'essence de notre entreprise dans un logo simple et puissant. Nous recevons des compliments tous les jours !', author: 'Fondatrice', company: 'Startup Éco' }
+    ]
+  },
+  features: [],
+  process: []
+};
+
 const otherServiceTemplate: Omit<Service, 'slug' | 'title' | 'shortDescription' | 'longDescription'> = {
   heroImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop',
   intro: {
@@ -203,7 +268,7 @@ const otherServiceTemplate: Omit<Service, 'slug' | 'title' | 'shortDescription' 
 
 export const servicesData: Service[] = [
   webDevService,
-  { ...otherServiceTemplate, slug: 'design-graphique', title: 'Design graphique', shortDescription: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits.", longDescription: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables." },
+  graphicDesignService,
   uiUxService,
   { ...otherServiceTemplate, slug: 'marketing-digital', title: 'Marketing digital', shortDescription: "Campagnes ciblées qui boostent votre visibilité et vos conversions.", longDescription: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles." },
   { ...otherServiceTemplate, slug: 'maintenance-support', title: 'Maintenance & support', shortDescription: "Un suivi complet pour assurer la performance et la sécurité de votre site.", longDescription: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes." },
