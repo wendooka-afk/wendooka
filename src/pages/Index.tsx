@@ -6,9 +6,9 @@ import AboutSection from "@/components/AboutSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import TransformationSection from "@/components/TransformationSection";
 import BlogSection from "@/components/BlogSection";
-import CtaSection from "@/components/CtaSection";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
+import GlobalCta from "@/components/GlobalCta";
 
 const Index = () => {
   return (
@@ -23,7 +23,7 @@ const Index = () => {
         <TransformationSection />
         <BlogSection />
         <FaqSection />
-        <CtaSection />
+        <GlobalCta />
       </main>
       <Footer />
     </div>

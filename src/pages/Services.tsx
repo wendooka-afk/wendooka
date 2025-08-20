@@ -2,10 +2,10 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from '@/components/ui/button';
-import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock, LayoutTemplate, FileText } from 'lucide-react';
+import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock, LayoutTemplate } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MarqueeSection from '@/components/MarqueeSection';
+import GlobalCta from '@/components/GlobalCta';
 
 const services = [
   {
@@ -133,6 +133,7 @@ const ServicesPage: React.FC = () => {
             </div>
           </div>
         </section>
+        <GlobalCta />
       </main>
       <Footer />
     </div>

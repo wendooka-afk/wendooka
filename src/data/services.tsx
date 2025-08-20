@@ -53,11 +53,6 @@ export interface Service {
     title: string;
     items: ServiceTestimonial[];
   };
-  finalCta?: {
-    title: string;
-    text: string;
-    buttonText: string;
-  };
 }
 
 const webDevService: Service = {
@@ -115,11 +110,6 @@ const webDevService: Service = {
     items: [
       { quote: 'Grâce à Wendooka, notre site e-commerce a doublé son chiffre d’affaires en seulement 3 mois !', author: 'Client Satisfait', company: 'Entreprise X' }
     ]
-  },
-  finalCta: {
-    title: 'Prêt à Faire Passer Votre Business au Niveau Supérieur ?',
-    text: 'Un site web n’est pas une dépense, c’est un investissement. Et nous vous aidons à le rentabiliser rapidement.',
-    buttonText: '📞 Obtenez un devis gratuit dès aujourd’hui'
   },
   // Keep old properties for compatibility
   features: [],

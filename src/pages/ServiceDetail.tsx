@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { servicesData } from '@/data/services';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Star } from 'lucide-react';
+import GlobalCta from '@/components/GlobalCta';
 
 const ServiceDetailPage: React.FC = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
@@ -40,9 +41,9 @@ const ServiceDetailPage: React.FC = () => {
         {/* Intro Section */}
         <section className="py-16 md:py-24 bg-dark-gray">
           <div className="container mx-auto px-4">
-            <div className={`grid md:grid-cols-2 gap-12 items-center ${isUpdatedPage ? 'text-center md:text-left' : ''}`}>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
               {isUpdatedPage ? (
-                <div>
+                <div className="text-center md:text-left">
                     <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">{service.intro.title}</h2>
                     {service.intro.text.map((p, i) => <p key={i} className="text-gray-400 mb-4 text-lg">{p}</p>)}
                     <ul className="space-y-3 my-6 text-left">
@@ -60,7 +61,7 @@ const ServiceDetailPage: React.FC = () => {
                     {service.intro.text.map((p, i) => <p key={i} className="text-gray-400 mb-4">{p}</p>)}
                 </div>
               )}
-              <img src={service.intro.image} alt={service.intro.title} className={`rounded-2xl w-full h-auto object-cover aspect-square ${isUpdatedPage ? 'order-first md:order-last' : ''}`} />
+              <img src={service.intro.image} alt={service.intro.title} className="rounded-2xl w-full h-auto object-cover" />
             </div>
           </div>
         </section>
@@ -142,16 +143,7 @@ const ServiceDetailPage: React.FC = () => {
             </section>
         )}
 
-        {/* Final CTA Section */}
-        <section className="py-16 md:py-24 bg-lime-accent text-dark-black">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">{service.finalCta?.title || 'Prêt à lancer votre projet ?'}</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">{service.finalCta?.text || 'Contactez-nous dès aujourd\'hui pour discuter de vos besoins et obtenir un devis gratuit.'}</p>
-            <Button asChild className="bg-dark-black text-white hover:bg-gray-800 font-bold rounded-full px-8 py-4 text-lg">
-              <a href="/#contact">{service.finalCta?.buttonText || 'Demander un devis gratuit'}</a>
-            </Button>
-          </div>
-        </section>
+        <GlobalCta />
       </main>
       <Footer />
     </div>

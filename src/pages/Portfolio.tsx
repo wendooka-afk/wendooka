@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import GlobalCta from '@/components/GlobalCta';
 
 const PortfolioPage: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const PortfolioPage: React.FC = () => {
                 <p className="text-gray-400">Notre portfolio complet sera bientôt disponible ici.</p>
             </div>
         </section>
+        <GlobalCta />
       </main>
       <Footer />
     </div>
