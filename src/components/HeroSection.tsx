@@ -40,7 +40,7 @@ const HeroSection: React.FC = () => {
         </div>
         <div className="grid lg:grid-cols-12 gap-4 items-end mt-6">
             <div className="lg:col-span-7 relative">
-                <img src="/public/a15a52ae-15fa-40c1-80b9-1b8deeefd8e7.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
+                <img src="/a15a52ae-15fa-40c1-80b9-1b8deeefd8e7.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-lime-accent p-4 rounded-xl flex items-center gap-4">
                     <div className="flex -space-x-4">
                         <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/public/placeholder-avatar.svg" alt="Client satisfait 1"/>
