@@ -20,10 +20,12 @@ import PagesList from "@/pages/dashboard/PagesList.tsx";
 import PageForm from "@/pages/dashboard/PageForm.tsx";
 import DynamicPage from "@/pages/DynamicPage.tsx";
 import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx";
-import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx"; // New import
-import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";   // New import
-import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";   // New import
-import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";     // New import
+import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx";
+import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";
+import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";
+import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";
+import ServicesList from "@/pages/dashboard/ServicesList.tsx"; // New import
+import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";   // New import
 
 const queryClient = new QueryClient();
 
@@ -51,12 +53,15 @@ const App = () => (
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />
             <Route path="pages/:id/edit" element={<PageForm />} />
-            <Route path="blog" element={<BlogPostsList />} /> {/* New route */}
-            <Route path="blog/new" element={<BlogPostForm />} /> {/* New route */}
-            <Route path="blog/:id/edit" element={<BlogPostForm />} /> {/* New route */}
-            <Route path="projects" element={<ProjectsList />} /> {/* New route */}
-            <Route path="projects/new" element={<ProjectForm />} /> {/* New route */}
-            <Route path="projects/:id/edit" element={<ProjectForm />} /> {/* New route */}
+            <Route path="blog" element={<BlogPostsList />} />
+            <Route path="blog/new" element={<BlogPostForm />} />
+            <Route path="blog/:id/edit" element={<BlogPostForm />} />
+            <Route path="projects" element={<ProjectsList />} />
+            <Route path="projects/new" element={<ProjectForm />} />
+            <Route path="projects/:id/edit" element={<ProjectForm />} />
+            <Route path="services" element={<ServicesList />} /> {/* New route */}
+            <Route path="services/new" element={<ServiceForm />} />   {/* New route */}
+            <Route path="services/:id/edit" element={<ServiceForm />} /> {/* New route */}
             <Route path="media" element={<MediaLibrary />} />
           </Route>
 

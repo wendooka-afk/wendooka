@@ -1,53 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Globe, Palette, Megaphone, ShoppingCart, Wrench, ArrowRight, Phone, Mail, MapPin, Clock, LayoutTemplate } from 'lucide-react';
+import { ArrowRight, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MarqueeSection from '@/components/MarqueeSection';
 import GlobalCta from '@/components/GlobalCta';
+import { supabase } from '@/integrations/supabase/client';
+import { showError } from '@/utils/toast';
+import * as LucideIcons from 'lucide-react'; // Import all Lucide icons
+import { Button } from '@/components/ui/button'; // Added this import
 
-const services = [
-  {
-    slug: "creation-de-sites-web",
-    icon: <Globe className="h-10 w-10 text-lime-accent" />,
-    title: "Création de sites web",
-    description: "Nous créons des sites web sur mesure qui captent l’essence de votre marque et répondent à vos objectifs commerciaux."
-  },
-  {
-    slug: "design-graphique",
-    icon: <Palette className="h-10 w-10 text-lime-accent" />,
-    title: "Design graphique",
-    description: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables."
-  },
-  {
-    slug: "ui-ux-design",
-    icon: <LayoutTemplate className="h-10 w-10 text-lime-accent" />,
-    title: "UI/UX Design",
-    description: "Expériences fluides et intuitives qui fidélisent vos utilisateurs."
-  },
-  {
-    slug: "marketing-digital",
-    icon: <Megaphone className="h-10 w-10 text-lime-accent" />,
-    title: "Marketing digital",
-    description: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles."
-  },
-  {
-    slug: "e-commerce",
-    icon: <ShoppingCart className="h-10 w-10 text-lime-accent" />,
-    title: "E-commerce",
-    description: "Solutions personnalisées avec paniers d’achat, paiements en ligne et intégrations de systèmes de gestion des stocks."
-  },
-  {
-    slug: "maintenance-support",
-    icon: <Wrench className="h-10 w-10 text-lime-accent" />,
-    title: "Maintenance et support",
-    description: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes."
-  }
-];
+interface Service {
+  slug: string;
+  title: string;
+  short_description: string;
+  hero_image: string; // Using hero_image for the icon in this section
+}
 
 const ServicesPage: React.FC = () => {
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('services')
+        .select('slug, title, short_description, hero_image')
+        .eq('status', 'published')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        showError("Erreur lors du chargement des services : " + error.message);
+      } else {
+        setServices(data || []);
+      }
+      setLoading(false);
+    };
+
+    fetchServices();
+  }, []);
+
+  // Function to render Lucide icon dynamically
+  const renderLucideIcon = (iconName: string) => {
+    const IconComponent = (LucideIcons as any)[iconName];
+    return IconComponent ? <IconComponent className="h-10 w-10 text-lime-accent" /> : <LucideIcons.HelpCircle className="h-10 w-10 text-lime-accent" />;
+  };
+
   return (
     <div className="bg-dark-black text-white">
       <Header />
@@ -65,24 +65,36 @@ const ServicesPage: React.FC = () => {
 
         <section className="py-16 md:py-24 bg-white text-dark-black">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="bg-light-gray border-gray-200 rounded-2xl p-6 text-left flex flex-col hover:shadow-xl transition-shadow duration-300">
-                  <div className="mb-6 bg-lime-accent text-dark-black rounded-full p-3 w-16 h-16 flex items-center justify-center">
-                    {service.icon}
-                  </div>
-                  <CardHeader className="p-0 mb-4">
-                    <CardTitle className="text-2xl font-bold font-poppins">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0 flex-grow">
-                    <p className="text-gray-600">{service.description}</p>
-                  </CardContent>
-                  <Link to={`/services/${service.slug}`} className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
-                    Lire la suite <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Card>
-              ))}
-            </div>
+            {loading ? (
+              <div className="text-center text-gray-400 flex items-center justify-center">
+                <Loader2 className="h-6 w-6 animate-spin mr-2" />
+                Chargement des services...
+              </div>
+            ) : services.length === 0 ? (
+              <p className="text-gray-400 text-center">Aucun service publié pour le moment.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service, index) => (
+                  <Card key={index} className="bg-light-gray border-gray-200 rounded-2xl p-6 text-left flex flex-col hover:shadow-xl transition-shadow duration-300">
+                    <div className="mb-6 bg-lime-accent text-dark-black rounded-full p-3 w-16 h-16 flex items-center justify-center">
+                      {service.hero_image && service.hero_image.startsWith('Lucide:') ? 
+                        renderLucideIcon(service.hero_image.replace('Lucide:', '')) : 
+                        <LucideIcons.Globe className="h-10 w-10 text-lime-accent" />
+                      }
+                    </div>
+                    <CardHeader className="p-0 mb-4">
+                      <CardTitle className="text-2xl font-bold font-poppins">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 flex-grow">
+                      <p className="text-gray-600">{service.short_description}</p>
+                    </CardContent>
+                    <Link to={`/services/${service.slug}`} className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
+                      Lire la suite <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -110,7 +122,7 @@ const ServicesPage: React.FC = () => {
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <Clock className="h-6 w-6 mt-1 flex-shrink-0" />
+                    <LucideIcons.Clock className="h-6 w-6 mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-bold">Heures d'ouverture</h4>
                       <p>Du lundi au vendredi : 9h00 - 18h00</p>
@@ -118,15 +130,15 @@ const ServicesPage: React.FC = () => {
                     </div>
                   </div>
                   <a href="tel:+237672051289" className="flex items-center gap-4 group">
-                    <Phone className="h-6 w-6 flex-shrink-0" />
+                    <LucideIcons.Phone className="h-6 w-6 flex-shrink-0" />
                     <span className="group-hover:underline">+237 672 05 12 89</span>
                   </a>
                   <a href="mailto:contact@wendooka.com" className="flex items-center gap-4 group">
-                    <Mail className="h-6 w-6 flex-shrink-0" />
+                    <LucideIcons.Mail className="h-6 w-6 flex-shrink-0" />
                     <span className="group-hover:underline">contact@wendooka.com</span>
                   </a>
                    <div className="flex items-start gap-4">
-                    <MapPin className="h-6 w-6 mt-1 flex-shrink-0" />
+                    <LucideIcons.MapPin className="h-6 w-6 mt-1 flex-shrink-0" />
                     <span>Carrefour Cinéma Adamaoua, Ngaoundéré, Cameroun</span>
                   </div>
                 </div>
