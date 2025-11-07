@@ -1,6 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://gfwibbxzokrihpvdlbvz.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdmd2ibbxzokrihpvdlbvzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTk4OTYsImV4cCI6MjA3NzMzNTg5Nn0.aFD-pqNhTmywgUmZeO_DRqaKd8vIEU8nB0zgr92l_KY';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl) {
+  throw new Error("La variable d'environnement VITE_SUPABASE_URL n'est pas définie. Veuillez vérifier votre fichier .env.");
+}
+
+try {
+  // On vérifie si l'URL est valide en essayant de créer un objet URL
+  new URL(supabaseUrl);
+} catch (error) {
+  throw new Error(`La valeur de VITE_SUPABASE_URL n'est pas une URL valide : "${supabaseUrl}"`);
+}
+
+if (!supabaseAnonKey) {
+  throw new Error("La variable d'environnement VITE_SUPABASE_ANON_KEY n'est pas définie. Veuillez vérifier votre fichier .env.");
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
