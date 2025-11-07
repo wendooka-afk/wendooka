@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Home, FileText, Image, Settings, LogOut, Loader2 } from 'lucide-react';
+import { Home, FileText, Image, Settings, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { showSuccess, showError } from '@/utils/toast';
-import { useSession } from '@/components/SessionContextProvider'; // Import useSession
 
 const DashboardLayout: React.FC = () => {
   const navigate = useNavigate();
-  const { session, isLoading } = useSession(); // Use the session context
-
-  useEffect(() => {
-    if (!isLoading && !session) {
-      // If not loading and no session, redirect to login
-      navigate('/login', { replace: true });
-    }
-  }, [session, isLoading, navigate]);
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -23,23 +14,10 @@ const DashboardLayout: React.FC = () => {
       showError("Erreur lors de la déconnexion : " + error.message);
     } else {
       showSuccess("Vous avez été déconnecté.");
-      navigate('/login'); // Redirect to login page after sign out
+      // Note: La redirection vers /login ne fonctionnera plus, mais le bouton reste pour une réintégration future.
+      navigate('/'); 
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-dark-black text-white">
-        <Loader2 className="h-8 w-8 animate-spin text-lime-accent" />
-        <span className="ml-2">Chargement du tableau de bord...</span>
-      </div>
-    );
-  }
-
-  if (!session) {
-    // This case is handled by the useEffect redirect, but good for explicit clarity
-    return null; 
-  }
 
   return (
     <div className="flex min-h-screen bg-dark-black text-white">
@@ -84,10 +62,9 @@ const DashboardLayout: React.FC = () => {
       <div className="flex-1 flex flex-col">
         <header className="bg-dark-gray p-6 border-b border-gray-800 flex items-center justify-between">
           <h1 className="text-3xl font-bold font-poppins">Tableau de bord</h1>
-          {/* User info or other header elements can go here */}
         </header>
         <main className="flex-1 p-8 overflow-auto">
-          <Outlet /> {/* This is where nested routes will render */}
+          <Outlet />
         </main>
       </div>
     </div>

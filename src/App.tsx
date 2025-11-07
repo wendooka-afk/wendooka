@@ -19,8 +19,7 @@ import DashboardIndex from "@/pages/dashboard/DashboardIndex.tsx";
 import PagesList from "@/pages/dashboard/PagesList.tsx";
 import PageForm from "@/pages/dashboard/PageForm.tsx";
 import DynamicPage from "@/pages/DynamicPage.tsx";
-import Login from "@/pages/Login.tsx";
-import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx"; // Import du nouveau composant
+import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx";
 
 const queryClient = new QueryClient();
 
@@ -42,16 +41,13 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           
-          <Route path="/login" element={<Login />} />
-
-          {/* Dashboard Routes - Protected */}
+          {/* Dashboard Routes - Now public */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardIndex />} />
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />
             <Route path="pages/:id/edit" element={<PageForm />} />
-            <Route path="media" element={<MediaLibrary />} /> {/* Nouvelle route pour la médiathèque */}
-            {/* Future dashboard sub-routes will go here */}
+            <Route path="media" element={<MediaLibrary />} />
           </Route>
 
           {/* Dynamic Page Route - MUST be after specific static routes but before catch-all */}
