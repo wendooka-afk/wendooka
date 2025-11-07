@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { postsData } from '@/data/blog';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
+import { showError } from '@/utils/toast';
 
-const latestPosts = postsData.slice(0, 3);
+interface Post {
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  image: string;
+  excerpt: string;
+}
 
 const BlogSection: React.FC = () => {
+  const [latestPosts, setLatestPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLatestPosts = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('posts')
+        .select('slug, title, category, date, image, excerpt')
+        .eq('status', 'published')
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (error) {
+        showError("Erreur lors du chargement des derniers articles : " + error.message);
+      } else {
+        setLatestPosts(data || []);
+      }
+      setLoading(false);
+    };
+
+    fetchLatestPosts();
+  }, []);
+
   return (
     <section className="py-16 md:py-24 bg-dark-black text-white">
       <div className="container mx-auto px-4">
@@ -32,35 +64,41 @@ const BlogSection: React.FC = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {latestPosts.map((post) => (
-            <Card key={post.slug} className="bg-dark-gray border-gray-800 overflow-hidden group text-left rounded-2xl flex flex-col">
-              <div className="relative overflow-hidden">
-                <Link to={`/blog/${post.slug}`}>
-                  <img src={post.image} alt={post.title} className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
-                </Link>
-                <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Link to={`/blog/${post.slug}`} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
-                        <ArrowUpRight className="h-6 w-6" />
-                    </Link>
+        {loading ? (
+          <div className="text-center text-gray-400">Chargement des articles...</div>
+        ) : latestPosts.length === 0 ? (
+          <p className="text-gray-400 text-center">Aucun article de blog publié pour le moment.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {latestPosts.map((post) => (
+              <Card key={post.slug} className="bg-dark-gray border-gray-800 overflow-hidden group text-left rounded-2xl flex flex-col">
+                <div className="relative overflow-hidden">
+                  <Link to={`/blog/${post.slug}`}>
+                    <img src={post.image} alt={post.title} className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </Link>
+                  <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Link to={`/blog/${post.slug}`} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
+                          <ArrowUpRight className="h-6 w-6" />
+                      </Link>
+                  </div>
                 </div>
-              </div>
-              <CardContent className="p-6 flex flex-col flex-grow">
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
-                  <Badge variant="outline" className="border-gray-600 text-gray-300">{post.category}</Badge>
-                  <span>{post.date}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 flex-grow">
-                  <Link to={`/blog/${post.slug}`} className="hover:text-lime-accent transition-colors">{post.title}</Link>
-                </h3>
-                <p className="text-gray-400 mb-4">{post.excerpt}</p>
-                <Link to={`/blog/${post.slug}`} className="font-semibold text-lime-accent hover:underline self-start">
-                  Lire la suite
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+                    <Badge variant="outline" className="border-gray-600 text-gray-300">{post.category}</Badge>
+                    <span>{post.date}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 flex-grow">
+                    <Link to={`/blog/${post.slug}`} className="hover:text-lime-accent transition-colors">{post.title}</Link>
+                  </h3>
+                  <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                  <Link to={`/blog/${post.slug}`} className="font-semibold text-lime-accent hover:underline self-start">
+                    Lire la suite
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

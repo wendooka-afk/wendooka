@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Home, FileText, Image, Settings, LogOut } from 'lucide-react';
+import { Home, FileText, Image, Settings, LogOut, Newspaper, Briefcase } from 'lucide-react'; // Added Newspaper and Briefcase icons
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { showSuccess, showError } from '@/utils/toast';
@@ -14,7 +14,6 @@ const DashboardLayout: React.FC = () => {
       showError("Erreur lors de la déconnexion : " + error.message);
     } else {
       showSuccess("Vous avez été déconnecté.");
-      // Note: La redirection vers /login ne fonctionnera plus, mais le bouton reste pour une réintégration future.
       navigate('/'); 
     }
   };
@@ -39,6 +38,14 @@ const DashboardLayout: React.FC = () => {
           <Link to="/dashboard/pages" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-lime-accent hover:text-dark-black transition-colors">
             <FileText className="h-5 w-5" />
             <span>Pages</span>
+          </Link>
+          <Link to="/dashboard/blog" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-lime-accent hover:text-dark-black transition-colors">
+            <Newspaper className="h-5 w-5" />
+            <span>Articles de Blog</span>
+          </Link>
+          <Link to="/dashboard/projects" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-lime-accent hover:text-dark-black transition-colors">
+            <Briefcase className="h-5 w-5" />
+            <span>Projets</span>
           </Link>
           <Link to="/dashboard/media" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-lime-accent hover:text-dark-black transition-colors">
             <Image className="h-5 w-5" />

@@ -20,6 +20,10 @@ import PagesList from "@/pages/dashboard/PagesList.tsx";
 import PageForm from "@/pages/dashboard/PageForm.tsx";
 import DynamicPage from "@/pages/DynamicPage.tsx";
 import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx";
+import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx"; // New import
+import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";   // New import
+import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";   // New import
+import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";     // New import
 
 const queryClient = new QueryClient();
 
@@ -47,6 +51,12 @@ const App = () => (
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />
             <Route path="pages/:id/edit" element={<PageForm />} />
+            <Route path="blog" element={<BlogPostsList />} /> {/* New route */}
+            <Route path="blog/new" element={<BlogPostForm />} /> {/* New route */}
+            <Route path="blog/:id/edit" element={<BlogPostForm />} /> {/* New route */}
+            <Route path="projects" element={<ProjectsList />} /> {/* New route */}
+            <Route path="projects/new" element={<ProjectForm />} /> {/* New route */}
+            <Route path="projects/:id/edit" element={<ProjectForm />} /> {/* New route */}
             <Route path="media" element={<MediaLibrary />} />
           </Route>
 
