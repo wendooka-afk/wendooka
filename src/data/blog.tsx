@@ -18,7 +18,7 @@ export const postsData: Post[] = [
     category: "Développement Mobile",
     date: "21 Avril 2024",
     author: "Jane Doe",
-    image: "/public/placeholder.svg",
+    image: "/public/placeholder-card-1.svg",
     excerpt: "Découvrez les étapes clés pour créer une application mobile qui se démarque et engage durablement vos utilisateurs.",
     content: (
       <div className="space-y-6">
@@ -27,7 +27,7 @@ export const postsData: Post[] = [
         <p>Avant d'écrire la moindre ligne de code, il est crucial de définir clairement vos objectifs. Qui sont vos utilisateurs ? Quel problème votre application résout-elle ? Comment allez-vous la monétiser ? Répondre à ces questions vous aidera à construire une feuille de route solide pour votre projet.</p>
         <h3 className="text-2xl font-bold font-poppins">2. L'Expérience Utilisateur (UX) avant tout</h3>
         <p>Une interface intuitive et une navigation fluide sont non négociables. Investissez dans le design UX/UI pour créer une expérience agréable qui incite les utilisateurs à revenir. Pensez aux parcours utilisateurs, aux tests d'utilisabilité et au prototypage pour valider vos concepts avant le développement.</p>
-        <img src="/public/placeholder.svg" alt="UX Design Process" className="rounded-2xl w-full" />
+        <img src="/public/placeholder-card-2.svg" alt="UX Design Process" className="rounded-2xl w-full" />
         <h3 className="text-2xl font-bold font-poppins">3. Choisir la Bonne Technologie</h3>
         <p>Natif, hybride, ou web app ? Le choix de la technologie dépend de votre budget, de vos délais et des fonctionnalités requises. Chaque approche a ses avantages et ses inconvénients. Une agence expérimentée comme Wendooka peut vous guider vers la solution la plus adaptée à votre projet.</p>
         <blockquote className="border-l-4 border-lime-accent pl-4 italic text-gray-300">
@@ -43,7 +43,7 @@ export const postsData: Post[] = [
     category: "Développement Web",
     date: "20 Avril 2024",
     author: "John Doe",
-    image: "/public/placeholder.svg",
+    image: "/public/placeholder-card-3.svg",
     excerpt: "Un aperçu de notre processus de création de sites web, de la conception initiale au lancement final et au-delà.",
     content: (
        <div className="space-y-6">
@@ -65,7 +65,7 @@ export const postsData: Post[] = [
     category: "UI/UX Design",
     date: "19 Avril 2024",
     author: "Jane Doe",
-    image: "/public/placeholder.svg",
+    image: "/public/placeholder-card-1.svg",
     excerpt: "Explorez les dernières tendances en matière de design d'interface et d'expérience utilisateur qui redéfinissent nos interactions avec le digital.",
     content: (
       <div className="space-y-6">
@@ -85,7 +85,7 @@ export const postsData: Post[] = [
     category: "Marketing Digital",
     date: "18 Avril 2024",
     author: "John Doe",
-    image: "/public/placeholder.svg",
+    image: "/public/placeholder-card-2.svg",
     excerpt: "Le référencement naturel est plus qu'un simple mot à la mode ; c'est un investissement fondamental pour la croissance à long terme.",
     content: (
       <div className="space-y-6">

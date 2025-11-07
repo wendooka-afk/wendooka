@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-3" onClick={() => isMenuOpen && toggleMenu()}>
           <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
-            <img src="/public/placeholder.svg" alt="Wendooka Logo" className="h-6 w-6" />
+            <img src="/public/placeholder-logo.svg" alt="Wendooka Logo" className="h-6 w-6" />
           </div>
           <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
         </Link>

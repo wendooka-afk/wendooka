@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
               <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
-                <img src="/public/placeholder.svg" alt="Wendooka Logo" className="h-6 w-6" />
+                <img src="/public/placeholder-logo.svg" alt="Wendooka Logo" className="h-6 w-6" />
               </div>
               <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
             </Link>
@@ -82,8 +82,8 @@ const Footer: React.FC = () => {
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-sm">
           <p>&copy;{new Date().getFullYear()} Wendooka Ltd. Tous Droits Réservés.</p>
           <div className="flex gap-4 mt-4 sm:mt-0">
-            <a href="#" className="hover:text-white">Conditions d'utilisation</a>
-            <a href="#" className="hover:text-white">Politique de confidentialité</a>
+            <Link to="/terms-of-service" className="hover:text-white">Conditions d'utilisation</Link>
+            <Link to="/privacy-policy" className="hover:text-white">Politique de confidentialité</Link>
           </div>
         </div>
       </div>

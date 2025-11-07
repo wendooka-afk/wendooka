@@ -67,7 +67,7 @@ const webDevService: Service = {
   subtitle: 'Nous concevons des sites web professionnels, rapides et optimisés pour transformer vos visiteurs en clients fidèles.',
   shortDescription: 'Des sites vitrines et e-commerce modernes, optimisés pour générer des ventes et inspirer confiance.',
   longDescription: 'Nous créons des sites web sur mesure qui captent l’essence de votre marque et répondent à vos objectifs commerciaux.',
-  heroImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Votre site web actuel vous coûte des clients ?',
     text: [
@@ -80,7 +80,7 @@ const webDevService: Service = {
         'Sont optimisés pour le référencement naturel (SEO)',
         'Convertissent vos visiteurs en prospects qualifiés'
     ],
-    image: 'https://images.unsplash.com/photo-1559028006-44a36b17a66b?q=80&w=1974&auto=format&fit=crop'
+    image: '/public/placeholder-card-1.svg'
   },
   prestations: {
     title: 'Nos Solutions de Conception et Développement Web',
@@ -127,7 +127,7 @@ const uiUxService: Service = {
   subtitle: 'Nous créons des expériences utilisateur intuitives et mémorables qui transforment les clics en clients fidèles.',
   shortDescription: "Expériences fluides et intuitives qui fidélisent vos utilisateurs.",
   longDescription: "Nous concevons des interfaces centrées sur l'utilisateur pour une navigation agréable et efficace.",
-  heroImage: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Votre application ou site web ne convertit pas assez ?',
     text: [
@@ -140,7 +140,7 @@ const uiUxService: Service = {
         'Renforcent la crédibilité et l\'image de votre marque',
         'Boostent significativement vos taux de conversion'
     ],
-    image: 'https://images.unsplash.com/photo-1553877522-c36980345885?q=80&w=2070&auto=format&fit=crop'
+    image: '/public/placeholder-card-2.svg'
   },
   prestations: {
     title: 'Nos Services en Design UI/UX',
@@ -187,7 +187,7 @@ const graphicDesignService: Service = {
   subtitle: 'De la création de logo à l\'identité de marque complète, nous donnons vie à votre vision avec des visuels percutants.',
   shortDescription: "Identités visuelles fortes, logos percutants et visuels qui marquent les esprits.",
   longDescription: "Notre équipe de designers mettra en valeur votre identité de marque en créant des designs percutants et mémorables.",
-  heroImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Votre image de marque ne vous représente plus ?',
     text: [
@@ -200,7 +200,7 @@ const graphicDesignService: Service = {
         'Créent une connexion émotionnelle avec votre audience',
         'Assurent une cohérence sur tous vos supports de communication'
     ],
-    image: 'https://images.unsplash.com/photo-1609923223054-9475c078f175?q=80&w=1974&auto=format&fit=crop'
+    image: '/public/placeholder-card-3.svg'
   },
   prestations: {
     title: 'Nos Prestations en Design Graphique',
@@ -247,7 +247,7 @@ const marketingDigitalService: Service = {
   subtitle: 'Boostez votre visibilité en ligne et générez des leads qualifiés grâce à nos stratégies de marketing digital sur-mesure.',
   shortDescription: "Campagnes ciblées qui boostent votre visibilité et vos conversions.",
   longDescription: "Nous élaborons des stratégies personnalisées pour générer du trafic qualifié et convertir les visiteurs en clients fidèles.",
-  heroImage: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Vous avez un super produit, mais personne ne le sait ?',
     text: [
@@ -260,7 +260,7 @@ const marketingDigitalService: Service = {
       'Transforme les visiteurs en clients et ambassadeurs',
       'Optimise votre retour sur investissement (ROI)'
     ],
-    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop'
+    image: '/public/placeholder-card-1.svg'
   },
   prestations: {
     title: 'Nos Services de Marketing Digital',
@@ -304,7 +304,7 @@ const maintenanceService: Service = {
   subtitle: 'Concentrez-vous sur votre business, nous nous occupons de la santé technique, de la sécurité et des performances de votre site.',
   shortDescription: "Un suivi complet pour assurer la performance et la sécurité de votre site.",
   longDescription: "Nous assurons que votre site web reste à jour et fonctionne de manière optimale, des mises à jour à la résolution de problèmes.",
-  heroImage: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1974&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Votre site web est-il une bombe à retardement ?',
     text: [
@@ -317,7 +317,7 @@ const maintenanceService: Service = {
       'Toujours à jour avec les dernières technologies',
       'Sauvegardé régulièrement pour une récupération rapide en cas de problème'
     ],
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop'
+    image: '/public/placeholder-card-2.svg'
   },
   prestations: {
     title: 'Nos Forfaits de Maintenance Web',
@@ -361,7 +361,7 @@ const contenuService: Service = {
   subtitle: "Du blogging aux réseaux sociaux, nous créons du contenu pertinent et à forte valeur ajoutée qui positionne votre marque comme un expert.",
   shortDescription: "Nous produisons du contenu engageant qui génère des résultats, aligné sur vos objectifs.",
   longDescription: "Du blogging aux réseaux sociaux, nous créons du contenu qui parle à votre audience.",
-  heroImage: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Vous manquez de temps pour créer du contenu de qualité ?',
     text: [
@@ -374,7 +374,7 @@ const contenuService: Service = {
       'Génère des leads en proposant du contenu à forte valeur',
       "Renforce votre autorité et votre image d'expert"
     ],
-    image: 'https://images.unsplash.com/photo-1521737852577-686049a15049?q=80&w=2070&auto=format&fit=crop'
+    image: '/public/placeholder-card-3.svg'
   },
   prestations: {
     title: 'Nos Services de Création de Contenu',
@@ -418,7 +418,7 @@ const ecommerceService: Service = {
   subtitle: "Nous créons des boutiques en ligne performantes, sécurisées et optimisées pour la conversion, de la fiche produit au paiement.",
   shortDescription: "Solutions personnalisées avec paniers d’achat, paiements en ligne et intégrations de systèmes de gestion des stocks.",
   longDescription: "Lancez votre boutique en ligne avec une plateforme robuste, sécurisée et facile à gérer.",
-  heroImage: 'https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070&auto=format&fit=crop',
+  heroImage: '/public/placeholder-hero.svg',
   intro: {
     title: 'Votre boutique en ligne ne décolle pas ?',
     text: [
@@ -431,7 +431,7 @@ const ecommerceService: Service = {
       'Simplifient le processus de paiement pour réduire les abandons de panier',
       'Sont rapides, sécurisées et fiables pour inspirer confiance'
     ],
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'
+    image: '/public/placeholder-card-1.svg'
   },
   prestations: {
     title: 'Nos Compétences en E-commerce',

@@ -30,7 +30,7 @@ const AboutPage: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <img src="/public/placeholder.svg" alt="L'équipe Wendooka en réunion" className="rounded-2xl w-full h-auto object-cover" />
+                <img src="/public/placeholder-card-1.svg" alt="L'équipe Wendooka en réunion" className="rounded-2xl w-full h-auto object-cover" />
               </div>
               <div>
                 <p className="font-semibold text-lime-accent mb-2">Notre Mission</p>
