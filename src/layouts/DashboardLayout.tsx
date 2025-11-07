@@ -46,10 +46,12 @@ const DashboardLayout: React.FC = () => {
       {/* Sidebar */}
       <aside className="w-64 bg-dark-gray p-6 flex flex-col border-r border-gray-800">
         <div className="flex items-center gap-3 mb-10">
-          <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
-            <img src="/public/placeholder-logo.svg" alt="Wendooka Logo" className="h-6 w-6" />
-          </div>
-          <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
+          <Link to="/dashboard" className="flex items-center gap-3">
+            <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
+              <img src="/public/placeholder-logo.svg" alt="Wendooka Logo" className="h-6 w-6" />
+            </div>
+            <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
+          </Link>
         </div>
         <nav className="flex-grow space-y-2">
           <Link to="/dashboard" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-lime-accent hover:text-dark-black transition-colors">
