@@ -66,12 +66,15 @@ const ServicesPage: React.FC = () => {
         <section className="py-16 md:py-24 bg-white text-dark-black">
           <div className="container mx-auto px-4">
             {loading ? (
-              <div className="text-center text-gray-400 flex items-center justify-center">
+              <div className="text-center text-gray-400 flex items-center justify-center py-10">
                 <Loader2 className="h-6 w-6 animate-spin mr-2" />
                 Chargement des services...
               </div>
             ) : services.length === 0 ? (
-              <p className="text-gray-400 text-center">Aucun service publié pour le moment.</p>
+              <div className="text-center py-10">
+                <p className="text-xl text-gray-400 mb-4">Aucun service publié pour le moment.</p>
+                <p className="text-lg text-gray-500">Veuillez ajouter de nouveaux services via le <Link to="/dashboard/services/new" className="text-lime-accent hover:underline">tableau de bord</Link>.</p>
+              </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service, index) => (
