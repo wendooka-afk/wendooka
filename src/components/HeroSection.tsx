@@ -33,51 +33,54 @@ const HeroSection: React.FC = () => {
             <div className="flex justify-center lg:justify-end mb-8">
               <RotatingText />
             </div>
-            <p className="text-lg text-gray-400 mb-4 text-center lg:text-left max-w-md mx-auto lg:mx-0">
+            <p className="text-lg text-gray-400 text-center lg:text-left max-w-md mx-auto lg:mx-0">
               Votre entreprise est unique, votre site web doit l’être aussi. Chez Wendooka, nous concevons des expériences digitales sur-mesure qui propulsent votre marque.
             </p>
-            <div className="mt-4 flex justify-center lg:justify-start">
-              <img
-                src="/8970.webp"
-                alt="Client heureux Wendooka"
-                className="w-40 h-40 object-cover rounded-xl border-4 border-lime-accent shadow-lg"
-              />
-            </div>
           </div>
         </div>
+
         <div className="grid lg:grid-cols-12 gap-4 items-end mt-6">
-            <div className="lg:col-span-7 relative">
-                <img src="/hero-main.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-lime-accent p-4 rounded-xl flex items-center gap-4">
-                    <div className="flex -space-x-4">
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/5572.webp" alt="Client satisfait 1"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/7409.webp" alt="Client satisfait 2"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/8970.webp" alt="Client satisfait 3"/>
-                    </div>
-                    <div>
-                        <div className="flex items-center">
-                        <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                        <p className="font-bold text-dark-black ml-1">4.9 Star</p>
-                        </div>
-                        <p className="text-dark-black/80 text-sm">Reviews</p>
-                    </div>
+          <div className="lg:col-span-7 relative">
+            <img src="/hero-main.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-lime-accent p-4 rounded-xl flex items-center gap-4">
+              {/* Groupe avatars avec image en arrière-plan */}
+              <div className="relative flex -space-x-4">
+                {/* Image de fond derrière les reviewers */}
+                <img
+                  src="/8970.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -left-3 -top-3 w-16 h-16 rounded-full opacity-25 blur-[1px] -z-10 pointer-events-none select-none"
+                />
+                <img className="relative z-10 inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/5572.webp" alt="Client satisfait 1"/>
+                <img className="relative z-10 inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/7409.webp" alt="Client satisfait 2"/>
+                <img className="relative z-10 inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/8970.webp" alt="Client satisfait 3"/>
+              </div>
+              <div>
+                <div className="flex items-center">
+                  <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  <p className="font-bold text-dark-black ml-1">4.9 Star</p>
                 </div>
-                <Sparkles className="absolute top-8 left-8 h-12 w-12 text-lime-accent animate-pulse" />
-            </div>
-            <div className="lg:col-span-5 bg-lime-accent text-dark-black p-8 rounded-2xl space-y-6">
-              <div>
-                <h3 className="text-4xl font-bold font-poppins">+150</h3>
-                <p className="font-semibold">Projets réalisés</p>
-              </div>
-              <div>
-                <h3 className="text-4xl font-bold font-poppins">10+</h3>
-                <p className="font-semibold">Années d’expérience</p>
-              </div>
-              <div>
-                <h3 className="text-4xl font-bold font-poppins">95%</h3>
-                <p className="font-semibold">Satisfaction client</p>
+                <p className="text-dark-black/80 text-sm">Reviews</p>
               </div>
             </div>
+            <Sparkles className="absolute top-8 left-8 h-12 w-12 text-lime-accent animate-pulse" />
+          </div>
+
+          <div className="lg:col-span-5 bg-lime-accent text-dark-black p-8 rounded-2xl space-y-6">
+            <div>
+              <h3 className="text-4xl font-bold font-poppins">+150</h3>
+              <p className="font-semibold">Projets réalisés</p>
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold font-poppins">10+</h3>
+              <p className="font-semibold">Années d’expérience</p>
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold font-poppins">95%</h3>
+              <p className="font-semibold">Satisfaction client</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
