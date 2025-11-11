@@ -41,7 +41,7 @@ const HeroSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-12 gap-4 items-end mt-6">
           <div className="lg:col-span-7 relative">
-            <img src="/hero-main.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
+            <img src="/8970.webp" alt="Mise en avant Wendooka" className="rounded-2xl w-full h-auto object-cover" />
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-lime-accent p-4 rounded-xl flex items-center gap-4">
               {/* Groupe avatars avec image en arrière-plan */}
               <div className="relative flex -space-x-4">
