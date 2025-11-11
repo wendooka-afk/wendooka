@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import { Calendar, User, Tag, Loader2 } from 'lucide-react';
 import GlobalCta from '@/components/GlobalCta';
 import { supabase } from '@/integrations/supabase/client';
-import { showError } from '@/utils/toast';
 
 interface Post {
   slug: string;
@@ -14,7 +13,7 @@ interface Post {
   date: string;
   author: string;
   image: string;
-  content: string; // Content is now a string from Supabase
+  content: string;
 }
 
 const BlogPostPage: React.FC = () => {
@@ -34,8 +33,8 @@ const BlogPostPage: React.FC = () => {
       setLoading(true);
       setError(null);
       const { data, error } = await supabase
-        .from('posts')
-        .select('*')
+        .from('blog_posts')
+        .select('slug, title, content, author, featured_image, published_at, category:categories(name)')
         .eq('slug', postSlug)
         .eq('status', 'published')
         .single();
@@ -45,7 +44,15 @@ const BlogPostPage: React.FC = () => {
         setError("Article non trouvé ou non publié.");
         setPost(null);
       } else if (data) {
-        setPost(data);
+        setPost({
+          slug: data.slug,
+          title: data.title,
+          content: data.content || '',
+          author: data.author || 'Inconnu',
+          image: data.featured_image || '',
+          date: data.published_at ? new Date(data.published_at).toLocaleDateString('fr-FR') : '',
+          category: (data as any).category?.name ?? 'Non classé',
+        });
       } else {
         setError("Article non trouvé ou non publié.");
         setPost(null);
@@ -86,7 +93,7 @@ const BlogPostPage: React.FC = () => {
             <div className="flex justify-center items-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <User className="h-5 w-5 text-lime-accent" />
-                <span>{post.author || 'Inconnu'}</span>
+                <span>{post.author}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-lime-accent" />
@@ -94,7 +101,7 @@ const BlogPostPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Tag className="h-5 w-5 text-lime-accent" />
-                <span>{post.category || 'Non classé'}</span>
+                <span>{post.category}</span>
               </div>
             </div>
           </div>
@@ -104,7 +111,6 @@ const BlogPostPage: React.FC = () => {
           <div className="container mx-auto px-4 max-w-4xl">
             {post.image && <img src={post.image} alt={post.title} className="rounded-2xl w-full h-auto object-cover mb-12" />}
             <div className="prose prose-invert prose-lg max-w-none prose-h3:font-poppins prose-h3:text-lime-accent prose-a:text-lime-accent hover:prose-a:underline">
-              {/* Render HTML content directly */}
               {post.content && <div dangerouslySetInnerHTML={{ __html: post.content }} />}
               {!post.content && <p className="text-gray-400">Aucun contenu pour cet article.</p>}
             </div>

@@ -34,14 +34,22 @@ const BlogPostsList: React.FC = () => {
   const fetchPosts = async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from('posts')
-      .select('id, title, slug, category, status, created_at')
+      .from('blog_posts')
+      .select('id, title, slug, status, created_at, category:categories(name)')
       .order('created_at', { ascending: false });
 
     if (error) {
       showError("Erreur lors du chargement des articles : " + error.message);
     } else {
-      setPosts(data || []);
+      const mapped = (data || []).map((p: any) => ({
+        id: p.id,
+        title: p.title,
+        slug: p.slug,
+        status: p.status,
+        created_at: p.created_at,
+        category: p.category?.name ?? 'Non classé',
+      })) as Post[];
+      setPosts(mapped);
     }
     setLoading(false);
   };
@@ -51,7 +59,7 @@ const BlogPostsList: React.FC = () => {
       return;
     }
     const { error } = await supabase
-      .from('posts')
+      .from('blog_posts')
       .delete()
       .eq('id', id);
 

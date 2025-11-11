@@ -24,8 +24,8 @@ const BlogSection: React.FC = () => {
     const fetchLatestPosts = async () => {
       setLoading(true);
       const { data, error } = await supabase
-        .from('posts')
-        .select('slug, title, category, date, image, excerpt')
+        .from('blog_posts')
+        .select('slug, title, featured_image, excerpt, published_at, category:categories(name)')
         .eq('status', 'published')
         .order('created_at', { ascending: false })
         .limit(3);
@@ -33,7 +33,15 @@ const BlogSection: React.FC = () => {
       if (error) {
         showError("Erreur lors du chargement des derniers articles : " + error.message);
       } else {
-        setLatestPosts(data || []);
+        const mapped = (data || []).map((p: any) => ({
+          slug: p.slug,
+          title: p.title,
+          category: p.category?.name ?? 'Non classé',
+          date: p.published_at ? new Date(p.published_at).toLocaleDateString('fr-FR') : '',
+          image: p.featured_image || '/125484.webp',
+          excerpt: p.excerpt || ''
+        }));
+        setLatestPosts(mapped);
       }
       setLoading(false);
     };
