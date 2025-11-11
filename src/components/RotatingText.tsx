@@ -11,7 +11,7 @@ const RotatingText: React.FC = () => {
         </defs>
         <text dy="5">
           <textPath xlinkHref="#circle" className="font-bold text-sm uppercase tracking-widest" fill="white">
-            • HIRE US • HIRE US • HIRE US
+            • CONTACTEZ-NOUS • CONTACTEZ-NOUS • CONTACTEZ-NOUS
           </textPath>
         </text>
       </svg>
