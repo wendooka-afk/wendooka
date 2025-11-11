@@ -7,6 +7,8 @@ import TransformationSection from "@/components/TransformationSection";
 import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import GlobalCta from "@/components/GlobalCta";
+import AboutIntroSection from "@/components/AboutIntroSection";
+import HomeServicesBenefits from "@/components/HomeServicesBenefits";
 
 const Index = () => {
   return (
@@ -15,6 +17,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <MarqueeSection />
+        <AboutIntroSection />
+        <HomeServicesBenefits />
         <ServicesSection />
         <PortfolioSection />
         <TransformationSection />
