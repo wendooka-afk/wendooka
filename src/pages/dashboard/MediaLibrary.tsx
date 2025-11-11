@@ -5,15 +5,65 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Loader2, Upload, Trash2, File } from 'lucide-react';
+import {
+  Loader2,
+  Upload,
+  Trash2,
+  File,
+  FolderPlus,
+  ChevronRight,
+  Home,
+  Image as ImageIcon,
+  Copy,
+} from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface MediaFile {
   name: string;
-  id: string; // Supabase storage items have an id
+  id: string;
   fullPath: string;
   url: string;
+  type: string;
+  size: number;
+  folder: string;
 }
+
+interface Folder {
+  name: string;
+  path: string;
+  files: MediaFile[];
+  subfolders: string[];
+}
+
+const IMAGE_SIZES = {
+  thumbnail: { width: 150, height: 150 },
+  medium: { width: 300, height: 300 },
+  large: { width: 800, height: 800 },
+};
 
 const BUCKET_NAME = 'media'; // Assurez-vous d'avoir un bucket public nommé 'media' dans Supabase Storage
 
@@ -21,33 +71,61 @@ const MediaLibrary: React.FC = () => {
   const [files, setFiles] = useState<MediaFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [currentFolder, setCurrentFolder] = useState(''); // moved above useEffect
+  const [folders, setFolders] = useState<Folder[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    fetchFiles();
-  }, []);
-
-  const fetchFiles = async () => {
+  const fetchFiles = async (path: string = '') => {
     setLoading(true);
-    const { data, error } = await supabase.storage.from(BUCKET_NAME).list('', {
+    const { data, error } = await supabase.storage.from(BUCKET_NAME).list(path, {
       limit: 100,
-      offset: 0,
-      sortBy: { column: 'created_at', order: 'desc' },
+      sortBy: { column: 'name', order: 'asc' },
     });
 
     if (error) {
       showError("Erreur lors du chargement des fichiers : " + error.message);
-    } else if (data) {
-      const fetchedFiles: MediaFile[] = data.map((file) => ({
-        name: file.name,
-        id: file.id,
-        fullPath: file.name, // Supabase list returns name as full path for root files
-        url: supabase.storage.from(BUCKET_NAME).getPublicUrl(file.name).data.publicUrl,
-      }));
-      setFiles(fetchedFiles);
+      setLoading(false);
+      return;
     }
+
+    if (!data) {
+      setFiles([]);
+      setFolders([]);
+      setLoading(false);
+      return;
+    }
+
+    // Séparer les fichiers et les dossiers
+    const folderItems = data.filter(item => item.metadata?.isDirectory);
+    const fileItems = data.filter(item => !item.metadata?.isDirectory);
+
+    // Traiter les fichiers
+    const fetchedFiles: MediaFile[] = fileItems.map((file) => ({
+      name: file.name,
+      id: file.id,
+      fullPath: path ? `${path}/${file.name}` : file.name,
+      url: supabase.storage.from(BUCKET_NAME).getPublicUrl(path ? `${path}/${file.name}` : file.name).data.publicUrl,
+      type: file.metadata?.mimetype || 'application/octet-stream',
+      size: file.metadata?.size || 0,
+      folder: path,
+    }));
+
+    // Traiter les dossiers
+    const fetchedFolders: Folder[] = folderItems.map((folder) => ({
+      name: folder.name,
+      path: path ? `${path}/${folder.name}` : folder.name,
+      files: [],
+      subfolders: [],
+    }));
+
+    setFiles(fetchedFiles);
+    setFolders(fetchedFolders);
     setLoading(false);
   };
+
+  useEffect(() => {
+    fetchFiles(currentFolder);
+  }, [currentFolder]);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = event.target.files?.[0];
@@ -56,7 +134,7 @@ const MediaLibrary: React.FC = () => {
     setUploading(true);
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
-      .upload(uploadedFile.name, uploadedFile, {
+      .upload(currentFolder ? `${currentFolder}/${uploadedFile.name}` : uploadedFile.name, uploadedFile, {
         cacheControl: '3600',
         upsert: false,
       });
@@ -65,7 +143,7 @@ const MediaLibrary: React.FC = () => {
       showError("Erreur lors de l'upload du fichier : " + error.message);
     } else {
       showSuccess("Fichier uploadé avec succès !");
-      fetchFiles(); // Actualise la liste des fichiers
+      fetchFiles(currentFolder); // Actualise la liste des fichiers
       if (fileInputRef.current) {
         fileInputRef.current.value = ''; // Efface l'input
       }
@@ -73,25 +151,25 @@ const MediaLibrary: React.FC = () => {
     setUploading(false);
   };
 
-  const handleDeleteFile = async (fileName: string) => {
-    if (!window.confirm(`Êtes-vous sûr de vouloir supprimer "${fileName}" ?`)) {
+  const handleDeleteFile = async (filePath: string) => {
+    if (!window.confirm(`Êtes-vous sûr de vouloir supprimer "${filePath}" ?`)) {
       return;
     }
 
-    const { error } = await supabase.storage.from(BUCKET_NAME).remove([fileName]);
+    const { error } = await supabase.storage.from(BUCKET_NAME).remove([filePath]);
 
     if (error) {
       showError("Erreur lors de la suppression du fichier : " + error.message);
     } else {
       showSuccess("Fichier supprimé avec succès !");
-      fetchFiles(); // Actualise la liste des fichiers
+      fetchFiles(currentFolder); // Actualise la liste des fichiers
     }
   };
 
   const isImage = (fileName: string) => {
     const ext = fileName.split('.').pop()?.toLowerCase();
     return ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext || '');
-  };
+    };
 
   return (
     <div className="space-y-6">

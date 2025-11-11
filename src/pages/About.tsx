@@ -30,7 +30,7 @@ const AboutPage: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <img src="/public/placeholder-card-1.svg" alt="L'équipe Wendooka en réunion" className="rounded-2xl w-full h-auto object-cover" />
+                <img src="/60349.webp" alt="L'équipe Wendooka en réunion" className="rounded-2xl w-full h-auto object-cover" />
               </div>
               <div>
                 <p className="font-semibold text-lime-accent mb-2">Notre Mission</p>
@@ -56,7 +56,7 @@ const AboutPage: React.FC = () => {
                     <div className="bg-dark-black p-8 rounded-2xl">
                         <Users className="h-12 w-12 text-lime-accent mx-auto mb-4" />
                         <h3 className="text-2xl font-bold mb-2">Centré sur le Client</h3>
-                        <p className="text-gray-400">Votre succès est notre succès. Nous nous immergeons dans vos défis pour y apporter les meilleures solutions.</p>
+                        <p className="text-gray-400">Votre succès est notre succès. Nous nous immergons dans vos défis pour y apporter les meilleures solutions.</p>
                     </div>
                     <div className="bg-dark-black p-8 rounded-2xl">
                         <Target className="h-12 w-12 text-lime-accent mx-auto mb-4" />

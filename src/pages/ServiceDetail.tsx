@@ -127,7 +127,7 @@ const ServiceDetailPage: React.FC = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 text-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.7)), url(${service.hero_image || '/public/placeholder-hero.svg'})` }}>
+        <section className="relative py-20 md:py-32 text-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.7)), url(${service.hero_image || '/125484.webp'})` }}>
           <div className="container mx-auto px-4 z-10 relative">
             <h1 className="text-4xl md:text-5xl font-bold font-poppins mb-4 max-w-4xl mx-auto">{service.title}</h1>
             {service.subtitle && <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">{service.subtitle}</p>}

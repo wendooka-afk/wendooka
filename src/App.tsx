@@ -24,8 +24,11 @@ import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx";
 import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";
 import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";
 import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";
-import ServicesList from "@/pages/dashboard/ServicesList.tsx"; // New import
-import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";   // New import
+import ServicesList from "@/pages/dashboard/ServicesList.tsx";
+import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";
+import LoginPage from "@/pages/auth/LoginPage.tsx";
+import ResetPasswordPage from "@/pages/auth/ResetPasswordPage.tsx";
+import ProtectedRoute from "@/components/auth/ProtectedRoute.tsx";
 
 const queryClient = new QueryClient();
 
@@ -47,8 +50,12 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           
-          {/* Dashboard Routes - Now public */}
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          {/* Routes d'authentification */}
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+
+          {/* Routes du dashboard - Protégées */}
+          <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
             <Route index element={<DashboardIndex />} />
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />

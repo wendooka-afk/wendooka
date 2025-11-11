@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
+import { useBlog } from '@/hooks/use-blog';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   Form,
   FormControl,
@@ -15,27 +18,39 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon, Loader2, Eye } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Label } from '@/components/ui/label';
+import { CalendarIcon, Loader2, Eye, X } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
-import { fr } from 'date-fns/locale'; // Importation statique de la locale française
+import { fr } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 import { showSuccess, showError } from '@/utils/toast';
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
 
 const formSchema = z.object({
   title: z.string().min(1, "Le titre est requis."),
   slug: z.string().min(1, "Le slug est requis.").regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Le slug doit être en minuscules, sans espaces et avec des tirets."),
-  category: z.string().optional(),
+  category_id: z.string().min(1, "La catégorie est requise."),
   author: z.string().optional(),
-  image: z.string().url("L'URL de l'image doit être valide.").optional().or(z.literal('')),
+  featured_image: z.string().url("L'URL de l'image doit être valide.").optional().or(z.literal('')),
   excerpt: z.string().optional(),
-  content: z.string().optional(),
+  content: z.string().min(1, "Le contenu est requis."),
   status: z.enum(['draft', 'published', 'scheduled']),
-  published_at: z.date().optional().nullable(), // Using published_at for scheduling
+  published_at: z.date().optional().nullable(),
+  seo_title: z.string().optional(),
+  meta_description: z.string().optional(),
+  tags: z.array(z.string())
 });
 
 type BlogPostFormValues = z.infer<typeof formSchema>;
@@ -45,19 +60,26 @@ const BlogPostForm: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [tagInput, setTagInput] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const { updateTags } = useBlog();
 
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: '',
       slug: '',
-      category: '',
+      category_id: '',
       author: '',
-      image: '',
+      featured_image: '',
       excerpt: '',
       content: '',
       status: 'draft',
       published_at: null,
+      seo_title: '',
+      meta_description: '',
+      tags: [],
     },
   });
 
@@ -67,23 +89,43 @@ const BlogPostForm: React.FC = () => {
   const status = watch('status');
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      const { data } = await supabase
+        .from('categories')
+        .select('*')
+        .order('name');
+      if (data) setCategories(data);
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
     if (id) {
       setLoading(true);
       const fetchPost = async () => {
-        const { data, error } = await supabase
-          .from('posts')
-          .select('*')
+        const { data: post, error } = await supabase
+          .from('blog_posts')
+          .select(`
+            *,
+            category:categories(id, name, slug),
+            tags:post_tags(
+              tag:tags(name)
+            )
+          `)
           .eq('id', id)
           .single();
 
         if (error) {
           showError("Erreur lors du chargement de l'article : " + error.message);
           navigate('/dashboard/blog');
-        } else if (data) {
+        } else if (post) {
           form.reset({
-            ...data,
-            published_at: data.published_at ? new Date(data.published_at) : null,
+            ...post,
+            category_id: post.category?.id,
+            published_at: post.published_at ? new Date(post.published_at) : null,
           });
+          setSelectedTags(post.tags?.map(t => t.tag.name) || []);
         }
         setLoading(false);
       };
@@ -92,52 +134,86 @@ const BlogPostForm: React.FC = () => {
   }, [id, form, navigate]);
 
   useEffect(() => {
-    if (!id && title) { // Only auto-generate slug for new posts if title exists
+    if (!id && title) {
       const generatedSlug = title
         .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
-        .replace(/--+/g, '-')
-        .trim();
-      setValue('slug', generatedSlug, { shouldValidate: true });
+        .replace(/--+/g, '-');
+      setValue('slug', generatedSlug);
     }
-  }, [title, id, setValue]);
+  }, [id, title, setValue]);
+
+  const handleTagAdd = () => {
+    if (tagInput && !selectedTags.includes(tagInput)) {
+      setSelectedTags([...selectedTags, tagInput]);
+      setTagInput('');
+    }
+  };
+
+  const handleTagRemove = (tagToRemove: string) => {
+    setSelectedTags(selectedTags.filter(tag => tag !== tagToRemove));
+  };
 
   const onSubmit = async (values: BlogPostFormValues) => {
     setIsSubmitting(true);
-    const user = (await supabase.auth.getUser()).data.user; // user will be null if auth is removed
+    const user = (await supabase.auth.getUser()).data.user;
 
-    const postData = {
-      ...values,
-      user_id: user?.id || null, // Assign user_id if available, otherwise null
-      date: values.published_at ? format(values.published_at, "dd MMMM yyyy", { locale: fr }) : format(new Date(), "dd MMMM yyyy", { locale: fr }), // Format date for display
-      published_at: values.status === 'scheduled' && values.published_at 
-        ? values.published_at.toISOString() 
-        : (values.status === 'published' ? new Date().toISOString() : null),
-      updated_at: new Date().toISOString(),
-    };
+    try {
+      let data;
+      const postData = {
+        ...values,
+        user_id: user?.id || null,
+        published_at: values.status === 'scheduled' && values.published_at 
+          ? values.published_at.toISOString() 
+          : (values.status === 'published' ? new Date().toISOString() : null),
+        updated_at: new Date().toISOString(),
+      };
 
-    let error = null;
-    if (id) {
-      const { error: updateError } = await supabase
-        .from('posts')
-        .update(postData)
-        .eq('id', id);
-      error = updateError;
-    } else {
-      const { error: insertError } = await supabase
-        .from('posts')
-        .insert(postData);
-      error = insertError;
-    }
+      if (id) {
+        // Update existing post
+        const { data: updatedPost, error } = await supabase
+          .from('blog_posts')
+          .update(postData)
+          .eq('id', id)
+          .select()
+          .single();
 
-    if (error) {
-      showError("Erreur lors de la sauvegarde de l'article : " + error.message);
-    } else {
-      showSuccess("Article sauvegardé avec succès !");
+        if (error) throw error;
+        data = updatedPost;
+
+        // Update tags
+        await updateTags(id, selectedTags);
+        showSuccess("Article mis à jour avec succès !");
+      } else {
+        // Create new post
+        const { data: newPost, error } = await supabase
+          .from('blog_posts')
+          .insert([{
+            ...postData,
+            created_at: new Date().toISOString(),
+          }])
+          .select()
+          .single();
+
+        if (error) throw error;
+        data = newPost;
+
+        // Add tags
+        await updateTags(newPost.id, selectedTags);
+        showSuccess("Article créé avec succès !");
+      }
+
       navigate('/dashboard/blog');
+
+    } catch (error: any) {
+      console.error('Error:', error);
+      showError("Une erreur est survenue lors de l'enregistrement : " + error.message);
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const handlePreview = () => {
@@ -149,133 +225,216 @@ const BlogPostForm: React.FC = () => {
   };
 
   if (loading) {
-    return <div className="text-center text-gray-400">Chargement du formulaire...</div>;
+    return (
+      <div className="flex items-center justify-center p-8">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold font-poppins text-white">{id ? 'Modifier l\'Article' : 'Créer un Nouvel Article'}</h2>
-        <Button 
-          variant="outline" 
-          className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-lg"
-          onClick={handlePreview}
-          disabled={!slug || status !== 'published'}
-        >
-          <Eye className="h-5 w-5 mr-2" />
-          Prévisualiser
-        </Button>
-      </div>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-dark-gray p-8 rounded-lg border border-gray-800">
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <Card className="p-6 space-y-6">
+          {/* Titre */}
           <FormField
             control={form.control}
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Titre de l'article</FormLabel>
+                <FormLabel>Titre</FormLabel>
                 <FormControl>
-                  <Input placeholder="Mon super article de blog" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                  <Input placeholder="Titre de l'article..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Slug */}
           <FormField
             control={form.control}
             name="slug"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Slug (URL)</FormLabel>
+                <FormLabel>Slug</FormLabel>
                 <FormControl>
-                  <Input placeholder="mon-super-article-de-blog" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                  <Input placeholder="mon-article..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="category"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Catégorie</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Développement Web" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="author"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Auteur</FormLabel>
-                  <FormControl>
-                    <Input placeholder="John Doe" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+
+          {/* Category */}
           <FormField
             control={form.control}
-            name="image"
+            name="category_id"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">URL de l'image principale</FormLabel>
+                <FormLabel>Catégorie</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionner une catégorie" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {categories.map(category => (
+                      <SelectItem key={category.id} value={category.id}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Featured Image */}
+          <FormField
+            control={form.control}
+            name="featured_image"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Image à la une</FormLabel>
                 <FormControl>
-                  <Input placeholder="/public/mon-image.jpg" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                  <Input placeholder="URL de l'image..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Tags */}
+          <div className="space-y-2">
+            <Label>Tags</Label>
+            <div className="flex gap-2 flex-wrap mb-2">
+              {selectedTags.map(tag => (
+                <Badge
+                  key={tag}
+                  variant="outline"
+                  className="flex items-center gap-1"
+                >
+                  {tag}
+                  <X
+                    className="h-3 w-3 cursor-pointer"
+                    onClick={() => handleTagRemove(tag)}
+                  />
+                </Badge>
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <Input
+                value={tagInput}
+                onChange={e => setTagInput(e.target.value)}
+                placeholder="Ajouter un tag"
+                onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), handleTagAdd())}
+              />
+              <Button type="button" variant="outline" onClick={handleTagAdd}>
+                Ajouter
+              </Button>
+            </div>
+          </div>
+
+          {/* Excerpt */}
           <FormField
             control={form.control}
             name="excerpt"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Extrait (court résumé)</FormLabel>
+                <FormLabel>Extrait</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Un court résumé de l'article..." {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent min-h-[100px]" />
+                  <Input
+                    placeholder="Un court résumé de l'article..."
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Content */}
           <FormField
             control={form.control}
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Contenu de l'article (HTML ou Markdown)</FormLabel>
+                <FormLabel>Contenu</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Commencez à écrire votre contenu ici..." {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent min-h-[300px]" />
+                  <ReactQuill
+                    theme="snow"
+                    value={field.value}
+                    onChange={field.onChange}
+                    modules={{
+                      toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link', 'image', 'video'],
+                        ['clean']
+                      ]
+                    }}
+                    className="min-h-[300px] bg-white"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <Separator />
+
+          {/* SEO Title */}
+          <FormField
+            control={form.control}
+            name="seo_title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Titre SEO</FormLabel>
+                <FormControl>
+                  <Input placeholder="Titre optimisé pour les moteurs de recherche..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Meta Description */}
+          <FormField
+            control={form.control}
+            name="meta_description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Meta Description</FormLabel>
+                <FormControl>
+                  <Input placeholder="Description pour les moteurs de recherche..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Status and Publication Date */}
+          <div className="grid grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="status"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Statut</FormLabel>
+                  <FormLabel>Statut</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-dark-black border-gray-600 text-white focus:ring-lime-accent">
+                      <SelectTrigger>
                         <SelectValue placeholder="Sélectionner un statut" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent className="bg-dark-black border-gray-600 text-white">
+                    <SelectContent>
                       <SelectItem value="draft">Brouillon</SelectItem>
                       <SelectItem value="published">Publié</SelectItem>
                       <SelectItem value="scheduled">Programmé</SelectItem>
@@ -285,21 +444,21 @@ const BlogPostForm: React.FC = () => {
                 </FormItem>
               )}
             />
-            {status === 'scheduled' && (
+
+            {form.watch('status') === 'scheduled' && (
               <FormField
                 control={form.control}
                 name="published_at"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-white">Date de publication</FormLabel>
+                    <FormLabel>Date de publication</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
-                            variant={"outline"}
+                            variant="outline"
                             className={cn(
-                              "w-full pl-3 text-left font-normal bg-dark-black border-gray-600 text-white hover:bg-dark-black hover:text-white",
-                              !field.value && "text-gray-400"
+                              !field.value && "text-muted-foreground"
                             )}
                           >
                             {field.value ? (
@@ -311,30 +470,15 @@ const BlogPostForm: React.FC = () => {
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0 bg-dark-black border-gray-600 text-white" align="start">
+                      <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          selected={field.value || undefined}
+                          selected={field.value}
                           onSelect={field.onChange}
+                          disabled={(date) =>
+                            date < new Date() || date < new Date("1900-01-01")
+                          }
                           initialFocus
-                          className="text-white"
-                          locale={fr}
-                          classNames={{
-                            day_selected: "bg-lime-accent text-dark-black hover:bg-lime-accent hover:text-dark-black focus:bg-lime-accent focus:text-dark-black",
-                            day_today: "bg-gray-700 text-white",
-                            head_cell: "text-gray-400",
-                            nav_button: "text-white hover:bg-gray-700",
-                            caption_label: "text-white",
-                            month: "space-y-4",
-                            months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-                            table: "w-full border-collapse space-y-1",
-                            head_row: "flex",
-                            row: "flex w-full mt-2",
-                            cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-gray-800 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                            day: cn(
-                              "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
-                            ),
-                          }}
                         />
                       </PopoverContent>
                     </Popover>
@@ -344,14 +488,49 @@ const BlogPostForm: React.FC = () => {
               />
             )}
           </div>
+        </Card>
 
-          <Button type="submit" className="w-full bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-lg" disabled={isSubmitting}>
-            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {id ? 'Mettre à jour l\'article' : 'Créer l\'article'}
+        <div className="flex justify-end gap-4">
+          {/* Preview button - only for published posts */}
+          {status === 'published' && slug && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handlePreview}
+            >
+              <Eye className="w-4 h-4 mr-2" />
+              Prévisualiser
+            </Button>
+          )}
+          
+          {/* Cancel button */}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => navigate('/dashboard/blog')}
+          >
+            Annuler
           </Button>
-        </form>
-      </Form>
-    </div>
+
+          {/* Submit button */}
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Enregistrement...
+              </>
+            ) : id ? (
+              'Mettre à jour'
+            ) : (
+              'Créer'
+            )}
+          </Button>
+        </div>
+      </form>
+    </Form>
   );
 };
 

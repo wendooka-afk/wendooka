@@ -43,9 +43,9 @@ const HeroSection: React.FC = () => {
                 <img src="/hero-main.png" alt="L'équipe Wendooka" className="rounded-2xl w-full h-auto object-cover" />
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-lime-accent p-4 rounded-xl flex items-center gap-4">
                     <div className="flex -space-x-4">
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/public/placeholder-avatar.svg" alt="Client satisfait 1"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/public/placeholder-avatar.svg" alt="Client satisfait 2"/>
-                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/public/placeholder-avatar.svg" alt="Client satisfait 3"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/5572.webp" alt="Client satisfait 1"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/7409.webp" alt="Client satisfait 2"/>
+                        <img className="inline-block h-10 w-10 rounded-full ring-2 ring-lime-accent object-cover" src="/8970.webp" alt="Client satisfait 3"/>
                     </div>
                     <div>
                         <div className="flex items-center">
