@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
     <section className="bg-dark-black text-white py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column */}
+          {/* Colonne gauche */}
           <div className="lg:col-span-7 text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
               <div className="w-8 h-px bg-lime-accent"></div>
@@ -28,14 +28,21 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* Colonne droite */}
           <div className="lg:col-span-5">
             <div className="flex justify-center lg:justify-end mb-8">
               <RotatingText />
             </div>
-            <p className="text-lg text-gray-400 mb-8 text-center lg:text-left max-w-md mx-auto lg:mx-0">
+            <p className="text-lg text-gray-400 mb-4 text-center lg:text-left max-w-md mx-auto lg:mx-0">
               Votre entreprise est unique, votre site web doit l’être aussi. Chez Wendooka, nous concevons des expériences digitales sur-mesure qui propulsent votre marque.
             </p>
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <img
+                src="/8970.webp"
+                alt="Client heureux Wendooka"
+                className="w-40 h-40 object-cover rounded-xl border-4 border-lime-accent shadow-lg"
+              />
+            </div>
           </div>
         </div>
         <div className="grid lg:grid-cols-12 gap-4 items-end mt-6">
