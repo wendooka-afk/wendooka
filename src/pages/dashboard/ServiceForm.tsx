@@ -6,6 +6,8 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   Form,
   FormControl,
@@ -38,7 +40,7 @@ const formSchema = z.object({
   subtitle: z.string().optional(),
   slug: z.string().min(1, "Le slug est requis.").regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Le slug doit être en minuscules, sans espaces et avec des tirets."),
   short_description: z.string().optional(),
-  long_description: z.string().optional(),
+  long_description: z.string().optional(), // Now expects HTML string from ReactQuill
   hero_image: z.string().url("L'URL de l'image d'en-tête doit être valide.").optional().or(z.literal('')),
   status: z.enum(['draft', 'published']),
 
@@ -75,6 +77,10 @@ const formSchema = z.object({
     author: z.string().min(1, "L'auteur est requis."),
     company: z.string().optional(),
   })).optional(),
+
+  seo_title: z.string().optional(),
+  meta_description: z.string().optional(),
+  canonical_url: z.string().url("L'URL canonique doit être valide.").optional().or(z.literal('')),
 });
 
 type ServiceFormValues = z.infer<typeof formSchema>;
@@ -109,6 +115,9 @@ const ServiceForm: React.FC = () => {
       results_cta: '',
       testimonials_title: '',
       testimonials_items: [],
+      seo_title: '',
+      meta_description: '',
+      canonical_url: '',
     },
   });
 
@@ -323,7 +332,21 @@ const ServiceForm: React.FC = () => {
               <FormItem>
                 <FormLabel className="text-white">Description longue</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Description détaillée du service..." {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent min-h-[150px]" />
+                  <ReactQuill
+                    theme="snow"
+                    value={field.value || ''}
+                    onChange={field.onChange}
+                    modules={{
+                      toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link', 'image', 'video'],
+                        ['clean']
+                      ]
+                    }}
+                    className="min-h-[200px] bg-white text-dark-black"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -334,9 +357,9 @@ const ServiceForm: React.FC = () => {
             name="hero_image"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">URL de l'image d'en-tête</FormLabel>
+                <FormLabel className="text-white">URL de l'image d'en-tête (ou Lucide:NomIcone)</FormLabel>
                 <FormControl>
-                  <Input placeholder="/public/hero-service.jpg" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                  <Input placeholder="/public/hero-service.jpg ou Lucide:Globe" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -743,6 +766,48 @@ const ServiceForm: React.FC = () => {
               <PlusCircle className="h-5 w-5 mr-2" /> Ajouter un témoignage
             </Button>
           </div>
+
+          {/* SEO Section */}
+          <h3 className="text-xl font-bold font-poppins text-white mt-10 mb-4">Optimisation SEO</h3>
+          <FormField
+            control={form.control}
+            name="seo_title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Titre SEO</FormLabel>
+                <FormControl>
+                  <Input placeholder="Titre optimisé pour les moteurs de recherche" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="meta_description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Méta-description</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="Description courte et pertinente pour le SEO" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent min-h-[100px]" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="canonical_url"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">URL Canonique</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://votresite.com/page-canonique" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           <Button type="submit" className="w-full bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-lg mt-10" disabled={isSubmitting}>
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
