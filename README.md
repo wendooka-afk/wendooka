@@ -86,8 +86,8 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 Créez un fichier `.env` à la racine du projet et ajoutez-y vos clés Supabase :
 
 ```env
-VITE_SUPABASE_URL="https://gfwibbxzokrihpvdlbvz.supabase.co"
-VITE_SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdmd2liYnh6b2tyaWhwdmRsYnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTk4OTYsImV4cCI6MjA3NzMzNTg5Nn0.aFD-pqNhTmywgUmZeO_DRqaKd8vIEU8nB0zgr92l_KY"
+VITE_SUPABASE_URL="VOTRE_URL_SUPABASE"
+VITE_SUPABASE_ANON_KEY="VOTRE_CLE_ANON_SUPABASE"
 ```
 
 **Important** : Remplacez les valeurs par vos propres clés Supabase si vous utilisez un nouveau projet.
