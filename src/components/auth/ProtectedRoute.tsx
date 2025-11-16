@@ -14,9 +14,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
-        setIsAuthenticated(!!session);
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error("Erreur lors de la récupération de la session Supabase:", error);
+          setIsAuthenticated(false);
+        } else {
+          setIsAuthenticated(!!session);
+        }
       } catch (error) {
+        console.error('Erreur inattendue lors de la vérification de l\'authentification:', error);
         setIsAuthenticated(false);
       }
     };
@@ -26,6 +32,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     // Écouter les changements d'authentification
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
+      if (!session) {
+        console.warn("Utilisateur déconnecté ou session expirée. Redirection vers la page de connexion.");
+      }
     });
 
     return () => {

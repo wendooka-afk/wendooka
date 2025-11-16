@@ -52,6 +52,7 @@ const LoginPage: React.FC = () => {
       });
 
       if (error) {
+        console.error("Erreur de connexion Supabase:", error); // Log détaillé
         throw error;
       }
 
