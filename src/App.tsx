@@ -26,9 +26,6 @@ import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";
 import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";
 import ServicesList from "@/pages/dashboard/ServicesList.tsx";
 import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";
-import LoginPage from "@/pages/auth/LoginPage.tsx";
-import ResetPasswordPage from "@/pages/auth/ResetPasswordPage.tsx";
-import ProtectedRoute from "@/components/auth/ProtectedRoute.tsx";
 
 const queryClient = new QueryClient();
 
@@ -50,12 +47,8 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           
-          {/* Routes d'authentification */}
-          <Route path="/auth/login" element={<LoginPage />} />
-          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
-
-          {/* Routes du dashboard - Protégées */}
-          <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+          {/* Routes du dashboard - Accès direct */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardIndex />} />
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />
@@ -66,9 +59,9 @@ const App = () => (
             <Route path="projects" element={<ProjectsList />} />
             <Route path="projects/new" element={<ProjectForm />} />
             <Route path="projects/:id/edit" element={<ProjectForm />} />
-            <Route path="services" element={<ServicesList />} /> {/* New route */}
-            <Route path="services/new" element={<ServiceForm />} />   {/* New route */}
-            <Route path="services/:id/edit" element={<ServiceForm />} /> {/* New route */}
+            <Route path="services" element={<ServicesList />} />
+            <Route path="services/new" element={<ServiceForm />} />
+            <Route path="services/:id/edit" element={<ServiceForm />} />
             <Route path="media" element={<MediaLibrary />} />
           </Route>
 

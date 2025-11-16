@@ -102,17 +102,18 @@ const PageForm: React.FC = () => {
 
   const onSubmit = async (values: PageFormValues) => {
     setIsSubmitting(true);
-    const user = (await supabase.auth.getUser()).data.user;
+    // No user_id needed as authentication is removed
+    // const user = (await supabase.auth.getUser()).data.user;
 
-    if (!user) {
-      showError("Vous devez être connecté pour créer ou modifier une page.");
-      setIsSubmitting(false);
-      return;
-    }
+    // if (!user) {
+    //   showError("Vous devez être connecté pour créer ou modifier une page.");
+    //   setIsSubmitting(false);
+    //   return;
+    // }
 
     const pageData = {
       ...values,
-      user_id: user.id,
+      user_id: null, // Set user_id to null as there's no authenticated user
       published_at: values.status === 'scheduled' && values.published_at 
         ? values.published_at.toISOString() 
         : (values.status === 'published' ? new Date().toISOString() : null),

@@ -190,17 +190,18 @@ const ServiceForm: React.FC = () => {
 
   const onSubmit = async (values: ServiceFormValues) => {
     setIsSubmitting(true);
-    const user = (await supabase.auth.getUser()).data.user;
+    // No user_id needed as authentication is removed
+    // const user = (await supabase.auth.getUser()).data.user;
 
-    if (!user) {
-      showError("Vous devez être connecté pour créer ou modifier un service.");
-      setIsSubmitting(false);
-      return;
-    }
+    // if (!user) {
+    //   showError("Vous devez être connecté pour créer ou modifier un service.");
+    //   setIsSubmitting(false);
+    //   return;
+    // }
 
     const serviceData = {
       ...values,
-      user_id: user.id,
+      user_id: null, // Set user_id to null as there's no authenticated user
       intro_text: parseJsonb(values.intro_text),
       intro_list: parseJsonb(values.intro_list),
       updated_at: new Date().toISOString(),
@@ -229,10 +230,10 @@ const ServiceForm: React.FC = () => {
       showError("Erreur lors de la sauvegarde du service : " + error.message);
     } else {
       showSuccess("Service sauvegardé avec succès !");
-      // Log activity
+      // Log activity - user_id and user_email will be null
       await supabase.from('activity_log').insert({
-        user_id: user.id,
-        user_email: user.email,
+        user_id: null, // Set user_id to null
+        user_email: null, // Set user_email to null
         action_type: id ? 'service_updated' : 'service_created',
         resource_type: 'service',
         resource_id: newServiceId,

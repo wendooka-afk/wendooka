@@ -159,13 +159,14 @@ const BlogPostForm: React.FC = () => {
 
   const onSubmit = async (values: BlogPostFormValues) => {
     setIsSubmitting(true);
-    const user = (await supabase.auth.getUser()).data.user;
+    // No user_id needed as authentication is removed
+    // const user = (await supabase.auth.getUser()).data.user;
 
     try {
       let data;
       const postData = {
         ...values,
-        user_id: user?.id || null,
+        user_id: null, // Set user_id to null as there's no authenticated user
         published_at: values.status === 'scheduled' && values.published_at 
           ? values.published_at.toISOString() 
           : (values.status === 'published' ? new Date().toISOString() : null),

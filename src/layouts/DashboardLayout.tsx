@@ -1,22 +1,20 @@
 import React from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Home, FileText, Image, Settings, LogOut, Newspaper, Briefcase, LayoutTemplate } from 'lucide-react'; // Added LayoutTemplate icon
-import { Button } from '@/components/ui/button';
-import { supabase } from '@/integrations/supabase/client';
-import { showSuccess, showError } from '@/utils/toast';
+import { Link, Outlet } from 'react-router-dom';
+import { Home, FileText, Image, Settings, Newspaper, Briefcase, LayoutTemplate } from 'lucide-react'; // LogOut removed
+import { Button } from '@/components/ui/button'; // Button import kept for other uses
 
 const DashboardLayout: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      showError("Erreur lors de la déconnexion : " + error.message);
-    } else {
-      showSuccess("Vous avez été déconnecté.");
-      navigate('/'); 
-    }
-  };
+  // handleSignOut and navigate are no longer needed without authentication
+  // const navigate = useNavigate();
+  // const handleSignOut = async () => {
+  //   const { error } = await supabase.auth.signOut();
+  //   if (error) {
+  //     showError("Erreur lors de la déconnexion : " + error.message);
+  //   } else {
+  //     showSuccess("Vous avez été déconnecté.");
+  //     navigate('/'); 
+  //   }
+  // };
 
   return (
     <div className="flex min-h-screen bg-dark-black text-white">
@@ -60,13 +58,7 @@ const DashboardLayout: React.FC = () => {
             <span>Paramètres</span>
           </Link>
         </nav>
-        <Button 
-          onClick={handleSignOut} 
-          className="w-full bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg mt-6"
-        >
-          <LogOut className="h-5 w-5 mr-2" />
-          Déconnexion
-        </Button>
+        {/* Sign-out button removed */}
       </aside>
 
       {/* Main Content */}

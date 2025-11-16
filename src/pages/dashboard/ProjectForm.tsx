@@ -83,11 +83,12 @@ const ProjectForm: React.FC = () => {
 
   const onSubmit = async (values: ProjectFormValues) => {
     setIsSubmitting(true);
-    const user = (await supabase.auth.getUser()).data.user; // user will be null if auth is removed
+    // No user_id needed as authentication is removed
+    // const user = (await supabase.auth.getUser()).data.user; 
 
     const projectData = {
       ...values,
-      user_id: user?.id || null, // Assign user_id if available, otherwise null
+      user_id: null, // Set user_id to null as there's no authenticated user
       tags: values.tags ? values.tags.split(',').map(tag => tag.trim()) : [], // Convert comma-separated string to array
       updated_at: new Date().toISOString(),
     };
