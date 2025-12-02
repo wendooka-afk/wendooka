@@ -18,7 +18,7 @@ import DashboardLayout from "@/layouts/DashboardLayout.tsx";
 import DashboardIndex from "@/pages/dashboard/DashboardIndex.tsx";
 import PagesList from "@/pages/dashboard/PagesList.tsx";
 import PageForm from "@/pages/dashboard/PageForm.tsx";
-import DynamicPage from "@/pages/DynamicPage.tsx";
+import DynamicPage from "./pages/DynamicPage.tsx";
 import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx";
 import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx";
 import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";
@@ -26,6 +26,7 @@ import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";
 import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";
 import ServicesList from "@/pages/dashboard/ServicesList.tsx";
 import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";
+import SettingsPage from "@/pages/dashboard/SettingsPage.tsx"; // Import the new SettingsPage
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
             <Route path="services/new" element={<ServiceForm />} />
             <Route path="services/:id/edit" element={<ServiceForm />} />
             <Route path="media" element={<MediaLibrary />} />
+            <Route path="settings" element={<SettingsPage />} /> {/* New route for SettingsPage */}
           </Route>
 
           {/* Dynamic Page Route - MUST be after specific static routes but before catch-all */}
