@@ -1,13 +1,18 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Globe, Smartphone, Palette, Layout, Megaphone, Wrench } from 'lucide-react';
+import { Globe, Smartphone, Palette, Layout, Megaphone, Wrench, Code } from 'lucide-react';
 
 const items = [
   {
     icon: <Globe className="h-7 w-7 text-dark-black" />,
     title: "Création de sites web",
     desc: "Des sites vitrines et e-commerce modernes, optimisés pour générer des ventes et inspirer confiance."
+  },
+  {
+    icon: <Code className="h-7 w-7 text-dark-black" />,
+    title: "Développement Web",
+    desc: "Développement de solutions web personnalisées pour répondre à vos besoins spécifiques."
   },
   {
     icon: <Smartphone className="h-7 w-7 text-dark-black" />,
@@ -49,10 +54,13 @@ const HomeServicesBenefits: React.FC = () => {
             Nous combinons stratégie, créativité et technologie pour offrir des solutions qui répondent à vos besoins réels et vous démarquent de la concurrence.
           </p>
         </div>
-
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {items.map((item) => (
-            <div key={item.title} className="bg-light-gray rounded-2xl p-6 flex gap-4 items-start border border-gray-200">
+            <div 
+              key={item.title} 
+              className="bg-light-gray rounded-2xl p-6 flex gap-4 items-start border border-gray-200"
+            >
               <div className="bg-lime-accent rounded-full p-3 flex items-center justify-center">
                 {item.icon}
               </div>
@@ -63,9 +71,12 @@ const HomeServicesBenefits: React.FC = () => {
             </div>
           ))}
         </div>
-
+        
         <div className="text-center mt-10">
-          <Button asChild className="bg-dark-black text-white hover:bg-gray-800 font-bold rounded-full px-8 py-4 text-lg">
+          <Button 
+            asChild 
+            className="bg-dark-black text-white hover:bg-gray-800 font-bold rounded-full px-8 py-4 text-lg"
+          >
             <Link to="/services">Découvrir nos services</Link>
           </Button>
         </div>

@@ -8,14 +8,14 @@ import MarqueeSection from '@/components/MarqueeSection';
 import GlobalCta from '@/components/GlobalCta';
 import { supabase } from '@/integrations/supabase/client';
 import { showError } from '@/utils/toast';
-import * as LucideIcons from 'lucide-react'; // Import all Lucide icons
-import { Button } from '@/components/ui/button'; // Added this import
+import * as LucideIcons from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Service {
   slug: string;
   title: string;
   short_description: string;
-  hero_image: string; // Using hero_image for the icon in this section
+  hero_image: string;
 }
 
 const ServicesPage: React.FC = () => {
@@ -25,16 +25,20 @@ const ServicesPage: React.FC = () => {
   useEffect(() => {
     const fetchServices = async () => {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('services')
-        .select('slug, title, short_description, hero_image')
-        .eq('status', 'published')
-        .order('created_at', { ascending: false });
+      try {
+        const { data, error } = await supabase
+          .from('services')
+          .select('slug, title, short_description, hero_image')
+          .eq('status', 'published')
+          .order('created_at', { ascending: false });
 
-      if (error) {
+        if (error) {
+          showError("Erreur lors du chargement des services : " + error.message);
+        } else {
+          setServices(data || []);
+        }
+      } catch (error: any) {
         showError("Erreur lors du chargement des services : " + error.message);
-      } else {
-        setServices(data || []);
       }
       setLoading(false);
     };
@@ -60,9 +64,9 @@ const ServicesPage: React.FC = () => {
             </p>
           </div>
         </section>
-
+        
         <MarqueeSection />
-
+        
         <section className="py-16 md:py-24 bg-white text-dark-black">
           <div className="container mx-auto px-4">
             {loading ? (
@@ -73,16 +77,21 @@ const ServicesPage: React.FC = () => {
             ) : services.length === 0 ? (
               <div className="text-center py-10">
                 <p className="text-xl text-gray-400 mb-4">Aucun service publié pour le moment.</p>
-                <p className="text-lg text-gray-500">Veuillez ajouter de nouveaux services via le <Link to="/dashboard/services/new" className="text-lime-accent hover:underline">tableau de bord</Link>.</p>
+                <p className="text-lg text-gray-500">
+                  Veuillez ajouter de nouveaux services via le <Link to="/dashboard/services/new" className="text-lime-accent hover:underline">tableau de bord</Link>.
+                </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service, index) => (
-                  <Card key={index} className="bg-light-gray border-gray-200 rounded-2xl p-6 text-left flex flex-col hover:shadow-xl transition-shadow duration-300">
+                  <Card 
+                    key={index} 
+                    className="bg-light-gray border-gray-200 rounded-2xl p-6 text-left flex flex-col hover:shadow-xl transition-shadow duration-300"
+                  >
                     <div className="mb-6 bg-lime-accent text-dark-black rounded-full p-3 w-16 h-16 flex items-center justify-center">
-                      {service.hero_image && service.hero_image.startsWith('Lucide:') ? 
-                        renderLucideIcon(service.hero_image.replace('Lucide:', '')) : 
-                        <LucideIcons.Globe className="h-10 w-10 text-lime-accent" />
+                      {service.hero_image && service.hero_image.startsWith('Lucide:') 
+                        ? renderLucideIcon(service.hero_image.replace('Lucide:', '')) 
+                        : <LucideIcons.Globe className="h-10 w-10 text-lime-accent" />
                       }
                     </div>
                     <CardHeader className="p-0 mb-4">
@@ -91,8 +100,12 @@ const ServicesPage: React.FC = () => {
                     <CardContent className="p-0 flex-grow">
                       <p className="text-gray-600">{service.short_description}</p>
                     </CardContent>
-                    <Link to={`/services/${service.slug}`} className="mt-6 font-bold text-dark-black hover:underline flex items-center group">
-                      Lire la suite <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Link 
+                      to={`/services/${service.slug}`} 
+                      className="mt-6 font-bold text-dark-black hover:underline flex items-center group"
+                    >
+                      Lire la suite
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Card>
                 ))}
@@ -100,20 +113,23 @@ const ServicesPage: React.FC = () => {
             )}
           </div>
         </section>
-
+        
         <section className="py-16 md:py-24 bg-dark-gray">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">Trouvez la solution à votre problème</h2>
                 <p className="text-gray-400 mb-4">
-                  Faites confiance aux experts pour tous vos besoins de conception et de développement Web. Que vous ayez besoin d’un site vitrine élégant, d’une boutique en ligne conviviale, ou d’une plateforme personnalisée, nous avons les compétences pour répondre à vos exigences.
+                  Faites confiance aux experts pour tous vos besoins de conception et de développement Web. Que vous ayez besoin d'un site vitrine élégant, d'une boutique en ligne conviviale, ou d'une plateforme personnalisée, nous avons les compétences pour répondre à vos exigences.
                 </p>
                 <p className="text-gray-400 mb-8">
                   Nous travaillons en étroite collaboration avec vous pour créer une expérience en ligne qui vous démarque de la concurrence, en utilisant les dernières technologies pour fournir des solutions à la fois esthétiques et performantes.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4 text-lg">
+                  <Button 
+                    asChild 
+                    className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4 text-lg"
+                  >
                     <Link to="/portfolio">Découvrez nos réalisations</Link>
                   </Button>
                 </div>
@@ -140,7 +156,7 @@ const ServicesPage: React.FC = () => {
                     <LucideIcons.Mail className="h-6 w-6 flex-shrink-0" />
                     <span className="group-hover:underline">contact@wendooka.com</span>
                   </a>
-                   <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-4">
                     <LucideIcons.MapPin className="h-6 w-6 mt-1 flex-shrink-0" />
                     <span>Carrefour Cinéma Adamaoua, Ngaoundéré, Cameroun</span>
                   </div>
@@ -149,6 +165,7 @@ const ServicesPage: React.FC = () => {
             </div>
           </div>
         </section>
+        
         <GlobalCta />
       </main>
       <Footer />

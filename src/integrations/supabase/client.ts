@@ -18,4 +18,10 @@ if (!supabaseAnonKey) {
   throw new Error("La variable d'environnement VITE_SUPABASE_ANON_KEY n'est pas définie. Veuillez vérifier votre fichier .env.");
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true
+  }
+});

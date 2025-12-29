@@ -1,7 +1,14 @@
 import Marquee from "./Marquee";
 
 const MarqueeSection = () => {
-  const services = ["Création de sites web", "UI/UX Design", "Design Graphique", "Marketing Digital"];
+  const services = [
+    "Création de sites web", 
+    "Développement Web",
+    "UI/UX Design", 
+    "Design Graphique", 
+    "Marketing Digital"
+  ];
+
   return (
     <div className="bg-lime-accent text-dark-black py-4 overflow-hidden">
       <Marquee>
