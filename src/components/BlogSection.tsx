@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { showError } from '@/utils/toast';
+import { blogPostsData } from '@/data/servicesData';
 
 interface Post {
   slug: string;
@@ -23,23 +24,49 @@ const BlogSection: React.FC = () => {
   useEffect(() => {
     const fetchLatestPosts = async () => {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('slug, title, featured_image, excerpt, published_at, category:categories(name)')
-        .eq('status', 'published')
-        .order('created_at', { ascending: false })
-        .limit(3);
-
-      if (error) {
-        showError("Erreur lors du chargement des derniers articles : " + error.message);
-      } else {
-        const mapped = (data || []).map((p: any) => ({
+      try {
+        // Articles statiques (source principale, les 3 premiers)
+        const staticSlugs = new Set(blogPostsData.map(p => p.slug));
+        const staticPosts: Post[] = blogPostsData.slice(0, 3).map(p => ({
           slug: p.slug,
           title: p.title,
-          category: p.category?.name ?? 'Non classé',
-          date: p.published_at ? new Date(p.published_at).toLocaleDateString('fr-FR') : '',
-          image: p.featured_image || '/125484.webp',
-          excerpt: p.excerpt || ''
+          category: p.category,
+          date: new Date(p.published_at).toLocaleDateString('fr-FR'),
+          image: p.featured_image,
+          excerpt: p.excerpt
+        }));
+
+        // Compléter avec Supabase si nécessaire (articles non-statiques)
+        const { data } = await supabase
+          .from('blog_posts')
+          .select('slug, title, featured_image, excerpt, published_at, category:categories(name)')
+          .eq('status', 'published')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        let dbPosts: Post[] = [];
+        if (data && data.length > 0) {
+          dbPosts = data
+            .filter((p: any) => !staticSlugs.has(p.slug))
+            .map((p: any) => ({
+              slug: p.slug,
+              title: p.title,
+              category: p.category?.name ?? 'Non classé',
+              date: p.published_at ? new Date(p.published_at).toLocaleDateString('fr-FR') : '',
+              image: p.featured_image || '/125484.webp',
+              excerpt: p.excerpt || ''
+            }));
+        }
+
+        setLatestPosts([...staticPosts, ...dbPosts].slice(0, 3));
+      } catch {
+        const mapped = blogPostsData.slice(0, 3).map(p => ({
+          slug: p.slug,
+          title: p.title,
+          category: p.category,
+          date: new Date(p.published_at).toLocaleDateString('fr-FR'),
+          image: p.featured_image,
+          excerpt: p.excerpt
         }));
         setLatestPosts(mapped);
       }
@@ -58,8 +85,8 @@ const BlogSection: React.FC = () => {
               <div className="w-8 h-px bg-lime-accent"></div>
               <p className="font-semibold text-lime-accent">Actualités & Blog</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins">
-              Nos derniers <span className="text-lime-accent">articles & actualités</span>
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins">
+              Conseils et expertises pour <span className="text-lime-accent">réussir votre projet web</span>
             </h2>
           </div>
           <Button asChild className="mt-4 md:mt-0 rounded-full p-0 bg-lime-accent hover:bg-lime-accent/90">
@@ -85,9 +112,9 @@ const BlogSection: React.FC = () => {
                     <img src={post.image} alt={post.title} className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
                   </Link>
                   <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Link to={`/blog/${post.slug}`} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
-                          <ArrowUpRight className="h-6 w-6" />
-                      </Link>
+                    <Link to={`/blog/${post.slug}`} className="bg-lime-accent text-dark-black rounded-full p-3 transform group-hover:scale-110 transition-transform">
+                      <ArrowUpRight className="h-6 w-6" />
+                    </Link>
                   </div>
                 </div>
                 <CardContent className="p-6 flex flex-col flex-grow">

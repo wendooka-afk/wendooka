@@ -1,53 +1,63 @@
 import React from 'react';
-import { Brush, Navigation, Smartphone } from 'lucide-react';
+import { Search, Palette, Code, Rocket } from 'lucide-react';
 
-const features = [
+const steps = [
   {
-    icon: <Brush className="h-8 w-8 text-lime-accent" />,
-    title: "Design raffiné",
-    description: "Nous avons modernisé l'apparence du site web en lui donnant une esthétique contemporaine et attrayante, mettant en valeur le contenu de manière visuellement impactante."
+    icon: <Search className="h-8 w-8 text-lime-accent" />,
+    title: "01. Découverte & Stratégie",
+    description: "Nous analysons votre marché, vos objectifs et votre cible pour définir une feuille de route claire et orientée résultats."
   },
   {
-    icon: <Navigation className="h-8 w-8 text-lime-accent" />,
-    title: "Navigation intuitive",
-    description: "Nous avons repensé l'architecture de l'information pour rendre la navigation fluide et intuitive, permettant aux utilisateurs de trouver rapidement et facilement les informations qu'ils recherchent."
+    icon: <Palette className="h-8 w-8 text-lime-accent" />,
+    title: "02. Design & Conception",
+    description: "Création de maquettes uniques et centrées sur l'utilisateur pour garantir une expérience fluide et une conversion maximale."
   },
   {
-    icon: <Smartphone className="h-8 w-8 text-lime-accent" />,
-    title: "Optimisation mobile",
-    description: "Nous avons rendu le site web entièrement responsive, offrant une expérience utilisateur optimale sur tous les appareils, du bureau au mobile."
+    icon: <Code className="h-8 w-8 text-lime-accent" />,
+    title: "03. Développement & Tests",
+    description: "Intégration technique robuste avec les dernières technologies pour un site rapide, sécurisé et performant."
+  },
+  {
+    icon: <Rocket className="h-8 w-8 text-lime-accent" />,
+    title: "04. Lancement & Suivi",
+    description: "Mise en ligne, optimisation SEO finale et accompagnement pour faire évoluer votre plateforme selon vos besoins."
   }
 ];
 
 const TransformationSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-white text-dark-black">
+    <section className="py-16 md:py-24 bg-dark-black text-white border-t border-gray-800">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">Transformez votre présence en ligne avec notre expertise en web design</h2>
-            <p className="text-gray-600 mb-8">
-              Découvrez comment notre agence de web design a donné une nouvelle vie à un site web existant. Nous avons appliqué notre savoir-faire et notre sens esthétique pour créer une expérience en ligne optimale qui reflète la vision et les valeurs de notre client.
+            <span className="text-lime-accent font-bold tracking-wider uppercase text-sm mb-2 block">Comment nous travaillons</span>
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight">Notre méthodologie pour des projets web performants</h2>
+            <p className="text-gray-400 mb-8 text-lg">
+              Notre processus est conçu pour sécuriser votre investissement digital et maximiser la valeur créée à chaque étape.
             </p>
-            <div className="space-y-6">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 bg-gray-100 p-3 rounded-full">
-                    {feature.icon}
+            <p className="text-gray-500 mb-12">
+              Chez Wendooka, nous suivons un processus rigoureux et transparent pour transformer vos idées en solutions digitales performantes.
+            </p>
+            <div className="space-y-10">
+              {steps.map((step, index) => (
+                <div key={index} className="flex items-start gap-6 group">
+                  <div className="flex-shrink-0 bg-dark-gray p-4 rounded-2xl group-hover:bg-lime-accent group-hover:text-dark-black transition-all">
+                    {step.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-dark-black mb-1">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-xl font-bold mb-2 transition-colors group-hover:text-lime-accent">{step.title}</h3>
+                    <p className="text-gray-400">{step.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative">
-            <img 
-              src="/271248.webp" 
-              alt="Web design transformation" 
-              className="rounded-2xl w-full h-auto object-cover" 
+            <div className="absolute -inset-4 bg-lime-accent/10 rounded-3xl blur-3xl transform -rotate-3"></div>
+            <img
+              src="/271248.webp"
+              alt="Notre méthodologie de travail"
+              className="relative rounded-3xl w-full h-auto object-cover shadow-2xl border border-gray-800"
             />
           </div>
         </div>

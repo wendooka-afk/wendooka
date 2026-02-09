@@ -210,7 +210,6 @@ const BlogPostForm: React.FC = () => {
       navigate('/dashboard/blog');
 
     } catch (error: any) {
-      console.error('Error:', error);
       showError("Une erreur est survenue lors de l'enregistrement : " + error.message);
     } finally {
       setIsSubmitting(false);

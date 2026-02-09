@@ -1,34 +1,50 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ServicesPage from "./pages/Services";
-import PortfolioPage from "./pages/Portfolio";
-import ServiceDetailPage from "./pages/ServiceDetail";
-import ContactPage from "./pages/Contact";
-import BlogPage from "./pages/Blog";
-import BlogPostPage from "./pages/BlogPost";
-import AboutPage from "./pages/About";
-import TermsOfServicePage from "./pages/TermsOfServicePage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import DashboardLayout from "@/layouts/DashboardLayout.tsx";
-import DashboardIndex from "@/pages/dashboard/DashboardIndex.tsx";
-import PagesList from "@/pages/dashboard/PagesList.tsx";
-import PageForm from "@/pages/dashboard/PageForm.tsx";
-import DynamicPage from "./pages/DynamicPage.tsx";
-import MediaLibrary from "@/pages/dashboard/MediaLibrary.tsx";
-import BlogPostsList from "@/pages/dashboard/BlogPostsList.tsx";
-import BlogPostForm from "@/pages/dashboard/BlogPostForm.tsx";
-import ProjectsList from "@/pages/dashboard/ProjectsList.tsx";
-import ProjectForm from "@/pages/dashboard/ProjectForm.tsx";
-import ServicesList from "@/pages/dashboard/ServicesList.tsx";
-import ServiceForm from "@/pages/dashboard/ServiceForm.tsx";
-import SettingsPage from "@/pages/dashboard/SettingsPage.tsx"; // Import the new SettingsPage
+import ErrorBoundary from "./components/ErrorBoundary";
+import AuthGuard from "./components/AuthGuard";
+import { Loader2 } from "lucide-react";
+
+// Pages publiques - lazy loaded
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ServicesPage = lazy(() => import("./pages/Services"));
+const PortfolioPage = lazy(() => import("./pages/Portfolio"));
+const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
+const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const BlogPage = lazy(() => import("./pages/Blog"));
+const BlogPostPage = lazy(() => import("./pages/BlogPost"));
+const AboutPage = lazy(() => import("./pages/About"));
+const TermsOfServicePage = lazy(() => import("./pages/TermsOfServicePage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const DynamicPage = lazy(() => import("./pages/DynamicPage"));
+const LoginPage = lazy(() => import("./pages/Login"));
+
+// Dashboard - lazy loaded (chunk séparé)
+const DashboardLayout = lazy(() => import("@/layouts/DashboardLayout"));
+const DashboardIndex = lazy(() => import("@/pages/dashboard/DashboardIndex"));
+const PagesList = lazy(() => import("@/pages/dashboard/PagesList"));
+const PageForm = lazy(() => import("@/pages/dashboard/PageForm"));
+const MediaLibrary = lazy(() => import("@/pages/dashboard/MediaLibrary"));
+const BlogPostsList = lazy(() => import("@/pages/dashboard/BlogPostsList"));
+const BlogPostForm = lazy(() => import("@/pages/dashboard/BlogPostForm"));
+const ProjectsList = lazy(() => import("@/pages/dashboard/ProjectsList"));
+const ProjectForm = lazy(() => import("@/pages/dashboard/ProjectForm"));
+const ServicesList = lazy(() => import("@/pages/dashboard/ServicesList"));
+const ServiceForm = lazy(() => import("@/pages/dashboard/ServiceForm"));
+const SettingsPage = lazy(() => import("@/pages/dashboard/SettingsPage"));
 
 const queryClient = new QueryClient();
+
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-dark-black">
+    <Loader2 className="h-10 w-10 animate-spin text-lime-accent" />
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -36,10 +52,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/:projectSlug" element={<ProjectDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -47,9 +66,11 @@ const App = () => (
           <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          
-          {/* Routes du dashboard - Accès direct */}
-          <Route path="/dashboard" element={<DashboardLayout />}>
+
+          <Route path="/login" element={<LoginPage />} />
+
+          {/* Routes du dashboard - Protégées par authentification */}
+          <Route path="/dashboard" element={<AuthGuard><DashboardLayout /></AuthGuard>}>
             <Route index element={<DashboardIndex />} />
             <Route path="pages" element={<PagesList />} />
             <Route path="pages/new" element={<PageForm />} />
@@ -64,15 +85,14 @@ const App = () => (
             <Route path="services/new" element={<ServiceForm />} />
             <Route path="services/:id/edit" element={<ServiceForm />} />
             <Route path="media" element={<MediaLibrary />} />
-            <Route path="settings" element={<SettingsPage />} /> {/* New route for SettingsPage */}
+            <Route path="settings" element={<SettingsPage />} />
           </Route>
 
-          {/* Dynamic Page Route - MUST be after specific static routes but before catch-all */}
           <Route path="/:slug" element={<DynamicPage />} />
-
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
+        </ErrorBoundary>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

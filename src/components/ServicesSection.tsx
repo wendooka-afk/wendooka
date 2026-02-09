@@ -5,7 +5,8 @@ import { ArrowRight, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { showError } from '@/utils/toast';
-import * as LucideIcons from 'lucide-react';
+import DynamicIcon from '@/components/DynamicIcon';
+import { Globe } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface Service {
@@ -43,8 +44,7 @@ const ServicesSection: React.FC = () => {
   const isLucideIcon = (value?: string) => !!value && value.startsWith('Lucide:');
 
   const renderIcon = (iconName: string, className = "h-10 w-10 text-dark-black") => {
-    const IconComponent = (LucideIcons as any)[iconName];
-    return IconComponent ? <IconComponent className={className} /> : <LucideIcons.HelpCircle className={className} />;
+    return <DynamicIcon name={iconName} className={className} />;
   };
 
   const renderMedia = (service: Service) => {
@@ -67,7 +67,7 @@ const ServicesSection: React.FC = () => {
         <div className="rounded-full bg-lime-accent p-4">
           {isLucideIcon(value)
             ? renderIcon(value.replace('Lucide:', ''), "h-10 w-10 text-dark-black")
-            : <LucideIcons.Globe className="h-10 w-10 text-dark-black" />}
+            : <Globe className="h-10 w-10 text-dark-black" />}
         </div>
       </div>
     );

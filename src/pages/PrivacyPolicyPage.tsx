@@ -8,10 +8,11 @@ const PrivacyPolicyPage: React.FC = () => {
     <div className="bg-dark-black text-white">
       <Header />
       <main>
-        <section className="py-20 md:py-32 text-center bg-dark-gray">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-32 text-center bg-cover bg-center" style={{ backgroundImage: `url('/46018.webp')` }}>
+          <div className="absolute inset-0 bg-dark-black/80 z-0"></div>
+          <div className="container mx-auto px-4 relative z-10">
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-4">Politique de confidentialité</h1>
-            <p className="text-lg text-gray-400 mt-4">
+            <p className="text-lg text-gray-300 mt-4">
               <Link to="/" className="hover:text-lime-accent">Accueil</Link> / <span className="text-white">Politique de confidentialité</span>
             </p>
           </div>

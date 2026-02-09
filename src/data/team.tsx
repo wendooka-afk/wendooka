@@ -7,21 +7,33 @@ export interface TeamMember {
 
 export const teamData: TeamMember[] = [
   {
-    name: "John Doe",
+    name: "Oumarou Sanda",
     role: "Fondateur & CEO",
     image: "/112245.webp",
-    bio: "Passionné par la technologie et le design, John a fondé Wendooka avec la vision de créer des expériences digitales exceptionnelles."
+    bio: "Fondateur de Wendooka en 2017, Oumarou pilote la vision stratégique de l’agence et accompagne les clients dans la structuration et la réussite de leurs projets digitaux."
   },
   {
-    name: "Jane Smith",
+    name: "Khadidja Saïdou",
     role: "Directrice Artistique",
     image: "/118355.webp",
-    bio: "Avec un œil pour l'esthétique et une passion pour l'innovation, Jane dirige notre pôle créatif pour donner vie à des designs uniques."
+    bio: "Experte en design et identité visuelle, Khadidja conçoit des interfaces cohérentes, élégantes et alignées avec les objectifs des marques."
   },
   {
-    name: "Mike Johnson",
-    role: "Développeur Principal",
+    name: "Mohamadou Abdoulhakim",
+    role: "Directeur Technique",
     image: "/46018.webp",
-    bio: "Expert en technologies web modernes, Mike transforme les designs complexes en sites web rapides, performants et sécurisés."
+    bio: "Spécialiste des architectures web complexes, Abdoulhakim garantit la robustesse, la sécurité et la performance technique des solutions développées."
+  },
+  {
+    name: "Sakinatou Yaya",
+    role: "Product Manager",
+    image: "/15428.webp",
+    bio: "Sakinatou assure la coordination entre les besoins clients, les équipes et la livraison des projets, avec rigueur et méthode."
+  },
+  {
+    name: "Belhadj Mohamed",
+    role: "Digital Strategist",
+    image: "/271248.webp",
+    bio: "Mohamed accompagne les clients sur leurs enjeux de croissance digitale, d’acquisition et de performance marketing."
   }
 ];

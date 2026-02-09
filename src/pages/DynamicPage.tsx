@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GlobalCta from '@/components/GlobalCta';
 import { Loader2 } from 'lucide-react';
+import { sanitizeHtml } from '@/lib/sanitize';
 
 interface Page {
   id: string;
@@ -40,7 +41,6 @@ const DynamicPage: React.FC = () => {
         .single();
 
       if (error) {
-        console.error("Erreur lors du chargement de la page :", error);
         setError("Page non trouvée ou non publiée.");
         setPage(null);
       } else if (data) {
@@ -111,7 +111,7 @@ const DynamicPage: React.FC = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 max-w-4xl prose prose-invert prose-lg">
             {/* For now, content is plain text. Will be enhanced with WYSIWYG/Markdown later. */}
-            {page.content && <div dangerouslySetInnerHTML={{ __html: page.content }} />}
+            {page.content && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.content) }} />}
             {!page.content && <p className="text-gray-400">Aucun contenu pour cette page.</p>}
           </div>
         </section>

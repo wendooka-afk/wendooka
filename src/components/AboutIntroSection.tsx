@@ -10,15 +10,14 @@ const AboutIntroSection: React.FC = () => {
           {/* Texte à gauche */}
           <div>
             <p className="font-semibold text-lime-accent mb-2">À Propos</p>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Une agence digitale primée et reconnue
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+              Une agence web expérimentée, orientée résultats
             </h2>
-            <p className="text-lg text-gray-400 mb-8">
-              Depuis plus de 10 ans, Wendooka accompagne entreprises, institutions et entrepreneurs dans la réussite de leurs projets en ligne.
-              Notre mission : transformer vos idées en solutions digitales performantes qui génèrent un impact concret.
+            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+              Depuis plus de 10 ans, Wendooka accompagne entreprises, institutions et entrepreneurs dans la conception de solutions digitales performantes. Notre approche combine stratégie, design et technologie pour transformer vos idées en outils concrets de croissance.
             </p>
-            <Button asChild className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-full px-8 py-4 text-lg">
-              <Link to="/contact">Travailler avec nous</Link>
+            <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-3 transition-all" size="lg">
+              <Link to="/about">Découvrir l’agence</Link>
             </Button>
           </div>
 
