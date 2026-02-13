@@ -1280,6 +1280,47 @@ import { Project } from "@/types/project";
 export const projectsData: Project[] = [
     {
         id: "1",
+        title: "Bandiko Production — Donner une vitrine digitale à la production audiovisuelle sahélienne",
+        slug: "bandiko-production",
+        description: "Conception du site web de Bandiko Production, société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Une plateforme pensée pour révéler au monde les récits authentiques du bassin du Lac Tchad.",
+        short_description: "Site vitrine premium pour une société de production audiovisuelle. Identité visuelle immersive, portfolio vidéo intégré et positionnement international.",
+        tags: ["Production Audiovisuelle", "Site Vitrine", "Branding Digital", "Portfolio Créatif"],
+        image: "/Bandiko Productions Home 1.webp",
+        gallery: ["/Bandiko Productions about.webp"],
+        category: "Site Vitrine",
+        client: "Bandiko Production",
+        role: "Direction Artistique, Design & Développement Web",
+        year: "2025",
+        context: "<p>Bandiko Production est une société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Spécialisée dans la réalisation de reportages, enquêtes et documentaires pour les médias internationaux, elle explore les récits authentiques du bassin du Lac Tchad et des zones sahéliennes. Son crédo : <strong>filmer l'essentiel, raconter des histoires incarnées et révéler l'invisible</strong>.</p><p>Malgré une production régulière pour des chaînes internationales et une expertise reconnue sur le terrain, Bandiko Production ne disposait pas d'une vitrine digitale à la hauteur de son travail. L'objectif : créer un site web immersif capable de porter l'identité unique de la boîte de production et de convaincre les diffuseurs, institutions et partenaires internationaux.</p>",
+        challenge: "<p>Trois défis majeurs se posaient. Premièrement, traduire l'univers visuel et émotionnel d'une société de production audiovisuelle en une expérience web immersive — le site devait respirer le documentaire et le reportage, pas ressembler à un site vitrine classique. Deuxièmement, structurer une offre diversifiée (news, enquêtes, documentaires, magazines TV, production corporate) de manière lisible pour des publics très différents : diffuseurs internationaux, ONG, institutions et entreprises. Troisièmement, intégrer des contenus vidéo lourds tout en garantissant des performances optimales sur des connexions variables.</p>",
+        solution: "<p>Nous avons conçu un site qui place l'image et le récit au cœur de l'expérience. <strong>Direction artistique :</strong> une identité visuelle sombre et cinématographique, avec des vidéos en plein écran, des transitions fluides et une typographie forte qui évoque le documentaire. <strong>Architecture :</strong> chaque expertise de Bandiko (reportages, enquêtes, documentaires, magazines, production corporate) dispose de sa propre section avec une présentation narrative qui plonge le visiteur dans l'univers de la production. <strong>Performance :</strong> chargement optimisé des médias vidéo avec lazy loading et formats adaptatifs, intégration YouTube pour minimiser le poids des pages.</p><p>Le résultat est un site qui ne se contente pas de présenter Bandiko Production — il fait vivre son univers dès la première seconde.</p>",
+        results: "<ul><li><strong>Identité digitale premium</strong> alignée avec le positionnement audiovisuel de haut niveau</li><li><strong>5 expertises</strong> clairement structurées et présentées avec un storytelling immersif</li><li><strong>Portfolio vidéo intégré</strong> avec performances optimisées malgré les contenus lourds</li><li><strong>Crédibilité renforcée</strong> auprès des diffuseurs et partenaires internationaux</li></ul>",
+        problems_identified: [
+            "Absence de vitrine digitale pour une société de production active à l'international",
+            "Offre diversifiée difficile à structurer pour des publics variés",
+            "Besoin d'une identité web immersive à la hauteur de la qualité des productions"
+        ],
+        duration: "2 semaines",
+        representative_reason: "Ce projet incarne notre capacité à créer des expériences web immersives pour les acteurs créatifs — un site qui ne montre pas seulement le travail, mais qui le fait ressentir.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "UI/UX Design", slug: "ui-ux-design" },
+            { title: "Design graphique", slug: "design-graphique" }
+        ],
+        link: "https://bandikoproduction.com/",
+        status: "published",
+        created_at: "2025-12-01",
+        seo_title: "Site web Bandiko Production — Production audiovisuelle Nord-Cameroun | Wendooka",
+        meta_description: "Conception du site vitrine de Bandiko Production, société de production audiovisuelle au Nord-Cameroun. Identité immersive, portfolio vidéo et positionnement international.",
+        testimonial: {
+            name: "Dewa Aboubakar",
+            role: "Fondateur, Bandiko Production",
+            content: "Wendooka a parfaitement capté l'essence de notre travail. Le site reflète notre identité et notre passion pour le documentaire. Une réalisation qui nous positionne à la hauteur de nos ambitions internationales.",
+            image: "/Client dewa aboubakar Bandiko productions.webp"
+        }
+    },
+    {
+        id: "2",
         title: "Mballen — Donner une voix digitale à l'action humanitaire",
         slug: "mballen-ong",
         description: "Comment nous avons aidé l'ONG Mballen à passer d'une association invisible en ligne à une plateforme qui génère 120% de contacts en plus, en seulement 10 jours.",
@@ -1319,7 +1360,7 @@ export const projectsData: Project[] = [
         }
     },
     {
-        id: "2",
+        id: "3",
         title: "Abouscom — Repositionner une agence leader par le digital",
         slug: "abouscom",
         description: "Refonte complète de l'identité web d'Abouscom, agence de communication 360 au Cameroun. Un site conçu pour convertir les visiteurs en clients qualifiés.",
