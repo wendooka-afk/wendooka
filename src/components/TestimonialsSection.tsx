@@ -5,6 +5,13 @@ import { CircularTestimonials } from '@/components/ui/circular-testimonials';
 const testimonials = [
     {
         quote:
+            "Wendooka a parfaitement capté l'essence de notre travail. Le site reflète notre identité et notre passion pour le documentaire. Une réalisation qui nous positionne à la hauteur de nos ambitions internationales.",
+        name: "Dewa Aboubakar",
+        designation: "Fondateur, Bandiko Production",
+        src: "/Client dewa aboubakar Bandiko productions.webp",
+    },
+    {
+        quote:
             "Grâce à l'expertise de Wendooka, notre association dispose enfin d'une vitrine digne de ses actions. Le site a immédiatement renforcé notre crédibilité auprès des partenaires internationaux.",
         name: "Oumarou Sanda Aboubakar",
         designation: "Président, Association Mballen",
