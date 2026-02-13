@@ -41,7 +41,7 @@ const AboutPage: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <div className="absolute -inset-4 bg-lime-accent/5 rounded-3xl blur-2xl"></div>
-                <img src="/60349.webp" alt="L'équipe Wendooka en réunion" className="relative rounded-3xl w-full h-auto object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" />
+                <img src="/Oumarou Sanda CEO Wzndooka.webp" alt="Oumarou Sanda, Fondateur et CEO de Wendooka" className="relative rounded-3xl w-full h-auto object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" />
               </div>
               <div className="space-y-8">
                 <div className="inline-block px-4 py-1.5 bg-lime-accent/10 border border-lime-accent/20 rounded-full text-lime-accent text-sm font-bold uppercase tracking-widest">

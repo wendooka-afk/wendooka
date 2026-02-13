@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

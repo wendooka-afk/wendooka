@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Hexagon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -57,10 +57,12 @@ const Header: React.FC = () => {
           className="flex items-center gap-3"
           onClick={() => isMenuOpen && toggleMenu()}
         >
-          <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
-            <Hexagon className="h-6 w-6 text-dark-black fill-dark-black" />
-          </div>
-          <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
+          <img
+            src="/Logo Wendooka.webp"
+            alt="Logo Wendooka"
+            className="h-12 w-auto"
+            style={{ mixBlendMode: 'screen' }}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

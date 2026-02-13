@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, ArrowRight, Hexagon } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const navLinks = [
@@ -27,10 +27,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <div className="bg-lime-accent rounded-full p-2 flex items-center justify-center">
-                <Hexagon className="h-6 w-6 text-dark-black fill-dark-black" />
-              </div>
-              <span className="text-2xl font-bold font-poppins text-white">Wendooka</span>
+              <img
+                src="/Logo Wendooka.webp"
+                alt="Logo Wendooka"
+                className="h-12 w-auto"
+                style={{ mixBlendMode: 'screen' }}
+              />
             </Link>
             <p className="max-w-md mb-6">
               Une agence de web design créative et dynamique qui aide les clients à réussir en ligne.
