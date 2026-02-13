@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node -e \"const{execSync}=require('child_process');try{execSync('chmod -R +x node_modules/.pnpm/esbuild*/node_modules/esbuild/bin/* node_modules/.pnpm/esbuild*/node_modules/@esbuild/*/bin/* node_modules/esbuild/bin/* node_modules/@esbuild/*/bin/* 2>/dev/null || true',{stdio:'inherit'})}catch(e){}\"",
-    "build": "vite build",
+    "build": "node -e \"try{require('child_process').execSync('find node_modules -name esbuild -type f -path \\\"*/bin/*\\\" -exec chmod +x {} + 2>/dev/null; chmod -R +x node_modules/@esbuild/*/bin 2>/dev/null; chmod +x node_modules/esbuild/bin/esbuild 2>/dev/null',{stdio:'inherit'})}catch(e){}\" && vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
