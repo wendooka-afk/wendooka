@@ -89,7 +89,7 @@ const ProjectDetailPage: React.FC = () => {
             <Header />
             <main>
                 {/* 3. Hero Section (Positionnement Immédiat) */}
-                <div className="relative py-24 md:py-40 bg-cover bg-center" style={{ backgroundImage: `url('/125484.webp')` }}>
+                <div className="relative py-24 md:py-40 bg-cover bg-center" style={{ backgroundImage: `url('${project.image}')` }}>
                     <div className="absolute inset-0 bg-dark-black/85 z-0"></div>
                     <div className="container mx-auto px-4 relative z-10 text-center">
                         <Badge className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 mb-6 px-4 py-1 text-base font-bold uppercase tracking-wider">
