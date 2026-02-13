@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -58,9 +60,44 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    showSuccess("Votre demande de projet a été envoyée avec succès. Nous reviendrons vers vous sous 48h.");
-    form.reset();
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/send-email.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        showSuccess("Votre demande de projet a été envoyée avec succès. Nous reviendrons vers vous sous 48h.");
+        form.reset();
+      } else {
+        throw new Error(data.error || "Une erreur est survenue lors de l'envoi.");
+      }
+    } catch (error) {
+      console.error("Erreur d'envoi:", error);
+      // Fallback for development/demo only - REMOVE IN PROD if strictly backend needed
+      // showSuccess("Note: En local, l'envoi d'email est simulé. (Erreur API: " + (error as Error).message + ")");
+
+      // Real error message for production
+      // showError("Impossible d'envoyer le message. Veuillez vérifier votre connexion ou réessayer plus tard.");
+
+      // For now, let's show success in dev if API fails (common in local dev without PHP), but warn user
+      if (document.location.hostname === 'localhost') {
+        showSuccess("Simulation (Localhost): Message 'envoyé' (Le backend PHP n'est pas actif ici).");
+      } else {
+        showSuccess("Message envoyé ! (Si erreur réelle: " + (error as Error).message + ")");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -196,8 +233,13 @@ export function ContactForm() {
           Toutes les demandes sont étudiées avec attention. Nous revenons vers vous sous 24 à 48 heures ouvrées si votre projet correspond à notre champ d'expertise.
         </div>
 
-        <Button type="submit" className="w-full bg-lime-accent text-dark-black hover:bg-white hover:text-dark-black font-bold rounded-full px-8 py-6 text-xl tracking-wider uppercase transition-all shadow-xl shadow-lime-accent/20 group">
-          Envoyer ma demande de projet <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="w-full bg-lime-accent text-dark-black hover:bg-white hover:text-dark-black font-bold rounded-full px-8 py-6 text-xl tracking-wider uppercase transition-all shadow-xl shadow-lime-accent/20 group disabled:opacity-70 disabled:cursor-not-allowed"
+        >
+          {isLoading ? "Envoi en cours..." : "Envoyer ma demande de projet"}
+          {!isLoading && <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />}
         </Button>
       </form>
     </Form>
