@@ -24,4 +24,10 @@ export interface Project {
     problems_identified?: string[];
     duration?: string;
     representative_reason?: string;
+    testimonial?: {
+        name: string;
+        role: string;
+        content: string;
+        image: string;
+    };
 }

@@ -5,24 +5,38 @@ import { CircularTestimonials } from '@/components/ui/circular-testimonials';
 const testimonials = [
     {
         quote:
-            "Wendooka Digital a transformé notre présence en ligne. Leur approche stratégique et leur design haut de gamme ont directement impacté nos ventes. Une équipe professionnelle et visionnaire.",
-        name: "Thomas Sankara",
-        designation: "CEO, Africa Tech Solutions",
-        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop",
+            "Grâce à l'expertise de Wendooka, notre association dispose enfin d'une vitrine digne de ses actions. Le site a immédiatement renforcé notre crédibilité auprès des partenaires internationaux.",
+        name: "Oumarou Sanda Aboubakar",
+        designation: "Président, Association Mballen",
+        src: "/client Oumarou Sanda Aboubakar Mballen.jpeg",
     },
     {
         quote:
-            "La collaboration a été fluide du début à la fin. Ils ont su capturer l'essence de notre marque et la traduire en une expérience digitale mémorable. Je recommande vivement !",
-        name: "Sarah M.",
-        designation: "Fondatrice, EcoLife",
-        src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop",
+            "Un travail technique remarquable. Le site est ultra-rapide même en zone rurale, ce qui était notre exigence n°1. Wendooka a parfaitement compris nos contraintes spécifiques.",
+        name: "Eric Nguele",
+        designation: "Promoteur, Kubaru Sahel",
+        src: "/Client Eric Nguele Kubaru Sahel 24.jpg",
     },
     {
         quote:
-            "Plus qu'une agence, un véritable partenaire. Le site web qu'ils ont créé pour nous est non seulement magnifique, mais il est aussi incroyablement performant.",
-        name: "Jean-Paul K.",
-        designation: "Directeur Marketing, Solar Energy",
-        src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop",
+            "La digitalisation de nos services était un défi majeur. Ce portail web rapproche l'administration des citoyens et modernise l'image de notre commune. Une réalisation impeccable.",
+        name: "Idrissou Abana",
+        designation: "Maire, Commune de Ngaoundéré 2e",
+        src: "/Client Idrissou abana commune ngaoundere 2.webp",
+    },
+    {
+        quote:
+            "Wendooka a su traduire la complexité de nos offres en un site clair et percutant. Depuis la mise en ligne, nous constatons un impact réel sur notre image de marque.",
+        name: "Hamidou Ahmadou",
+        designation: "CEO, Sahel Consulting",
+        src: "/Client Hamidou Ahmadou Sahel Consulting.jpeg",
+    },
+    {
+        quote:
+            "Une équipe réactive et à l'écoute. Mon site personnel reflète parfaitement mon parcours et mes ambitions. Je recommande vivement leur professionnalisme.",
+        name: "Abbo Oumarou",
+        designation: "Entrepreneur",
+        src: "/Client Abbo Oumarou abbo-oumarou.com.jpeg",
     },
 ];
 

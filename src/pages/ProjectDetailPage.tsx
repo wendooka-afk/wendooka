@@ -222,6 +222,38 @@ const ProjectDetailPage: React.FC = () => {
                                     </div>
                                 </div>
 
+                                {/* Testimonial Section */}
+                                {project.testimonial && (
+                                    <div className="space-y-8">
+                                        <h2 className="text-3xl font-bold text-white font-poppins flex items-center gap-4">
+                                            <span className="w-8 h-1 bg-lime-accent"></span> Le mot du client
+                                        </h2>
+                                        <div className="bg-dark-gray p-8 md:p-10 rounded-3xl border border-gray-800 relative">
+                                            <div className="absolute top-8 right-8 text-lime-accent/20">
+                                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.01697 21L5.01697 18C5.01697 16.8954 5.9124 16 7.01697 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H6.01697C5.46468 8 5.01697 8.44772 5.01697 9V11C5.01697 11.5523 4.56925 12 4.01697 12H3.01697V5H13.017V15C13.017 18.3137 10.3307 21 7.01697 21H5.01697Z" />
+                                                </svg>
+                                            </div>
+                                            <blockquote className="relative z-10">
+                                                <p className="text-xl md:text-2xl text-gray-200 italic font-light mb-8 leading-relaxed">
+                                                    "{project.testimonial.content}"
+                                                </p>
+                                                <div className="flex items-center gap-4">
+                                                    <img
+                                                        src={project.testimonial.image}
+                                                        alt={project.testimonial.name}
+                                                        className="w-16 h-16 rounded-full object-cover border-2 border-lime-accent/50"
+                                                    />
+                                                    <div>
+                                                        <cite className="not-italic font-bold text-white text-lg block">{project.testimonial.name}</cite>
+                                                        <span className="text-lime-accent text-sm">{project.testimonial.role}</span>
+                                                    </div>
+                                                </div>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* 10. Representativeness */}
                                 {project.representative_reason && (
                                     <div className="space-y-6 pt-10 border-t border-gray-800">

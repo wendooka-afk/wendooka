@@ -537,37 +537,247 @@ export const blogPostsData = [
         author: "Oumarou Sanda",
         excerpt: "Entre 300 000 et 5 000 000 FCFA : l'écart de prix entre les sites web est énorme. Voici comment comprendre ce qui fait varier le budget et pourquoi le moins cher coûte souvent le plus cher.",
         content: `
+            <div class="bg-lime-accent/10 border-l-4 border-lime-accent p-6 mb-8 rounded-r-lg">
+                <h3 class="text-xl font-bold mb-3 text-lime-accent">⚡ Résumé en 30 secondes</h3>
+                <p class="text-gray-300"><strong>Le prix d'un site web professionnel au Cameroun varie de 300 000 à 5 000 000 FCFA</strong> selon 5 facteurs clés : complexité fonctionnelle, design (template vs sur-mesure), optimisation SEO, rédaction de contenus et maintenance. Un site à 500 000 FCFA qui génère 20 clients/mois est plus rentable qu'un site à 150 000 FCFA sans trafic. L'investissement se mesure au ROI, pas au prix initial.</p>
+            </div>
+
             <p>Quand un entrepreneur camerounais cherche à créer son site web, la première question est invariablement la même : combien ça coûte ? La réponse honnête, c'est que le prix d'un <strong><a href="/services/creation-sites-web">site web sur-mesure</a></strong> dépend de ce que vous attendez de lui. Un site qui « existe » et un site qui génère des clients sont deux projets radicalement différents.</p>
+
+            <h2>Grille tarifaire 2024 : prix réels des sites web au Cameroun</h2>
+            <p>Pour vous donner une vision claire du marché, voici les fourchettes de prix pratiquées au Cameroun en 2024, selon le type de projet et le niveau de prestation :</p>
+
+            <div class="overflow-x-auto my-8">
+                <table class="w-full border-collapse bg-dark-gray/30 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-lime-accent text-dark-black">
+                            <th class="p-4 text-left font-bold">Type de site</th>
+                            <th class="p-4 text-left font-bold">Freelance junior</th>
+                            <th class="p-4 text-left font-bold">Freelance expert</th>
+                            <th class="p-4 text-left font-bold">Agence spécialisée</th>
+                            <th class="p-4 text-left font-bold">Délai moyen</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Site vitrine simple (5-7 pages)</td>
+                            <td class="p-4">150 000 - 300 000 FCFA</td>
+                            <td class="p-4">400 000 - 800 000 FCFA</td>
+                            <td class="p-4">800 000 - 1 500 000 FCFA</td>
+                            <td class="p-4">2-4 semaines</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Site vitrine premium (10-15 pages)</td>
+                            <td class="p-4">300 000 - 600 000 FCFA</td>
+                            <td class="p-4">800 000 - 1 500 000 FCFA</td>
+                            <td class="p-4">1 500 000 - 2 500 000 FCFA</td>
+                            <td class="p-4">4-6 semaines</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">E-commerce (< 50 produits)</td>
+                            <td class="p-4">500 000 - 1 000 000 FCFA</td>
+                            <td class="p-4">1 200 000 - 2 500 000 FCFA</td>
+                            <td class="p-4">2 500 000 - 4 000 000 FCFA</td>
+                            <td class="p-4">6-10 semaines</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">E-commerce complexe (> 100 produits)</td>
+                            <td class="p-4">1 000 000 - 2 000 000 FCFA</td>
+                            <td class="p-4">2 500 000 - 4 000 000 FCFA</td>
+                            <td class="p-4">4 000 000 - 7 000 000 FCFA</td>
+                            <td class="p-4">10-16 semaines</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Portail/Plateforme complexe</td>
+                            <td class="p-4">N/A</td>
+                            <td class="p-4">3 000 000 - 6 000 000 FCFA</td>
+                            <td class="p-4">5 000 000 - 15 000 000+ FCFA</td>
+                            <td class="p-4">12-24 semaines</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-sm italic text-gray-400 mb-8">* Ces tarifs incluent généralement la conception, le développement et la mise en ligne initiale. L'hébergement, la maintenance et les contenus (textes/photos professionnels) sont souvent facturés séparément.</p>
 
             <h2>Pourquoi les prix varient autant d'un prestataire à l'autre</h2>
             <p>Un freelance débutant peut proposer un site à 150 000 FCFA. Une agence spécialisée facturera entre 500 000 et 3 000 000 FCFA pour un projet similaire en apparence. La différence ne se voit pas toujours à l'écran — elle se mesure dans les résultats.</p>
             <p>Un site à bas prix repose généralement sur un template préfabriqué, sans réflexion sur le parcours utilisateur, sans optimisation pour le référencement, et sans tests de performance. Il « fonctionne » visuellement, mais ne convertit pas. À l'inverse, un site sur-mesure intègre une stratégie de conversion dès la conception : chaque page, chaque bouton, chaque texte est pensé pour guider le visiteur vers l'action.</p>
 
-            <h2>Les 5 facteurs qui déterminent le coût réel</h2>
-            <ul>
-                <li><strong>La complexité fonctionnelle :</strong> un site vitrine de 5 pages et une plateforme avec espace client, paiement en ligne et tableau de bord ne demandent pas le même investissement technique. Plus les fonctionnalités sont spécifiques à votre métier, plus le développement est conséquent.</li>
-                <li><strong>Le design sur-mesure vs template :</strong> un <strong><a href="/services/ui-ux-design">design UX/UI personnalisé</a></strong> coûte plus cher qu'un thème acheté à 50 000 FCFA, mais il vous différencie de vos concurrents et crée une expérience mémorable pour vos visiteurs.</li>
-                <li><strong>L'optimisation SEO :</strong> un site invisible sur Google est un site inutile. L'intégration du <strong><a href="/services/marketing-digital">référencement naturel</a></strong> dès la conception (structure, vitesse, balises, contenu) demande une expertise qui a un coût, mais un retour sur investissement mesurable.</li>
-                <li><strong>La rédaction des contenus :</strong> beaucoup de projets sous-estiment le temps nécessaire pour produire des textes efficaces. Des pages vides ou mal rédigées annulent l'impact du meilleur design.</li>
-                <li><strong>L'hébergement et la maintenance :</strong> un site web n'est pas un produit fini. Il nécessite des mises à jour de sécurité, des sauvegardes régulières et un hébergement performant. Prévoir ce budget évite les mauvaises surprises.</li>
+            <h2>Les 5 facteurs qui déterminent le coût réel d'un site web</h2>
+
+            <h3>1. La complexité fonctionnelle</h3>
+            <p>Un site vitrine de 5 pages et une plateforme avec espace client, paiement en ligne et tableau de bord ne demandent pas le même investissement technique. Plus les fonctionnalités sont spécifiques à votre métier, plus le développement est conséquent.</p>
+            <p><strong>Exemples concrets :</strong></p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
+                <li><strong>Formulaire de contact simple :</strong> inclus dans la plupart des sites (impact faible sur le prix)</li>
+                <li><strong>Système de réservation en ligne :</strong> + 200 000 à 500 000 FCFA selon la complexité</li>
+                <li><strong>Espace client avec tableau de bord :</strong> + 400 000 à 1 000 000 FCFA</li>
+                <li><strong>Paiement en ligne (Mobile Money, carte bancaire) :</strong> + 300 000 à 800 000 FCFA (intégration + commission opérateur)</li>
+                <li><strong>Module de gestion de stock dynamique :</strong> + 500 000 à 1 500 000 FCFA</li>
             </ul>
 
-            <h2>Template, CMS ou développement sur-mesure : que choisir ?</h2>
-            <p>Chaque approche a ses cas d'usage légitimes :</p>
-            <ul>
-                <li><strong>Template (Wix, Squarespace) :</strong> acceptable pour un projet personnel ou un test de concept rapide. Limité en personnalisation, en performance et en évolutivité.</li>
-                <li><strong>CMS configuré (WordPress, Webflow) :</strong> bon compromis pour les PME qui veulent un site professionnel avec une gestion autonome des contenus. C'est l'approche que nous utilisons pour la majorité des sites vitrines.</li>
-                <li><strong>Développement sur-mesure (React, Next.js) :</strong> indispensable pour les projets à forte exigence de performance, de scalabilité ou d'intégrations spécifiques. C'est le choix que nous faisons pour les <strong><a href="/services/developpement-web">applications web complexes</a></strong>.</li>
+            <h3>2. Le design sur-mesure vs template</h3>
+            <p>Un <strong><a href="/services/ui-ux-design">design UX/UI personnalisé</a></strong> coûte plus cher qu'un thème acheté à 50 000 FCFA, mais il vous différencie de vos concurrents et crée une expérience mémorable pour vos visiteurs. Un designer expérimenté facture entre 150 000 et 600 000 FCFA selon la complexité du projet.</p>
+            <p>Un template standard limite votre capacité à vous démarquer visuellement et ne tient pas compte de votre parcours utilisateur spécifique.</p>
+
+            <h3>3. L'optimisation SEO</h3>
+            <p>Un site invisible sur Google est un site inutile. L'intégration du <strong><a href="/services/marketing-digital">référencement naturel</a></strong> dès la conception (structure, vitesse, balises, contenu) demande une expertise qui a un coût, mais un retour sur investissement mesurable.</p>
+            <p><strong>SEO technique de base :</strong> généralement inclus dans les projets professionnels (balisage H1-H6, méta-descriptions, sitemap XML).</p>
+            <p><strong>SEO avancé :</strong> audit complet, recherche de mots-clés, optimisation de contenus, stratégie de liens – budget additionnel de 200 000 à 800 000 FCFA selon l'ampleur.</p>
+
+            <h3>4. La rédaction des contenus</h3>
+            <p>Beaucoup de projets sous-estiment le temps nécessaire pour produire des textes efficaces. Des pages vides ou mal rédigées annulent l'impact du meilleur design. Un rédacteur web professionnel facture entre 15 000 et 40 000 FCFA par page rédigée (environ 500-800 mots optimisés SEO).</p>
+
+            <h3>5. L'hébergement et la maintenance</h3>
+            <p>Un site web n'est pas un produit fini. Il nécessite des mises à jour de sécurité, des sauvegardes régulières et un hébergement performant.</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
+                <li><strong>Hébergement basique (mutualisé) :</strong> 25 000 - 60 000 FCFA/an</li>
+                <li><strong>Hébergement performant (VPS/Cloud) :</strong> 80 000 - 250 000 FCFA/an</li>
+                <li><strong>Maintenance technique mensuelle :</strong> 30 000 - 100 000 FCFA/mois selon le niveau de service</li>
             </ul>
 
-            <h2>Comment calculer le vrai retour sur investissement</h2>
-            <p>Le coût d'un site web ne se mesure pas au prix de la facture, mais au chiffre d'affaires qu'il génère. Un site à 2 000 000 FCFA qui vous rapporte 10 nouveaux clients par mois est infiniment plus rentable qu'un site à 200 000 FCFA qui ne génère aucun contact.</p>
+            <h2>Comparatif : Template, CMS ou développement sur-mesure</h2>
+            <p>Chaque approche a ses cas d'usage légitimes. Voici un tableau pour vous aider à choisir :</p>
+
+            <div class="overflow-x-auto my-8">
+                <table class="w-full border-collapse bg-dark-gray/30 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-lime-accent text-dark-black">
+                            <th class="p-4 text-left font-bold">Critère</th>
+                            <th class="p-4 text-left font-bold">Template (Wix, Squarespace)</th>
+                            <th class="p-4 text-left font-bold">CMS (WordPress, Webflow)</th>
+                            <th class="p-4 text-left font-bold">Sur-mesure (React, Next.js)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Prix initial</td>
+                            <td class="p-4">50 000 - 200 000 FCFA</td>
+                            <td class="p-4">400 000 - 2 500 000 FCFA</td>
+                            <td class="p-4">2 000 000 - 10 000 000+ FCFA</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Délai de mise en ligne</td>
+                            <td class="p-4">1-2 semaines</td>
+                            <td class="p-4">3-8 semaines</td>
+                            <td class="p-4">8-20 semaines</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Personnalisation</td>
+                            <td class="p-4">❌ Limitée</td>
+                            <td class="p-4">✅ Moyenne à élevée</td>
+                            <td class="p-4">✅✅ Totale</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Performance/Vitesse</td>
+                            <td class="p-4">⚠️ Moyenne</td>
+                            <td class="p-4">✅ Bonne (avec optimisation)</td>
+                            <td class="p-4">✅✅ Excellente</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">SEO</td>
+                            <td class="p-4">⚠️ Basique</td>
+                            <td class="p-4">✅ Bon (plugins disponibles)</td>
+                            <td class="p-4">✅✅ Optimal (contrôle total)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Évolutivité</td>
+                            <td class="p-4">❌ Limitée</td>
+                            <td class="p-4">✅ Bonne</td>
+                            <td class="p-4">✅✅ Illimitée</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Idéal pour</td>
+                            <td class="p-4">Tests, projets personnels</td>
+                            <td class="p-4">PME, sites vitrines, blogs</td>
+                            <td class="p-4">Startups tech, applications métiers</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Notre usage chez Wendooka</td>
+                            <td class="p-4">❌ Non recommandé</td>
+                            <td class="p-4">✅ Sites vitrines professionnels</td>
+                            <td class="p-4">✅ <a href="/services/developpement-web" class="text-lime-accent hover:underline">Applications web complexes</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Comment calculer le vrai retour sur investissement (ROI)</h2>
+            <p>Le coût d'un site web ne se mesure pas au prix de la facture, mais au chiffre d'affaires qu'il génère. Voici une méthode simple pour estimer votre ROI :</p>
+
+            <div class="bg-dark-gray/50 p-6 rounded-lg border border-lime-accent/30 my-8">
+                <h3 class="text-xl font-bold mb-4 text-lime-accent">📊 Calculateur de ROI simplifié</h3>
+                <p class="mb-4"><strong>Exemple concret :</strong> Cabinet de conseil à Yaoundé</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li>✅ <strong>Investissement site web :</strong> 1 200 000 FCFA</li>
+                    <li>✅ <strong>Leads générés/mois (après 3 mois) :</strong> 15 demandes de devis</li>
+                    <li>✅ <strong>Taux de conversion leads → clients :</strong> 20% = 3 nouveaux clients/mois</li>
+                    <li>✅ <strong>Valeur moyenne d'un client :</strong> 500 000 FCFA</li>
+                    <li>✅ <strong>Chiffre d'affaires mensuel généré :</strong> 3 × 500 000 = <strong class="text-lime-accent">1 500 000 FCFA</strong></li>
+                    <li>✅ <strong>ROI en 1 an :</strong> (1 500 000 × 12) - 1 200 000 = <strong class="text-lime-accent">+16 800 000 FCFA</strong></li>
+                    <li>🎯 <strong>Retour sur investissement :</strong> <strong class="text-lime-accent text-2xl">1400%</strong></li>
+                </ul>
+            </div>
+
+            <p>Un site à 2 000 000 FCFA qui vous rapporte 10 nouveaux clients par mois est infiniment plus rentable qu'un site à 200 000 FCFA qui ne génère aucun contact.</p>
             <p>La question à se poser n'est donc pas « combien coûte un site web ? » mais « combien me coûte le fait de ne pas avoir un bon site web ? ». Chaque mois sans présence en ligne crédible, ce sont des prospects qui choisissent vos concurrents.</p>
 
-            <h2>Notre recommandation</h2>
-            <p>Définissez d'abord vos objectifs business (générer des contacts, vendre en ligne, asseoir votre crédibilité), puis construisez votre budget en fonction du retour attendu. Un bon prestataire vous aidera à prioriser les fonctionnalités pour respecter votre enveloppe sans sacrifier la performance.</p>
+            <h2>Cas réel : ONG Mballen – ROI atteint en 45 jours</h2>
+            <p>L'<strong><a href="/portfolio/mballen-ong">ONG Mballen</a></strong> a investi 800 000 FCFA dans son site web professionnel. Résultats après 1 mois :</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
+                <li>+120% de demandes de contact</li>
+                <li>50+ demandes de bénévolat reçues</li>
+                <li>3 partenariats internationaux signés (valeur cumulée : 15 000 000 FCFA)</li>
+                <li><strong>ROI atteint en 45 jours</strong></li>
+            </ul>
+            <p>Ce projet démontre qu'un investissement bien calibré génère des résultats mesurables rapidement.</p>
 
-            <p>Vous avez un projet en tête et vous voulez un chiffrage réaliste ? <strong><a href="/contact">Demandez votre devis gratuit</a></strong> — nous vous répondons sous 24 heures avec une estimation détaillée.</p>
+            <h2>Checklist : 10 questions à poser à votre prestataire web</h2>
+            <p>Avant de signer un devis, posez ces questions pour éviter les mauvaises surprises :</p>
+            <ol class="list-decimal pl-6 mb-8 space-y-3 text-gray-300">
+                <li><strong>Le prix inclut-il l'hébergement et le nom de domaine ?</strong> (souvent facturés séparément)</li>
+                <li><strong>Qui rédige les textes ?</strong> (prestataire, vous, ou rédacteur externe à prévoir)</li>
+                <li><strong>Le site sera-t-il optimisé pour mobile ?</strong> (75% du trafic au Cameroun vient du mobile)</li>
+                <li><strong>Le SEO technique de base est-il inclus ?</strong> (balises, sitemap, vitesse)</li>
+                <li><strong>Combien de révisions sont incluses dans le devis ?</strong> (éviter les coûts cachés)</li>
+                <li><strong>Qui possède les droits du code et du design ?</strong> (important pour la pérennité)</li>
+                <li><strong>Quel est le délai de livraison garanti ?</strong> (avec jalons clairs)</li>
+                <li><strong>La maintenance est-elle assurée après livraison ?</strong> (et à quel tarif mensuel)</li>
+                <li><strong>Puis-je modifier moi-même les contenus après livraison ?</strong> (autonomie via CMS)</li>
+                <li><strong>Avez-vous des références de projets similaires au Cameroun ?</strong> (vérifier l'expérience locale)</li>
+            </ol>
+
+            <h2>Notre recommandation stratégique</h2>
+            <p>Définissez d'abord vos objectifs business (générer des contacts, vendre en ligne, asseoir votre crédibilité), puis construisez votre budget en fonction du retour attendu. Un bon prestataire vous aidera à prioriser les fonctionnalités pour respecter votre enveloppe sans sacrifier la performance.</p>
+            <p><strong>Nos conseils selon votre budget :</strong></p>
+            <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-300">
+                <li><strong>Budget < 500 000 FCFA :</strong> Optez pour un CMS (WordPress/Webflow) avec un template premium personnalisé. Investissez dans de bons contenus.</li>
+                <li><strong>Budget 500 000 - 2 000 000 FCFA :</strong> Site vitrine sur-mesure ou e-commerce simple avec design personnalisé et SEO de base.</li>
+                <li><strong>Budget > 2 000 000 FCFA :</strong> Développement sur-mesure, design premium, stratégie SEO complète, contenus professionnels.</li>
+            </ul>
+
+            <h2>Questions fréquentes (FAQ)</h2>
+            
+            <h3>Combien coûte un site web vitrine simple au Cameroun en 2024 ?</h3>
+            <p>Un site vitrine professionnel de 5-7 pages coûte entre 400 000 et 1 500 000 FCFA selon le prestataire et le niveau de personnalisation. Les templates basiques démarrent à 150 000 FCFA mais offrent peu de personnalisation.</p>
+
+            <h3>Pourquoi certains sites coûtent 10 fois plus cher que d'autres ?</h3>
+            <p>L'écart de prix s'explique par la complexité fonctionnelle (formulaires vs espace client), le design (template vs création sur-mesure), l'optimisation SEO, la qualité des contenus et le niveau d'accompagnement. Un site à bas prix utilise généralement un template sans stratégie de conversion.</p>
+
+            <h3>Faut-il prévoir un budget pour la maintenance ?</h3>
+            <p>Oui, absolument. Prévoyez 10-15% du coût initial par an pour la maintenance technique (mises à jour de sécurité, sauvegardes, corrections de bugs). Sans maintenance, votre site devient vulnérable et obsolète en quelques mois.</p>
+
+            <h3>Le prix inclut-il l'hébergement et le nom de domaine ?</h3>
+            <p>Généralement non. L'hébergement coûte 25 000-250 000 FCFA/an selon la performance. Le nom de domaine (.cm, .com) coûte 15 000-30 000 FCFA/an. Vérifiez toujours ce qui est inclus dans le devis.</p>
+
+            <h3>Comment savoir si mon investissement sera rentable ?</h3>
+            <p>Calculez votre ROI potentiel : (Nombre de leads/mois × Taux de conversion × Valeur client) - Coût du site. Un site professionnel bien conçu se rentabilise généralement en 3-12 mois pour une PME active commercialement.</p>
+
+            <h3>Vaut-il mieux choisir le prestataire le moins cher ?</h3>
+            <p>Non. Le prestataire le moins cher est rarement le moins coûteux à long terme. Un site à 200 000 FCFA qui ne convertit pas ou nécessite une refonte complète après 6 mois vous coûtera plus qu'un site sur-mesure à 1 500 000 FCFA qui génère des résultats.</p>
+
+            <p>Vous avez un projet en tête et vous voulez un chiffrage réaliste ? <strong><a href="/contact">Demandez votre devis gratuit</a></strong> — nous vous répondons sous 24 heures avec une estimation détaillée et transparente.</p>
         `,
         seo_description: "Découvrez les vrais facteurs qui déterminent le coût d'un site web sur-mesure au Cameroun et comment investir intelligemment pour un ROI mesurable."
     },
@@ -580,6 +790,11 @@ export const blogPostsData = [
         author: "Belhadj Mohamed",
         excerpt: "Vous hésitez entre un site vitrine et une boutique en ligne ? Le bon choix dépend de votre modèle économique, pas de la tendance du moment. Voici comment trancher.",
         content: `
+            <div class="bg-lime-accent/10 border-l-4 border-lime-accent p-6 mb-8 rounded-r-lg">
+                <h3 class="text-xl font-bold mb-3 text-lime-accent">⚡ Résumé en 30 secondes</h3>
+                <p class="text-gray-300"><strong>Choisir entre site vitrine et e-commerce dépend de 4 facteurs :</strong> cycle de vente (conseil vs achat impulsif), volume de transactions mensuel (< 20 ventes = vitrine peut suffire), capacité opérationnelle (gestion stocks/livraison) et budget (vitrine : 400k-1.5M FCFA, e-commerce : 1.2M-4M FCFA). L'approche hybride (vitrine + 5-20 produits) permet de tester le marché avant d'investir dans un e-commerce complet.</p>
+            </div>
+
             <p>C'est l'une des premières décisions à prendre quand on lance un projet web : faut-il un site vitrine pour présenter son activité, ou un e-commerce pour vendre directement en ligne ? La réponse semble simple, mais un mauvais choix peut vous coûter des mois de développement inutile — ou vous faire passer à côté d'un canal de vente rentable.</p>
 
             <h2>Ce qu'est vraiment un site vitrine (et ce qu'il peut faire pour vous)</h2>
@@ -590,29 +805,307 @@ export const blogPostsData = [
             <h2>Ce qu'implique réellement un site e-commerce</h2>
             <p>Un e-commerce permet la vente directe en ligne : catalogue produits, panier, paiement sécurisé et gestion des commandes. C'est un outil puissant, mais qui s'accompagne de contraintes opérationnelles que beaucoup sous-estiment.</p>
             <p>Avant de vous lancer, posez-vous ces questions :</p>
-            <ul>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
                 <li><strong>Logistique :</strong> avez-vous la capacité de gérer les stocks, les expéditions, les retours et le service après-vente ?</li>
                 <li><strong>Catalogue :</strong> combien de produits vendez-vous ? Un catalogue de 10 produits et un catalogue de 500 ne nécessitent pas la même architecture.</li>
                 <li><strong>Paiement :</strong> quels moyens de paiement vos clients utilisent-ils ? Mobile Money, carte bancaire, virement ? L'intégration de chaque solution a un coût.</li>
                 <li><strong>Concurrence :</strong> vos clients achètent-ils déjà en ligne chez vos concurrents, ou le marché digital n'est-il pas encore mature dans votre secteur ?</li>
             </ul>
 
-            <h2>Les 4 critères de décision</h2>
-            <ul>
-                <li><strong>Le cycle de vente :</strong> si vos clients ont besoin d'être conseillés avant d'acheter (services B2B, projets complexes), un site vitrine avec un parcours de prise de contact est plus efficace. Si l'achat est simple et impulsif (produits physiques, formations en ligne), le e-commerce prend tout son sens.</li>
-                <li><strong>Le volume de transactions :</strong> en dessous de 20 ventes par mois, un e-commerce complet est souvent surdimensionné. Un site vitrine avec un lien de paiement (via WhatsApp ou un formulaire de commande) peut suffire pour valider le marché.</li>
-                <li><strong>Votre capacité opérationnelle :</strong> un e-commerce demande une gestion quotidienne. Si vous êtes seul ou en petite équipe, commencez par un site vitrine et ajoutez le e-commerce quand votre volume le justifie.</li>
-                <li><strong>Votre budget :</strong> un <strong><a href="/services/creation-sites-web">site vitrine professionnel</a></strong> démarre à un investissement inférieur. Un e-commerce fonctionnel coûte davantage en raison des intégrations techniques (paiement, gestion de stock, sécurité renforcée).</li>
-            </ul>
+            <h2>Comparatif complet : Site vitrine vs E-commerce</h2>
+            <p>Voici un tableau détaillé pour vous aider à prendre la bonne décision selon 20 critères clés :</p>
+
+            <div class="overflow-x-auto my-8">
+                <table class="w-full border-collapse bg-dark-gray/30 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-lime-accent text-dark-black">
+                            <th class="p-4 text-left font-bold">Critère</th>
+                            <th class="p-4 text-left font-bold">Site Vitrine</th>
+                            <th class="p-4 text-left font-bold">E-commerce</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Prix initial</td>
+                            <td class="p-4">400 000 - 1 500 000 FCFA</td>
+                            <td class="p-4">1 200 000 - 4 000 000 FCFA</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Délai de développement</td>
+                            <td class="p-4">3-6 semaines</td>
+                            <td class="p-4">6-12 semaines</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Objectif principal</td>
+                            <td class="p-4">Générer des contacts/leads</td>
+                            <td class="p-4">Vendre directement en ligne</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Complexité technique</td>
+                            <td class="p-4">⭐⭐ Moyenne</td>
+                            <td class="p-4">⭐⭐⭐⭐ Élevée</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Fonctionnalités clés</td>
+                            <td class="p-4">Présentation, formulaires contact, témoignages</td>
+                            <td class="p-4">Panier, paiement, gestion commandes, stock</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Paiement en ligne</td>
+                            <td class="p-4">❌ Non nécessaire</td>
+                            <td class="p-4">✅ Indispensable</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Gestion de stock</td>
+                            <td class="p-4">❌ Pas de stock</td>
+                            <td class="p-4">✅ Obligatoire</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Logistique/Livraison</td>
+                            <td class="p-4">❌ Non concerné</td>
+                            <td class="p-4">✅ À organiser (coût récurrent)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Service client</td>
+                            <td class="p-4">⚠️ Modéré (répondre aux demandes)</td>
+                            <td class="p-4">✅ Intensif (SAV, retours, litiges)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Temps de gestion/jour</td>
+                            <td class="p-4">15-30 minutes (mise à jour contenu)</td>
+                            <td class="p-4">2-4 heures (commandes, stock, clients)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Maintenance mensuelle</td>
+                            <td class="p-4">30 000 - 60 000 FCFA</td>
+                            <td class="p-4">80 000 - 150 000 FCFA</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Hébergement requis</td>
+                            <td class="p-4">Basique (60k-100k FCFA/an)</td>
+                            <td class="p-4">Performant (150k-400k FCFA/an)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Sécurité</td>
+                            <td class="p-4">⚠️ Standard (HTTPS suffisant)</td>
+                            <td class="p-4">✅ Renforcée (certificat SSL, encryption)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Conformité légale</td>
+                            <td class="p-4">⚠️ Basique (mentions légales)</td>
+                            <td class="p-4">✅ Complexe (CGV, protection données, facturation)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">ROI attendu</td>
+                            <td class="p-4">3-6 mois (génération leads)</td>
+                            <td class="p-4">6-12 mois (volume ventes)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Évolutivité</td>
+                            <td class="p-4">✅ Facile (ajout pages/sections)</td>
+                            <td class="p-4">⚠️ Complexe (scalabilité technique)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Idéal pour</td>
+                            <td class="p-4">Services B2B, consultants, ONG, artisans</td>
+                            <td class="p-4">Commerce retail, formations, produits digitaux</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Type de vente</td>
+                            <td class="p-4">Vente complexe nécessitant échange</td>
+                            <td class="p-4">Vente simple et directe</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Analyse/Tracking</td>
+                            <td class="p-4">✅ Basique (Google Analytics)</td>
+                            <td class="p-4">✅ Avancée (conversion, paniers abandonnés)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Exemples Wendooka</td>
+                            <td class="p-4"><a href="/portfolio" class="text-lime-accent hover:underline">Cabinet conseil, ONG</a></td>
+                            <td class="p-4"><a href="/portfolio" class="text-lime-accent hover:underline">Boutiques retail, formations</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Matrice de décision par secteur d'activité</h2>
+            <p>Voici notre recommandation selon votre secteur :</p>
+
+            <div class="overflow-x-auto my-8">
+                <table class="w-full border-collapse bg-dark-gray/30 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-lime-accent text-dark-black">
+                            <th class="p-4 text-left font-bold">Secteur d'activité</th>
+                            <th class="p-4 text-left font-bold">Recommandation</th>
+                            <th class="p-4 text-left font-bold">Justification</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Cabinet de conseil</td>
+                            <td class="p-4 bg-green-900/20">✅ Site vitrine</td>
+                            <td class="p-4">Cycle de vente complexe, besoin d'échange</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Boutique mode/accessoires</td>
+                            <td class="p-4 bg-blue-900/20">✅ E-commerce</td>
+                            <td class="p-4">Produits standardisés, achat impulsif</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Restaurant</td>
+                            <td class="p-4 bg-yellow-900/20">⚠️ Hybride</td>
+                            <td class="p-4">Vitrine + module commande en ligne (livraison)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Architecte / Designer</td>
+                            <td class="p-4 bg-green-900/20">✅ Site vitrine</td>
+                            <td class="p-4">Portfolio + génération leads qualifiés</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Formation en ligne</td>
+                            <td class="p-4 bg-blue-900/20">✅ E-commerce</td>
+                            <td class="p-4">Produits digitaux, paiement instantané</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">ONG / Association</td>
+                            <td class="p-4 bg-green-900/20">✅ Site vitrine</td>
+                            <td class="p-4">Communication, collecte contacts bénévoles</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Agence immobilière</td>
+                            <td class="p-4 bg-yellow-900/20">⚠️ Hybride</td>
+                            <td class="p-4">Catalogue biens + prise de contact</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">Électronique/High-tech</td>
+                            <td class="p-4 bg-blue-900/20">✅ E-commerce</td>
+                            <td class="p-4">Comparaison produits, achat direct fréquent</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 font-semibold">BTP / Construction</td>
+                            <td class="p-4 bg-green-900/20">✅ Site vitrine</td>
+                            <td class="p-4">Projets sur-mesure, devis personnalisés</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Artisanat local</td>
+                            <td class="p-4 bg-yellow-900/20">⚠️ Hybride</td>
+                            <td class="p-4">Petit catalogue (5-20 produits) + présentation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Les 4 critères de décision fondamentaux</h2>
+
+            <h3>1. Le cycle de vente</h3>
+            <p>Si vos clients ont besoin d'être conseillés avant d'acheter (services B2B, projets complexes), un site vitrine avec un parcours de prise de contact est plus efficace. Si l'achat est simple et impulsif (produits physiques, formations en ligne), le e-commerce prend tout son sens.</p>
+
+            <h3>2. Le volume de transactions</h3>
+            <p>En dessous de 20 ventes par mois, un e-commerce complet est souvent surdimensionné. Un site vitrine avec un lien de paiement (via WhatsApp ou un formulaire de commande) peut suffire pour valider le marché avant d'investir dans une infrastructure e-commerce complète.</p>
+
+            <h3>3. Votre capacité opérationnelle</h3>
+            <p>Un e-commerce demande une gestion quotidienne : traitement des commandes, gestion de stock, service client, expéditions. Si vous êtes seul ou en petite équipe, commencez par un site vitrine et ajoutez le e-commerce quand votre volume le justifie.</p>
+
+            <h3>4. Votre budget</h3>
+            <p>Un <strong><a href="/services/creation-sites-web">site vitrine professionnel</a></strong> démarre à un investissement inférieur (400 000 - 1 500 000 FCFA). Un e-commerce fonctionnel coûte davantage (1 200 000 - 4 000 000 FCFA) en raison des intégrations techniques (paiement, gestion de stock, sécurité renforcée).</p>
+
+            <h2>Quiz : Quel format est fait pour vous ?</h2>
+            <p>Répondez à ces 8 questions pour identifier votre besoin réel :</p>
+
+            <ol class="list-decimal pl-6 mb-8 space-y-4 text-gray-300">
+                <li><strong>Vos clients achètent-ils sur impulse ou après réflexion ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Impulse/Direct → E-commerce</li>
+                        <li>Après réflexion/échange → Vitrine</li>
+                    </ul>
+                </li>
+                <li><strong>Vendez-vous des produits physiques ou des services ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Produits standards → E-commerce</li>
+                        <li>Services sur-mesure → Vitrine</li>
+                    </ul>
+                </li>
+                <li><strong>Combien de ventes espérez-vous par mois ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>< 20 ventes → Vitrine (+ paiement simple)</li>
+                        <li>> 20 ventes → E-commerce</li>
+                    </ul>
+                </li>
+                <li><strong>Avez-vous une logistique de livraison en place ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Non → Vitrine</li>
+                        <li>Oui → E-commerce possible</li>
+                    </ul>
+                </li>
+                <li><strong>Combien de temps pouvez-vous consacrer quotidiennement au site ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>< 30 min → Vitrine</li>
+                        <li>> 2h → E-commerce gérable</li>
+                    </ul>
+                </li>
+                <li><strong>Votre panier moyen est-il élevé (> 50 000 FCFA) ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Oui → Vitrine (besoin d'échange)</li>
+                        <li>Non → E-commerce efficace</li>
+                    </ul>
+                </li>
+                <li><strong>Vos concurrents vendent-ils déjà en ligne ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Non → Testez avec vitrine d'abord</li>
+                        <li>Oui → E-commerce pour rester compétitif</li>
+                    </ul>
+                </li>
+                <li><strong>Quel est votre budget initial ?</strong>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>< 1 000 000 FCFA → Vitrine</li>
+                        <li>> 1 500 000 FCFA → E-commerce envisageable</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="bg-dark-gray/50 p-6 rounded-lg border border-lime-accent/30 my-8">
+                <h3 class="text-xl font-bold mb-3 text-lime-accent">📊 Score</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li><strong>Majorité "Vitrine" :</strong> Commencez par un site vitrine professionnel avec stratégie de conversion optimisée</li>
+                    <li><strong>Majorité "E-commerce" :</strong> Vous êtes prêt pour une boutique en ligne complète</li>
+                    <li><strong>Réponses partagées :</strong> L'approche hybride est votre meilleure option</li>
+                </ul>
+            </div>
 
             <h2>L'approche hybride : le meilleur des deux mondes</h2>
             <p>Dans beaucoup de cas, la meilleure stratégie n'est pas de choisir mais de combiner. Un site vitrine avec une section e-commerce limitée (5 à 20 produits phares) permet de tester la vente en ligne sans l'investissement complet d'une boutique. Si les ventes décollent, vous faites évoluer la plateforme.</p>
             <p>C'est l'approche que nous recommandons régulièrement chez Wendooka : partir d'un socle solide et évolutif, puis itérer en fonction des données réelles de votre marché.</p>
 
+            <p><strong>Avantages de l'approche hybride :</strong></p>
+            <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-300">
+                <li>Investissement initial réduit (vitrine + module paiement simple)</li>
+                <li>Test de marché sans risque majeur</li>
+                <li>Évolution progressive selon la demande réelle</li>
+                <li>Pas de surcharge opérationnelle immédiate</li>
+            </ul>
+
+            <h2>Questions fréquentes (FAQ)</h2>
+
+            <h3>Peut-on transformer un site vitrine en e-commerce plus tard ?</h3>
+            <p>Oui, absolument. Si votre site est bien conçu dès le départ avec une architecture évolutive, l'ajout de fonctionnalités e-commerce est parfaitement possible. Chez Wendooka, nous anticipons cette évolution dans nos développements pour faciliter les migrations futures.</p>
+
+            <h3>Combien coûte un e-commerce simple au Cameroun ?</h3>
+            <p>Un e-commerce fonctionnel avec moins de 50 produits coûte entre 1 200 000 et 2 500 000 FCFA (développement + intégration paiement). Les plateformes avec plus de 100 produits démarrent à 2 500 000 FCFA. La maintenance mensuelle varie entre 80 000 et 150 000 FCFA.</p>
+
+            <h3>Quelles solutions de paiement sont disponibles au Cameroun ?</h3>
+            <p>Les principales solutions sont : Mobile Money (Orange Money, MTN MoMo), cartes bancaires (via des passerelles comme PayPal, Stripe ou locales), virements bancaires et paiement à la livraison. L'intégration de chaque solution a un coût additionnel de 150 000 à 400 000 FCFA.</p>
+
+            <h3>Un site vitrine peut-il générer des ventes ?</h3>
+            <p>Oui ! Un site vitrine génère des leads qualifiés que vous convertissez via échange direct (appel, email, WhatsApp). Pour certains business (services B2B, projets sur-mesure), ce modèle est plus efficace que l'e-commerce car il permet de qualifier le besoin et personnaliser l'offre.</p>
+
+            <h3>Faut-il une équipe dédiée pour un e-commerce ?</h3>
+            <p>Pas nécessairement au démarrage. Pour un catalogue < 50 produits et < 50 ventes/mois, une personne à mi-temps peut gérer (2-3h/jour). Au-delà, prévoyez une personne dédiée ou externalisez la logistique et le service client.</p>
+
             <h2>En résumé</h2>
             <p>Ne choisissez pas un e-commerce parce que « tout le monde vend en ligne ». Et ne vous limitez pas à un site vitrine si votre marché est prêt pour la vente directe. La bonne décision est celle qui s'aligne avec votre modèle économique, vos ressources et vos objectifs à 12 mois.</p>
 
-            <p>Vous n'êtes pas sûr de la direction à prendre ? <strong><a href="/contact">Échangeons sur votre projet</a></strong> — nous vous aiderons à identifier le format le plus rentable pour votre situation.</p>
+            <p>Vous n'êtes pas sûr de la direction à prendre ? <strong><a href="/contact">Échangeons sur votre projet</a></strong> — nous vous aiderons à identifier le format le plus rentable pour votre situation spécifique avec un audit gratuit de vos besoins.</p>
         `,
         seo_description: "Site vitrine ou e-commerce ? Découvrez les 4 critères de décision pour choisir le bon format web selon votre modèle économique et vos objectifs."
     },
@@ -817,7 +1310,13 @@ export const projectsData: Project[] = [
         status: "published",
         created_at: "2026-01-15",
         seo_title: "Création site web ONG Mballen — +120% de contacts en 10 jours | Wendooka",
-        meta_description: "Comment Wendooka a conçu le site web de l'ONG Mballen en 10 jours : +120% de contacts, 50 demandes de bénévolat et un temps de chargement sous 2 secondes."
+        meta_description: "Comment Wendooka a conçu le site web de l'ONG Mballen en 10 jours : +120% de contacts, 50 demandes de bénévolat et un temps de chargement sous 2 secondes.",
+        testimonial: {
+            name: "Oumarou Sanda Aboubakar",
+            role: "Président, Association Mballen",
+            content: "Grâce à l'expertise de Wendooka, notre association dispose enfin d'une vitrine digne de ses actions. Le site a immédiatement renforcé notre crédibilité auprès des partenaires internationaux.",
+            image: "/client Oumarou Sanda Aboubakar Mballen.jpeg"
+        }
     },
     {
         id: "2",
@@ -886,7 +1385,13 @@ export const projectsData: Project[] = [
         ],
         seo_title: "Kubaru Sahel — Portail média ultra-rapide pour le Nord-Cameroun | Wendooka",
         meta_description: "Portail d'information Kubaru Sahel livré en 12 jours : chargement sous 3s en 2G, pages de 200 Ko, gestion éditoriale autonome. Performance web extrême par Wendooka.",
-        created_at: "2026-01-20"
+        created_at: "2026-01-20",
+        testimonial: {
+            name: "Eric Nguele",
+            role: "Promoteur, Kubaru Sahel",
+            content: "Un travail technique remarquable. Le site est ultra-rapide même en zone rurale, ce qui était notre exigence n°1. Wendooka a parfaitement compris nos contraintes spécifiques.",
+            image: "/Client Eric Nguele Kubaru Sahel 24.jpg"
+        }
     },
     {
         id: "4",
@@ -897,8 +1402,8 @@ export const projectsData: Project[] = [
         tags: ["Site Institutionnel", "Collectivité Locale", "Accessibilité", "WordPress"],
         category: "Site Vitrine",
         status: "published",
-        image: "/commune-ngaoundere-homepage.webp",
-        gallery: [],
+        image: "/commune ngaoundere 2 Home.webp",
+        gallery: ["/commune ngaoundere 2 about.webp"],
         client: "Commune d'Arrondissement de Ngaoundéré 2e",
         role: "Conception, Design & Développement Web",
         year: "2024",
@@ -920,7 +1425,13 @@ export const projectsData: Project[] = [
         ],
         seo_title: "Portail web Commune Ngaoundéré 2e — Gouvernance digitale locale | Wendooka",
         meta_description: "Création du portail officiel de la Commune de Ngaoundéré 2e : 120 000 habitants, services municipaux en ligne, autonomie de gestion et accessibilité mobile.",
-        created_at: "2024-09-15"
+        created_at: "2024-09-15",
+        testimonial: {
+            name: "Idrissou Abana",
+            role: "Maire, Commune de Ngaoundéré 2e",
+            content: "La digitalisation de nos services était un défi majeur. Ce portail web rapproche l'administration des citoyens et modernise l'image de notre commune. Une réalisation impeccable.",
+            image: "/Client Idrissou abana commune ngaoundere 2.webp"
+        }
     },
     {
         id: "5",
@@ -931,8 +1442,8 @@ export const projectsData: Project[] = [
         tags: ["Site Vitrine", "Consulting", "SEO", "Branding Digital"],
         category: "Site Vitrine",
         status: "published",
-        image: "/sahel-consulting-homepage.webp",
-        gallery: [],
+        image: "/Sahel consulting home.webp",
+        gallery: ["/Sahel consulting about.webp"],
         client: "Sahel Consulting SARL",
         role: "Stratégie Digitale, Design & Développement",
         year: "2025",
@@ -955,6 +1466,12 @@ export const projectsData: Project[] = [
         ],
         seo_title: "Site web Sahel Consulting — Cabinet conseil Cameroun | Wendooka",
         meta_description: "Création du site vitrine de Sahel Consulting : 8 offres de services structurées, SEO technique, blog éditorial et positionnement premium pour un cabinet conseil camerounais.",
-        created_at: "2025-03-20"
+        created_at: "2025-03-20",
+        testimonial: {
+            name: "Hamidou Ahmadou",
+            role: "CEO, Sahel Consulting",
+            content: "Wendooka a su traduire la complexité de nos offres en un site clair et percutant. Depuis la mise en ligne, nous constatons un impact réel sur notre image de marque.",
+            image: "/Client Hamidou Ahmadou Sahel Consulting.jpeg"
+        }
     }
 ];
