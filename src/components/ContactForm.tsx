@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { showSuccess } from "@/utils/toast";
+import { showSuccess, showError } from "@/utils/toast";
 import { ArrowRight } from "lucide-react";
 import {
   Select,
@@ -83,18 +83,7 @@ export function ContactForm() {
       }
     } catch (error) {
       console.error("Erreur d'envoi:", error);
-      // Fallback for development/demo only - REMOVE IN PROD if strictly backend needed
-      // showSuccess("Note: En local, l'envoi d'email est simulé. (Erreur API: " + (error as Error).message + ")");
-
-      // Real error message for production
-      // showError("Impossible d'envoyer le message. Veuillez vérifier votre connexion ou réessayer plus tard.");
-
-      // For now, let's show success in dev if API fails (common in local dev without PHP), but warn user
-      if (document.location.hostname === 'localhost') {
-        showSuccess("Simulation (Localhost): Message 'envoyé' (Le backend PHP n'est pas actif ici).");
-      } else {
-        showSuccess("Message envoyé ! (Si erreur réelle: " + (error as Error).message + ")");
-      }
+      showError("Impossible d'envoyer le message. Veuillez réessayer ou nous contacter directement à contact@wendooka.com.");
     } finally {
       setIsLoading(false);
     }

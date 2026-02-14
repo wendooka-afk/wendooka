@@ -74,28 +74,18 @@ $message = "
 </html>
 ";
 
-// Headers for PHP mail() function (if SMTP fails, this is a fallback, but we prefer SMTP)
+// Email headers
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$headers .= "From: no-reply@wendooka.com" . "\r\n"; // Use a generic no-reply address
-$headers .= "Reply-To: $email" . "\r\n";
+$headers .= "From: no-reply@wendooka.com" . "\r\n";
+$headers .= "Reply-To: " . filter_var($email, FILTER_SANITIZE_EMAIL) . "\r\n";
 
-// Hostinger SMTP configuration via PHPMailer would be better, but standard mail() often works on Hostinger too.
-// However, to use SMTP specifically as requested:
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-// Since we can't easily install composer packages in this environment, 
-// we will use the standard mail() function which is usually configured correctly on Hostinger shared hosting.
-// If you specifically need SMTP authentication because mail() is blocked or unreliable, 
-// we would need to manually include the PHPMailer library files.
-
-// TRYING STANDARD MAIL() FIRST as it's Native on Hostinger
+// Send using PHP mail()
+header('Content-Type: application/json');
 if(mail($to, $subject, $message, $headers)) {
     echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
 } else {
-    // If standard mail fails, we might need SMTP.
     http_response_code(500);
-    echo json_encode(['error' => 'Failed to send email. Server configuration might require SMTP authentication.']);
+    echo json_encode(['error' => 'Failed to send email. Server mail configuration issue.']);
 }
 ?>
