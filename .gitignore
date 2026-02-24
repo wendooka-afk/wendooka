@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 nul
+
+# Email credentials (never commit)
+public/api/email-config.php
+dist/api/email-config.php
