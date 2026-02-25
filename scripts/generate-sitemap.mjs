@@ -48,6 +48,32 @@ const STATIC_PAGES = [
   { loc: '/blog',      priority: '0.7', changefreq: 'weekly'  },
 ];
 
+// ─── Contenu statique (src/data/servicesData.ts) ───────────────────────────
+const STATIC_SERVICES = [
+  { slug: 'creation-sites-web',  lastmod: '2025-01-01' },
+  { slug: 'developpement-web',   lastmod: '2025-01-01' },
+  { slug: 'ui-ux-design',        lastmod: '2025-01-01' },
+  { slug: 'design-graphique',    lastmod: '2025-01-01' },
+  { slug: 'marketing-digital',   lastmod: '2025-01-01' },
+];
+
+const STATIC_PROJECTS = [
+  { slug: 'bandiko-production',   lastmod: '2025-01-01' },
+  { slug: 'mballen-ong',          lastmod: '2025-01-01' },
+  { slug: 'abouscom',             lastmod: '2025-01-01' },
+  { slug: 'kubaru-sahel',         lastmod: '2025-01-01' },
+  { slug: 'commune-ngaoundere-2', lastmod: '2025-01-01' },
+  { slug: 'sahel-consulting',     lastmod: '2025-01-01' },
+];
+
+const STATIC_BLOG_POSTS = [
+  { slug: 'cout-dun-site-web-sur-mesure-en-2024',          lastmod: '2024-01-15' },
+  { slug: 'choisir-entre-site-vitrine-et-e-commerce',      lastmod: '2024-01-20' },
+  { slug: 'erreurs-frequentes-projets-web',                lastmod: '2024-02-05' },
+  { slug: 'cout-application-web-sur-mesure',               lastmod: '2024-02-10' },
+  { slug: 'seo-ou-publicite-en-ligne-quel-levier-choisir', lastmod: '2024-02-15' },
+];
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const toDate = (ts) => (ts ? ts.split('T')[0] : TODAY);
 
@@ -79,12 +105,17 @@ async function generateSitemap() {
 
   const entries = [];
 
+  // Sets des slugs Supabase pour déduplication
+  const dbServiceSlugs = new Set((services ?? []).map(s => s.slug));
+  const dbProjectSlugs = new Set((projects ?? []).map(p => p.slug));
+  const dbPostSlugs    = new Set((posts    ?? []).map(b => b.slug));
+
   // Pages statiques
   for (const page of STATIC_PAGES) {
     entries.push(urlEntry({ ...page, lastmod: TODAY }));
   }
 
-  // Détails services
+  // Services Supabase (priorité)
   for (const s of (services ?? [])) {
     entries.push(urlEntry({
       loc:        `/services/${s.slug}`,
@@ -93,8 +124,19 @@ async function generateSitemap() {
       priority:   '0.8',
     }));
   }
+  // Services statiques (si non déjà dans Supabase)
+  for (const s of STATIC_SERVICES) {
+    if (!dbServiceSlugs.has(s.slug)) {
+      entries.push(urlEntry({
+        loc:        `/services/${s.slug}`,
+        lastmod:    s.lastmod,
+        changefreq: 'monthly',
+        priority:   '0.8',
+      }));
+    }
+  }
 
-  // Détails projets
+  // Projets Supabase (priorité)
   for (const p of (projects ?? [])) {
     entries.push(urlEntry({
       loc:        `/portfolio/${p.slug}`,
@@ -103,8 +145,19 @@ async function generateSitemap() {
       priority:   '0.7',
     }));
   }
+  // Projets statiques (si non déjà dans Supabase)
+  for (const p of STATIC_PROJECTS) {
+    if (!dbProjectSlugs.has(p.slug)) {
+      entries.push(urlEntry({
+        loc:        `/portfolio/${p.slug}`,
+        lastmod:    p.lastmod,
+        changefreq: 'monthly',
+        priority:   '0.7',
+      }));
+    }
+  }
 
-  // Articles de blog
+  // Articles Supabase (priorité)
   for (const b of (posts ?? [])) {
     entries.push(urlEntry({
       loc:        `/blog/${b.slug}`,
@@ -112,6 +165,17 @@ async function generateSitemap() {
       changefreq: 'monthly',
       priority:   '0.6',
     }));
+  }
+  // Articles statiques (si non déjà dans Supabase)
+  for (const b of STATIC_BLOG_POSTS) {
+    if (!dbPostSlugs.has(b.slug)) {
+      entries.push(urlEntry({
+        loc:        `/blog/${b.slug}`,
+        lastmod:    b.lastmod,
+        changefreq: 'monthly',
+        priority:   '0.6',
+      }));
+    }
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -126,12 +190,19 @@ ${entries.join('')}
   const outputPath = resolve(__dirname, '../public/sitemap.xml');
   writeFileSync(outputPath, xml, 'utf-8');
 
-  const total = STATIC_PAGES.length + (services?.length ?? 0) + (projects?.length ?? 0) + (posts?.length ?? 0);
+  const staticServicesAdded  = STATIC_SERVICES.filter(s => !dbServiceSlugs.has(s.slug)).length;
+  const staticProjectsAdded  = STATIC_PROJECTS.filter(p => !dbProjectSlugs.has(p.slug)).length;
+  const staticPostsAdded     = STATIC_BLOG_POSTS.filter(b => !dbPostSlugs.has(b.slug)).length;
+  const total = STATIC_PAGES.length
+    + (services?.length ?? 0) + staticServicesAdded
+    + (projects?.length ?? 0) + staticProjectsAdded
+    + (posts?.length    ?? 0) + staticPostsAdded;
+
   console.log(`✅ Sitemap généré : ${total} URLs → public/sitemap.xml`);
   console.log(`   ├─ ${STATIC_PAGES.length} pages statiques`);
-  console.log(`   ├─ ${services?.length ?? 0} services`);
-  console.log(`   ├─ ${projects?.length ?? 0} projets`);
-  console.log(`   └─ ${posts?.length ?? 0} articles de blog`);
+  console.log(`   ├─ ${(services?.length ?? 0) + staticServicesAdded} services  (${services?.length ?? 0} Supabase + ${staticServicesAdded} statiques)`);
+  console.log(`   ├─ ${(projects?.length ?? 0) + staticProjectsAdded} projets   (${projects?.length ?? 0} Supabase + ${staticProjectsAdded} statiques)`);
+  console.log(`   └─ ${(posts?.length    ?? 0) + staticPostsAdded} articles  (${posts?.length ?? 0} Supabase + ${staticPostsAdded} statiques)`);
 }
 
 generateSitemap().catch((err) => {

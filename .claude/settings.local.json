@@ -5,7 +5,9 @@
       "Bash(npx vite:*)",
       "Bash(npm install:*)",
       "Bash(pnpm add:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl:*)"
     ]
   }
 }
