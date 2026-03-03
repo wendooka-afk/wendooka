@@ -34,6 +34,7 @@ const formSchema = z.object({
   seo_title: z.string().optional(),
   meta_description: z.string().optional(),
   canonical_url: z.string().optional(),
+  schema_markup: z.string().optional(),
 });
 
 type PageFormValues = z.infer<typeof formSchema>;
@@ -55,6 +56,7 @@ const PageForm: React.FC = () => {
       seo_title: '',
       meta_description: '',
       canonical_url: '',
+      schema_markup: '',
     },
   });
 
@@ -328,6 +330,20 @@ const PageForm: React.FC = () => {
                 <FormLabel className="text-white">URL Canonique</FormLabel>
                 <FormControl>
                   <Input placeholder="https://votresite.com/page-canonique" {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="schema_markup"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Schema Markup JSON-LD</FormLabel>
+                <FormControl>
+                  <Textarea placeholder='[{"@context":"https://schema.org","@type":"LocalBusiness",...}]' {...field} className="bg-dark-black border-gray-600 text-white focus:border-lime-accent min-h-[150px] font-mono text-sm" />
                 </FormControl>
                 <FormMessage />
               </FormItem>

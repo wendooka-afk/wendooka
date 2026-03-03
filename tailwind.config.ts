@@ -112,5 +112,46 @@ export default {
       },
     },
   },
+  safelist: [
+    // Classes utilisées dans le contenu HTML des landing pages SEO (non scannable par Tailwind JIT)
+    // Texte & couleurs
+    'text-lime-accent', 'bg-lime-accent', 'text-dark-black',
+    'text-white', 'text-gray-300', 'text-gray-400',
+    'text-xs', 'text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl', 'text-3xl', 'text-4xl',
+    'font-medium', 'font-semibold', 'font-bold', 'font-poppins',
+    'italic', 'leading-relaxed',
+    // Backgrounds & bordures
+    'bg-dark-gray', 'bg-dark-black',
+    'border', 'border-2', 'border-gray-700', 'border-lime-accent',
+    'rounded-lg', 'rounded-xl', 'rounded-full', 'rounded-2xl',
+    'shadow-xl',
+    // Layout flex
+    'flex', 'flex-col', 'flex-row', 'flex-1', 'flex-shrink-0',
+    'items-center', 'items-start', 'justify-between',
+    'gap-3', 'gap-4', 'gap-6', 'gap-8',
+    'min-w-0',
+    // Layout grid
+    'grid', 'grid-cols-1', 'grid-cols-2', 'grid-cols-3',
+    'md:flex-row', 'md:w-2/5', 'md:grid-cols-2', 'md:grid-cols-3',
+    // Tailles
+    'w-full', 'w-2/5', 'w-16', 'w-24',
+    'h-full', 'h-48', 'h-64', 'h-72',
+    // Images
+    'object-cover', 'object-top', 'object-center',
+    'overflow-hidden', 'aspect-video',
+    // Spacing
+    'inline-block', 'text-center',
+    'p-4', 'p-6', 'p-8',
+    'px-4', 'px-6', 'px-8',
+    'py-3', 'py-4', 'py-6',
+    'my-10', 'my-12',
+    'mt-2', 'mt-4', 'mt-6', 'mt-8',
+    'mb-2', 'mb-3', 'mb-4', 'mb-6', 'mb-8', 'mb-10', 'mb-12',
+    // Utilitaires
+    'not-prose',
+    'hover:underline', 'hover:opacity-90',
+    'transition-opacity',
+    'mx-auto',
+  ],
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;

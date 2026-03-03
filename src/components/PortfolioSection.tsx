@@ -58,7 +58,7 @@ const PortfolioSection: React.FC = () => {
 
         <div className="mt-12">
           <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-4">
-            <Link to="/portfolio">Voir toutes nos réalisations</Link>
+            <Link to="/realisations">Voir toutes nos réalisations</Link>
           </Button>
         </div>
       </div>

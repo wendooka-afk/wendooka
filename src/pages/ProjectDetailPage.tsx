@@ -106,7 +106,7 @@ const ProjectDetailPage: React.FC = () => {
 
                 <section className="py-16 bg-dark-black border-b border-gray-800">
                     <div className="container mx-auto px-4">
-                        <Link to="/portfolio" className="inline-flex items-center text-gray-400 hover:text-lime-accent mb-12 transition-colors group">
+                        <Link to="/realisations" className="inline-flex items-center text-gray-400 hover:text-lime-accent mb-12 transition-colors group">
                             <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Retour aux réalisations
                         </Link>
 
@@ -305,7 +305,7 @@ const ProjectDetailPage: React.FC = () => {
                     <div className="container mx-auto px-4">
                         <div className="flex justify-between items-center">
                             {prevProject ? (
-                                <Link to={`/portfolio/${prevProject.slug}`} className="group max-w-[45%]">
+                                <Link to={`/realisations/${prevProject.slug}`} className="group max-w-[45%]">
                                     <span className="text-gray-500 text-xs uppercase tracking-widest block mb-2">Projet précédent</span>
                                     <span className="text-lg font-bold flex items-center group-hover:text-lime-accent transition-colors">
                                         <ArrowLeft className="mr-2 h-4 w-4" /> {prevProject.title}
@@ -313,7 +313,7 @@ const ProjectDetailPage: React.FC = () => {
                                 </Link>
                             ) : <div></div>}
                             {nextProject ? (
-                                <Link to={`/portfolio/${nextProject.slug}`} className="group text-right max-w-[45%]">
+                                <Link to={`/realisations/${nextProject.slug}`} className="group text-right max-w-[45%]">
                                     <span className="text-gray-500 text-xs uppercase tracking-widest block mb-2">Projet suivant</span>
                                     <span className="text-lg font-bold flex items-center justify-end group-hover:text-lime-accent transition-colors">
                                         {nextProject.title} <ArrowRight className="ml-2 h-4 w-4" />

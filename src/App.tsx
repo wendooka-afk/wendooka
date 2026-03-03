@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AuthGuard from "./components/AuthGuard";
 import { Loader2 } from "lucide-react";
@@ -46,6 +46,12 @@ const PageLoader = () => (
   </div>
 );
 
+// Redirect helper for /portfolio/:slug → /realisations/:slug
+const RedirectProjectSlug = () => {
+  const { projectSlug } = useParams();
+  return <Navigate to={`/realisations/${projectSlug}`} replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -53,45 +59,50 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ErrorBoundary>
-        <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/portfolio/:projectSlug" element={<ProjectDetailPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog/:postSlug" element={<BlogPostPage />} />
-          <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
-          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/realisations" element={<PortfolioPage />} />
+              <Route path="/realisations/:projectSlug" element={<ProjectDetailPage />} />
+              {/* Redirects for old URLs */}
+              <Route path="/portfolio" element={<Navigate to="/realisations" replace />} />
+              <Route path="/portfolio/:projectSlug" element={<RedirectProjectSlug />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/a-propos" element={<AboutPage />} />
+              {/* Redirect for old URL */}
+              <Route path="/about" element={<Navigate to="/a-propos" replace />} />
+              <Route path="/blog/:postSlug" element={<BlogPostPage />} />
+              <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
+              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
-          <Route path="/login" element={<LoginPage />} />
+              <Route path="/login" element={<LoginPage />} />
 
-          {/* Routes du dashboard - Protégées par authentification */}
-          <Route path="/dashboard" element={<AuthGuard><DashboardLayout /></AuthGuard>}>
-            <Route index element={<DashboardIndex />} />
-            <Route path="pages" element={<PagesList />} />
-            <Route path="pages/new" element={<PageForm />} />
-            <Route path="pages/:id/edit" element={<PageForm />} />
-            <Route path="blog" element={<BlogPostsList />} />
-            <Route path="blog/new" element={<BlogPostForm />} />
-            <Route path="blog/:id/edit" element={<BlogPostForm />} />
-            <Route path="projects" element={<ProjectsList />} />
-            <Route path="projects/new" element={<ProjectForm />} />
-            <Route path="projects/:id/edit" element={<ProjectForm />} />
-            <Route path="services" element={<ServicesList />} />
-            <Route path="services/new" element={<ServiceForm />} />
-            <Route path="services/:id/edit" element={<ServiceForm />} />
-            <Route path="media" element={<MediaLibrary />} />
-            <Route path="settings" element={<SettingsPage />} />
-          </Route>
+              {/* Routes du dashboard - Protégées par authentification */}
+              <Route path="/dashboard" element={<AuthGuard><DashboardLayout /></AuthGuard>}>
+                <Route index element={<DashboardIndex />} />
+                <Route path="pages" element={<PagesList />} />
+                <Route path="pages/new" element={<PageForm />} />
+                <Route path="pages/:id/edit" element={<PageForm />} />
+                <Route path="blog" element={<BlogPostsList />} />
+                <Route path="blog/new" element={<BlogPostForm />} />
+                <Route path="blog/:id/edit" element={<BlogPostForm />} />
+                <Route path="projects" element={<ProjectsList />} />
+                <Route path="projects/new" element={<ProjectForm />} />
+                <Route path="projects/:id/edit" element={<ProjectForm />} />
+                <Route path="services" element={<ServicesList />} />
+                <Route path="services/new" element={<ServiceForm />} />
+                <Route path="services/:id/edit" element={<ServiceForm />} />
+                <Route path="media" element={<MediaLibrary />} />
+                <Route path="settings" element={<SettingsPage />} />
+              </Route>
 
-          <Route path="/:slug" element={<DynamicPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        </Suspense>
+              <Route path="/:slug" element={<DynamicPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </ErrorBoundary>
       </BrowserRouter>
     </TooltipProvider>

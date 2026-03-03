@@ -17,7 +17,7 @@ const AboutIntroSection: React.FC = () => {
               Depuis plus de 10 ans, Wendooka accompagne entreprises, institutions et entrepreneurs dans la conception de solutions digitales performantes. Notre approche combine stratégie, design et technologie pour transformer vos idées en outils concrets de croissance.
             </p>
             <Button asChild variant="outline" className="border-lime-accent text-white hover:bg-lime-accent hover:text-dark-black font-bold rounded-full px-8 py-3 transition-all" size="lg">
-              <Link to="/about">Découvrir l’agence</Link>
+              <Link to="/a-propos">Découvrir l’agence</Link>
             </Button>
           </div>
 

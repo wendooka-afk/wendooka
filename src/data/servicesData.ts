@@ -724,7 +724,7 @@ export const blogPostsData = [
             <p>La question à se poser n'est donc pas « combien coûte un site web ? » mais « combien me coûte le fait de ne pas avoir un bon site web ? ». Chaque mois sans présence en ligne crédible, ce sont des prospects qui choisissent vos concurrents.</p>
 
             <h2>Cas réel : ONG Mballen – ROI atteint en 45 jours</h2>
-            <p>L'<strong><a href="/portfolio/mballen-ong">ONG Mballen</a></strong> a investi 800 000 FCFA dans son site web professionnel. Résultats après 1 mois :</p>
+            <p>L'<strong><a href="/realisations/mballen-ong">ONG Mballen</a></strong> a investi 800 000 FCFA dans son site web professionnel. Résultats après 1 mois :</p>
             <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
                 <li>+120% de demandes de contact</li>
                 <li>50+ demandes de bénévolat reçues</li>
@@ -922,8 +922,8 @@ export const blogPostsData = [
                         </tr>
                         <tr>
                             <td class="p-4 font-semibold">Exemples Wendooka</td>
-                            <td class="p-4"><a href="/portfolio" class="text-lime-accent hover:underline">Cabinet conseil, ONG</a></td>
-                            <td class="p-4"><a href="/portfolio" class="text-lime-accent hover:underline">Boutiques retail, formations</a></td>
+                            <td class="p-4"><a href="/realisations" class="text-lime-accent hover:underline">Cabinet conseil, ONG</a></td>
+                            <td class="p-4"><a href="/realisations" class="text-lime-accent hover:underline">Boutiques retail, formations</a></td>
                         </tr>
                     </tbody>
                 </table>

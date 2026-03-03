@@ -56,7 +56,7 @@ const ExpandOnHover: React.FC<ExpandOnHoverProps> = ({ projects }) => {
                                     {project.short_description}
                                 </p>
                                 <Link
-                                    to={`/portfolio/${project.slug}`}
+                                    to={`/realisations/${project.slug}`}
                                     className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-lime-accent hover:text-dark-black hover:border-lime-accent transition-all duration-300"
                                 >
                                     Voir le projet <ArrowUpRight className="w-4 h-4" />

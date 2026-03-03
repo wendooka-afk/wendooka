@@ -11,10 +11,11 @@ interface Page {
   id: string;
   title: string;
   slug: string;
-  content: string; // Assuming content is stored as a string for now
+  content: string;
   seo_title?: string;
   meta_description?: string;
   canonical_url?: string;
+  schema_markup?: string;
 }
 
 const DynamicPage: React.FC = () => {
@@ -55,6 +56,48 @@ const DynamicPage: React.FC = () => {
     fetchPage();
   }, [slug]);
 
+  // Set SEO meta tags + JSON-LD schema
+  // IMPORTANT: This useEffect MUST be before any conditional returns (React Rules of Hooks)
+  useEffect(() => {
+    if (!page) return;
+
+    document.title = page.seo_title || page.title;
+
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (metaDescriptionTag && page.meta_description) {
+      metaDescriptionTag.setAttribute('content', page.meta_description);
+    } else if (page.meta_description) {
+      const newMetaTag = document.createElement('meta');
+      newMetaTag.name = 'description';
+      newMetaTag.content = page.meta_description;
+      document.head.appendChild(newMetaTag);
+    }
+
+    const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
+    if (canonicalLinkTag && page.canonical_url) {
+      canonicalLinkTag.setAttribute('href', page.canonical_url);
+    } else if (page.canonical_url) {
+      const newLinkTag = document.createElement('link');
+      newLinkTag.rel = 'canonical';
+      newLinkTag.href = page.canonical_url;
+      document.head.appendChild(newLinkTag);
+    }
+
+    // JSON-LD Schema injection
+    document.querySelectorAll('script[data-wendooka-schema]').forEach(el => el.remove());
+    if (page.schema_markup) {
+      const schemaScript = document.createElement('script');
+      schemaScript.type = 'application/ld+json';
+      schemaScript.setAttribute('data-wendooka-schema', '');
+      schemaScript.textContent = page.schema_markup;
+      document.head.appendChild(schemaScript);
+    }
+
+    return () => {
+      document.querySelectorAll('script[data-wendooka-schema]').forEach(el => el.remove());
+    };
+  }, [page]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-dark-black text-white">
@@ -72,29 +115,6 @@ const DynamicPage: React.FC = () => {
     return <Navigate to="/404" replace />;
   }
 
-  // Set SEO meta tags
-  useEffect(() => {
-    document.title = page.seo_title || page.title;
-    const metaDescriptionTag = document.querySelector('meta[name="description"]');
-    if (metaDescriptionTag && page.meta_description) {
-      metaDescriptionTag.setAttribute('content', page.meta_description);
-    } else if (page.meta_description) {
-      const newMetaTag = document.createElement('meta');
-      newMetaTag.name = 'description';
-      newMetaTag.content = page.meta_description;
-      document.head.appendChild(newMetaTag);
-    }
-    const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
-    if (canonicalLinkTag && page.canonical_url) {
-      canonicalLinkTag.setAttribute('href', page.canonical_url);
-    } else if (page.canonical_url) {
-      const newLinkTag = document.createElement('link');
-      newLinkTag.rel = 'canonical';
-      newLinkTag.href = page.canonical_url;
-      document.head.appendChild(newLinkTag);
-    }
-  }, [page]);
-
   return (
     <div className="bg-dark-black text-white">
       <Header />
@@ -110,7 +130,6 @@ const DynamicPage: React.FC = () => {
 
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 max-w-4xl prose prose-invert prose-lg">
-            {/* For now, content is plain text. Will be enhanced with WYSIWYG/Markdown later. */}
             {page.content && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.content) }} />}
             {!page.content && <p className="text-gray-400">Aucun contenu pour cette page.</p>}
           </div>
