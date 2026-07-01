@@ -1280,43 +1280,42 @@ import { Project } from "@/types/project";
 export const projectsData: Project[] = [
     {
         id: "1",
-        title: "Bandiko Production — Donner une vitrine digitale à la production audiovisuelle sahélienne",
-        slug: "bandiko-production",
-        description: "Conception du site web de Bandiko Production, société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Une plateforme pensée pour révéler au monde les récits authentiques du bassin du Lac Tchad.",
-        short_description: "Site vitrine premium pour une société de production audiovisuelle. Identité visuelle immersive, portfolio vidéo intégré et positionnement international.",
-        tags: ["Production Audiovisuelle", "Site Vitrine", "Branding Digital", "Portfolio Créatif"],
-        image: "/Bandiko Productions Home 1.webp",
-        gallery: ["/Bandiko Productions Home 1.webp", "/Bandiko Productions about.webp"],
-        category: "Site Vitrine",
-        client: "Bandiko Production",
-        role: "Direction Artistique, Design & Développement Web",
-        year: "2025",
-        context: "<p>Bandiko Production est une société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Spécialisée dans la réalisation de reportages, enquêtes et documentaires pour les médias internationaux, elle explore les récits authentiques du bassin du Lac Tchad et des zones sahéliennes. Son crédo : <strong>filmer l'essentiel, raconter des histoires incarnées et révéler l'invisible</strong>.</p><p>Malgré une production régulière pour des chaînes internationales et une expertise reconnue sur le terrain, Bandiko Production ne disposait pas d'une vitrine digitale à la hauteur de son travail. L'objectif : créer un site web immersif capable de porter l'identité unique de la boîte de production et de convaincre les diffuseurs, institutions et partenaires internationaux.</p>",
-        challenge: "<p>Trois défis majeurs se posaient. Premièrement, traduire l'univers visuel et émotionnel d'une société de production audiovisuelle en une expérience web immersive — le site devait respirer le documentaire et le reportage, pas ressembler à un site vitrine classique. Deuxièmement, structurer une offre diversifiée (news, enquêtes, documentaires, magazines TV, production corporate) de manière lisible pour des publics très différents : diffuseurs internationaux, ONG, institutions et entreprises. Troisièmement, intégrer des contenus vidéo lourds tout en garantissant des performances optimales sur des connexions variables.</p>",
-        solution: "<p>Nous avons conçu un site qui place l'image et le récit au cœur de l'expérience. <strong>Direction artistique :</strong> une identité visuelle sombre et cinématographique, avec des vidéos en plein écran, des transitions fluides et une typographie forte qui évoque le documentaire. <strong>Architecture :</strong> chaque expertise de Bandiko (reportages, enquêtes, documentaires, magazines, production corporate) dispose de sa propre section avec une présentation narrative qui plonge le visiteur dans l'univers de la production. <strong>Performance :</strong> chargement optimisé des médias vidéo avec lazy loading et formats adaptatifs, intégration YouTube pour minimiser le poids des pages.</p><p>Le résultat est un site qui ne se contente pas de présenter Bandiko Production — il fait vivre son univers dès la première seconde.</p>",
-        results: "<ul><li><strong>Identité digitale premium</strong> alignée avec le positionnement audiovisuel de haut niveau</li><li><strong>5 expertises</strong> clairement structurées et présentées avec un storytelling immersif</li><li><strong>Portfolio vidéo intégré</strong> avec performances optimisées malgré les contenus lourds</li><li><strong>Crédibilité renforcée</strong> auprès des diffuseurs et partenaires internationaux</li></ul>",
-        problems_identified: [
-            "Absence de vitrine digitale pour une société de production active à l'international",
-            "Offre diversifiée difficile à structurer pour des publics variés",
-            "Besoin d'une identité web immersive à la hauteur de la qualité des productions"
-        ],
-        duration: "2 semaines",
-        representative_reason: "Ce projet incarne notre capacité à créer des expériences web immersives pour les acteurs créatifs — un site qui ne montre pas seulement le travail, mais qui le fait ressentir.",
-        related_services: [
-            { title: "Création de sites web", slug: "creation-sites-web" },
-            { title: "UI/UX Design", slug: "ui-ux-design" },
-            { title: "Design graphique", slug: "design-graphique" }
-        ],
-        link: "https://bandikoproduction.com/",
+        title: "Kubaru Sahel — Le premier média digital du Nord-Cameroun",
+        slug: "kubaru-sahel",
+        description: "Conception et lancement du portail d'information Kubaru Sahel : une plateforme média taillée pour fonctionner en conditions réseau difficiles, livrée en 12 jours.",
+        short_description: "Portail d'actualités conçu pour des connexions instables. Chargement sous 3 secondes en 2G. Gestion éditoriale 100% autonome.",
+        tags: ["Portail Média", "Performance Web", "Accessibilité", "CMS"],
+        category: "Application Web",
         status: "published",
-        created_at: "2025-12-01",
-        seo_title: "Site web Bandiko Production — Production audiovisuelle Nord-Cameroun | Wendooka",
-        meta_description: "Conception du site vitrine de Bandiko Production, société de production audiovisuelle au Nord-Cameroun. Identité immersive, portfolio vidéo et positionnement international.",
+        image: "/KubaruSahel homepage.webp",
+        gallery: ["/KubaruSahel homepage.webp", "/KubaruSahel single post.webp"],
+        client: "Kubaru Sahel",
+        role: "Architecture Technique & Développement",
+        year: "2026",
+        link: "https://www.kubarusahel24.com/",
+        context: "<p>Le Septentrion camerounais et le Bassin du Lac Tchad sont des zones en pleine mutation où l'accès à une information locale fiable et structurée restait limité. Kubaru Sahel a été fondé pour combler ce vide : un média numérique indépendant, couvrant l'actualité régionale avec rigueur et réactivité.</p><p>Le défi technique était aussi géographique : la majorité du lectorat cible accède au web via mobile, souvent sur des réseaux 2G ou 3G instables. Le portail devait donc être rapide avant tout — chaque kilo-octet comptait.</p>",
+        challenge: "<p>Construire un portail d'information performant pour une zone à faible couverture réseau posait des contraintes techniques rares. Le site devait charger en moins de 3 secondes sur une connexion 2G, gérer un flux de publication de plusieurs articles par jour, et rester maintenable par une équipe éditoriale sans compétences techniques. En parallèle, l'architecture devait supporter les pics de trafic lors d'événements majeurs (élections, crises humanitaires) sans dégradation.</p>",
+        solution: "<p>Nous avons fait de la performance le pilier central du projet. <strong>Architecture :</strong> pages générées côté serveur avec mise en cache agressive, images automatiquement compressées et servies au format WebP, CSS critique en ligne pour un rendu immédiat. <strong>Éditorial :</strong> un CMS intuitif permettant à la rédaction de publier, catégoriser et illustrer ses articles en toute autonomie. <strong>Livraison :</strong> prototypage en 3 jours, développement en 6 jours, tests et optimisations finales en 3 jours.</p><p>Le résultat est un portail qui pèse moins de 200 Ko par page et se charge en conditions réseau dégradées là où d'autres sites restent bloqués.</p>",
+        results: "<ul><li><strong>Moins de 3 secondes</strong> de chargement, même sur un réseau 2G</li><li><strong>Moins de 200 Ko</strong> par page chargée — parmi les portails les plus légers d'Afrique centrale</li><li><strong>100% d'autonomie éditoriale</strong> pour l'équipe Kubaru Sahel</li><li>Plateforme de référence pour l'information du Septentrion camerounais</li></ul>",
+        problems_identified: [
+            "Aucun média numérique structuré couvrant la région",
+            "Lectorat sur connexions 2G/3G nécessitant des pages ultra-légères",
+            "Besoin d'autonomie totale pour l'équipe rédactionnelle"
+        ],
+        duration: "12 jours",
+        representative_reason: "Ce projet illustre notre expertise en performance web extrême : concevoir un produit qui fonctionne là où les autres échouent, dans des délais serrés.",
+        related_services: [
+            { title: "Développement web", slug: "developpement-web" },
+            { title: "Création de sites web", slug: "creation-sites-web" }
+        ],
+        seo_title: "Kubaru Sahel — Portail média ultra-rapide pour le Nord-Cameroun | Wendooka",
+        meta_description: "Portail d'information Kubaru Sahel livré en 12 jours : chargement sous 3s en 2G, pages de 200 Ko, gestion éditoriale autonome. Performance web extrême par Wendooka.",
+        created_at: "2026-01-20",
         testimonial: {
-            name: "Dewa Aboubakar",
-            role: "Fondateur, Bandiko Production",
-            content: "Wendooka a parfaitement capté l'essence de notre travail. Le site reflète notre identité et notre passion pour le documentaire. Une réalisation qui nous positionne à la hauteur de nos ambitions internationales.",
-            image: "/Client dewa aboubakar Bandiko productions.webp"
+            name: "Eric Nguele",
+            role: "Promoteur, Kubaru Sahel",
+            content: "Un travail technique remarquable. Le site est ultra-rapide même en zone rurale, ce qui était notre exigence n°1. Wendooka a parfaitement compris nos contraintes spécifiques.",
+            image: "/Client Eric Nguele Kubaru Sahel 24.jpg"
         }
     },
     {
@@ -1361,6 +1360,146 @@ export const projectsData: Project[] = [
     },
     {
         id: "3",
+        title: "Oumarou Sanda — Une plateforme personnelle pour un expert IA et entrepreneur digital",
+        slug: "oumarousanda",
+        description: "Conception du site personnel d'Oumarou Sanda, expert en intelligence artificielle et entrepreneuriat digital, fondateur de Wendooka, pensé pour publier du contenu expert et construire une autorité personnelle durable.",
+        short_description: "Plateforme personnelle pour un expert IA à forte audience. Preuve sociale chiffrée, double parcours de conversion et architecture pensée pour le SEO.",
+        tags: ["Personal Branding", "Blog", "SEO", "Site Vitrine"],
+        image: "/oumarousanda hompage.jpeg",
+        category: "Site Vitrine",
+        client: "Oumarou Sanda",
+        role: "Conception, Design & Développement Web",
+        year: "2026",
+        link: "https://oumarousanda.com/",
+        context: "<p>« Je t'apprends à utiliser l'IA pour bâtir un business qui écrase la concurrence. » C'est la promesse d'Oumarou Sanda, entrepreneur digital, formateur et fondateur de Wendooka, devenu une référence pour les entrepreneurs et créateurs africains qui veulent transformer l'intelligence artificielle en machine à revenus. Son audience : plus de <strong>112 000 abonnés</strong>, plus de <strong>200 apprenants</strong> formés et <strong>6 formations</strong> en catalogue.</p><p>Cette activité de création de contenu et de formation, distincte de l'agence Wendooka, avait besoin de sa propre plateforme — capable de porter une voix personnelle, de convertir une audience massive en apprenants et de publier du contenu expert en continu.</p>",
+        challenge: "<p>Le défi était double. D'abord construire une identité personnelle forte et autonome, séparée de la marque agence, capable de tenir une audience de plus de 112 000 abonnés. Ensuite, transformer cette audience en résultat mesurable — inscriptions aux formations, prises de contact — via un parcours de conversion clair, tout en posant une architecture de contenu pensée pour le référencement naturel dès le lancement.</p>",
+        solution: "<p>Nous avons conçu une plateforme personnelle structurée comme un véritable hub d'autorité. <strong>Preuve sociale :</strong> un bandeau qui met en avant les 112 000+ abonnés, 200+ apprenants et 6+ formations dès la page d'accueil. <strong>Conversion :</strong> deux parcours d'action clairs — découvrir les formations ou travailler directement avec lui — positionnés au-dessus de la ligne de flottaison. <strong>Contenu :</strong> une architecture de blog et de pages piliers pensée pour le maillage interne et le SEO, qui permet de publier sans intervention technique.</p>",
+        results: "<ul><li><strong>112 000+ abonnés, 200+ apprenants et 6+ formations</strong> mis en avant comme preuve sociale immédiate</li><li><strong>Plateforme personnelle</strong> distincte et complémentaire de l'agence Wendooka</li><li><strong>Architecture de contenu</strong> prête pour la publication régulière et le SEO long terme</li></ul>",
+        problems_identified: [
+            "Audience de 112 000+ abonnés sans plateforme personnelle pour la convertir",
+            "Activité de formation distincte de l'agence Wendooka sans identité propre",
+            "Besoin d'une architecture de contenu pensée pour le SEO long terme"
+        ],
+        duration: "14 jours",
+        representative_reason: "Ce projet illustre notre capacité à transformer une audience personnelle massive en plateforme de conversion, sans diluer la voix de l'expert qui la porte.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "Marketing digital", slug: "marketing-digital" }
+        ],
+        status: "published",
+        created_at: "2026-01-10",
+        seo_title: "Site web Oumarou Sanda — Expert IA & entrepreneur digital | Wendooka",
+        meta_description: "Conception de la plateforme personnelle d'Oumarou Sanda, expert IA et entrepreneur digital : identité, blog et architecture SEO pour une autorité de marque durable."
+    },
+    {
+        id: "4",
+        title: "Bandiko Production — Donner une vitrine digitale à la production audiovisuelle sahélienne",
+        slug: "bandiko-production",
+        description: "Conception du site web de Bandiko Production, société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Une plateforme pensée pour révéler au monde les récits authentiques du bassin du Lac Tchad.",
+        short_description: "Site vitrine premium pour une société de production audiovisuelle. Identité visuelle immersive, portfolio vidéo intégré et positionnement international.",
+        tags: ["Production Audiovisuelle", "Site Vitrine", "Branding Digital", "Portfolio Créatif"],
+        image: "/Bandiko Productions Home 1.webp",
+        gallery: ["/Bandiko Productions Home 1.webp", "/Bandiko Productions about.webp"],
+        category: "Site Vitrine",
+        client: "Bandiko Production",
+        role: "Direction Artistique, Design & Développement Web",
+        year: "2025",
+        context: "<p>Bandiko Production est une société de production audiovisuelle et agence de presse basée au Nord-Cameroun. Spécialisée dans la réalisation de reportages, enquêtes et documentaires pour les médias internationaux, elle explore les récits authentiques du bassin du Lac Tchad et des zones sahéliennes. Son crédo : <strong>filmer l'essentiel, raconter des histoires incarnées et révéler l'invisible</strong>.</p><p>Malgré une production régulière pour des chaînes internationales et une expertise reconnue sur le terrain, Bandiko Production ne disposait pas d'une vitrine digitale à la hauteur de son travail. L'objectif : créer un site web immersif capable de porter l'identité unique de la boîte de production et de convaincre les diffuseurs, institutions et partenaires internationaux.</p>",
+        challenge: "<p>Trois défis majeurs se posaient. Premièrement, traduire l'univers visuel et émotionnel d'une société de production audiovisuelle en une expérience web immersive — le site devait respirer le documentaire et le reportage, pas ressembler à un site vitrine classique. Deuxièmement, structurer une offre diversifiée (news, enquêtes, documentaires, magazines TV, production corporate) de manière lisible pour des publics très différents : diffuseurs internationaux, ONG, institutions et entreprises. Troisièmement, intégrer des contenus vidéo lourds tout en garantissant des performances optimales sur des connexions variables.</p>",
+        solution: "<p>Nous avons conçu un site qui place l'image et le récit au cœur de l'expérience. <strong>Direction artistique :</strong> une identité visuelle sombre et cinématographique, avec des vidéos en plein écran, des transitions fluides et une typographie forte qui évoque le documentaire. <strong>Architecture :</strong> chaque expertise de Bandiko (reportages, enquêtes, documentaires, magazines, production corporate) dispose de sa propre section avec une présentation narrative qui plonge le visiteur dans l'univers de la production. <strong>Performance :</strong> chargement optimisé des médias vidéo avec lazy loading et formats adaptatifs, intégration YouTube pour minimiser le poids des pages.</p><p>Le résultat est un site qui ne se contente pas de présenter Bandiko Production — il fait vivre son univers dès la première seconde.</p>",
+        results: "<ul><li><strong>Identité digitale premium</strong> alignée avec le positionnement audiovisuel de haut niveau</li><li><strong>5 expertises</strong> clairement structurées et présentées avec un storytelling immersif</li><li><strong>Portfolio vidéo intégré</strong> avec performances optimisées malgré les contenus lourds</li><li><strong>Crédibilité renforcée</strong> auprès des diffuseurs et partenaires internationaux</li></ul>",
+        problems_identified: [
+            "Absence de vitrine digitale pour une société de production active à l'international",
+            "Offre diversifiée difficile à structurer pour des publics variés",
+            "Besoin d'une identité web immersive à la hauteur de la qualité des productions"
+        ],
+        duration: "2 semaines",
+        representative_reason: "Ce projet incarne notre capacité à créer des expériences web immersives pour les acteurs créatifs — un site qui ne montre pas seulement le travail, mais qui le fait ressentir.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "UI/UX Design", slug: "ui-ux-design" },
+            { title: "Design graphique", slug: "design-graphique" }
+        ],
+        link: "https://bandikoproduction.com/",
+        status: "published",
+        created_at: "2025-12-01",
+        seo_title: "Site web Bandiko Production — Production audiovisuelle Nord-Cameroun | Wendooka",
+        meta_description: "Conception du site vitrine de Bandiko Production, société de production audiovisuelle au Nord-Cameroun. Identité immersive, portfolio vidéo et positionnement international.",
+        testimonial: {
+            name: "Dewa Aboubakar",
+            role: "Fondateur, Bandiko Production",
+            content: "Wendooka a parfaitement capté l'essence de notre travail. Le site reflète notre identité et notre passion pour le documentaire. Une réalisation qui nous positionne à la hauteur de nos ambitions internationales.",
+            image: "/Client dewa aboubakar Bandiko productions.webp"
+        }
+    },
+    {
+        id: "5",
+        title: "Baladji Kwata — Structurer la carrière des « étoiles du Sahel » sur le web",
+        slug: "baladjikwata",
+        description: "Création du site vitrine bilingue de Baladji Kwata, groupe de musique urbaine de Ngaoundéré, pour rassembler discographie, récompenses, tournées et contact de booking.",
+        short_description: "Site vitrine multilingue pour un groupe de musique urbaine primé. Palmarès, discographie et booking réunis sur une seule plateforme.",
+        tags: ["Musique", "Artiste", "Site Vitrine", "Multilingue"],
+        image: "/baladjikwata homepage.jpeg",
+        category: "Site Vitrine",
+        client: "Baladji Kwata",
+        role: "Conception, Design & Développement Web",
+        year: "2025",
+        link: "https://baladjikwata.com/fr",
+        context: "<p>Depuis 2007, Baladji Kwata fait vibrer Ngaoundéré et le Nord-Cameroun. Le groupe affiche un palmarès rare pour une formation locale : <strong>7 trophées remportés</strong>, une présence au Manie Musicale 2024 et une reconnaissance à la CAN 2025 — tout en restant fièrement « 100% Made in Ngaoundéré ». Porté par l'album <em>Dje Mone</em>, son catalogue tourne sur Spotify, Apple Music et YouTube.</p><p>Un palmarès de cette ampleur méritait mieux qu'une présence éclatée entre réseaux sociaux et plateformes de streaming : Baladji Kwata avait besoin d'une plateforme capable de raconter 18 ans de carrière en un seul endroit.</p>",
+        challenge: "<p>Le défi était de mettre en scène près de deux décennies de carrière — membres, discographie, récompenses, dates — sans noyer l'essentiel sous le volume d'informations. Le site devait aussi s'adresser à deux publics distincts : le public local de Ngaoundéré et les organisateurs d'événements à l'échelle internationale, avec un accès direct au booking.</p>",
+        solution: "<p>Nous avons structuré le site autour du palmarès du groupe, traité comme un argument de vente à part entière. <strong>Architecture :</strong> sections dédiées au groupe, à la musique, au palmarès (Manie Musicale, CAN 2025, 7 trophées) et aux concerts. <strong>Preuve par les chiffres :</strong> un bandeau « 2007 / 7 trophées / 100% Made in Ngaoundéré » qui résume la légitimité du groupe en quelques secondes. <strong>Booking :</strong> un parcours de contact dédié, pensé pour les programmateurs de festivals.</p>",
+        results: "<ul><li><strong>18 ans de carrière</strong> structurés en une plateforme web claire et navigable</li><li><strong>Palmarès (7 trophées, Manie Musicale 2024, CAN 2025)</strong> mis en avant comme argument de crédibilité</li><li><strong>Canal de booking dédié</strong> pour les organisateurs d'événements</li></ul>",
+        problems_identified: [
+            "18 ans de carrière et un palmarès riche (7 trophées) sans plateforme pour les valoriser",
+            "Discographie et dates dispersées entre réseaux sociaux et plateformes de streaming",
+            "Besoin d'un canal de booking direct pour les organisateurs d'événements"
+        ],
+        duration: "10 jours",
+        representative_reason: "Ce projet montre notre capacité à transformer un palmarès artistique dense en argument de vente clair, lisible en quelques secondes par un programmateur.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "Design graphique", slug: "design-graphique" }
+        ],
+        status: "published",
+        created_at: "2025-09-05",
+        seo_title: "Site web Baladji Kwata — Groupe musical de Ngaoundéré | Wendooka",
+        meta_description: "Création du site vitrine multilingue de Baladji Kwata : discographie, récompenses, tournées et booking réunis sur une seule plateforme web."
+    },
+    {
+        id: "6",
+        title: "Barkantedjo — Une identité web pour l'humoriste qui fait découvrir le continent",
+        slug: "barkantedjo",
+        description: "Conception du site vitrine de Barkantedjo, humoriste africain, pensé comme une plateforme centrale pour son image d'artiste, ses contenus et ses demandes de booking.",
+        short_description: "Site vitrine pour un humoriste à l'audience panafricaine. Preuve sociale chiffrée, identité visuelle forte et parcours de booking dédié.",
+        tags: ["Artiste", "Humour", "Site Vitrine", "Personal Branding"],
+        image: "/barkantedjo homepage.jpeg",
+        category: "Site Vitrine",
+        client: "Barkantedjo",
+        role: "Direction Artistique, Design & Développement Web",
+        year: "2025",
+        link: "https://barkantedjo.com/",
+        context: "<p>Barkantedjo n'est pas un humoriste comme les autres : avec plus de <strong>640 000 Barkantéens</strong> réunis sur TikTok, Facebook et YouTube, il a transformé l'humour fulfuldé et francophone en phénomène qui dépasse Ngaoundéré pour atteindre le Nigeria et la diaspora. Sa signature : « le béni qui fait rire et découvrir le continent ».</p><p>Cette audience massive vivait pourtant entièrement sur les réseaux sociaux, sans plateforme propre pour la fédérer, la prouver aux partenaires et capter les demandes de booking qui accompagnent une telle notoriété.</p>",
+        challenge: "<p>Le premier défi était de donner un visage web à une notoriété 100% native des réseaux sociaux, sans perdre l'énergie brute qui fait le succès de l'artiste. Le second était de transformer des chiffres d'audience impressionnants — mais dispersés entre trois plateformes — en une preuve sociale lisible en un coup d'œil. Le troisième : canaliser les sollicitations média et les demandes de booking, jusque-là gérées au gré des messages privés.</p>",
+        solution: "<p>Nous avons conçu un site qui fonctionne comme une carte de visite à fort impact. <strong>Direction artistique :</strong> une page d'accueil immersive, visage de l'artiste en grand format, qui capture l'énergie de scène dès le premier écran. <strong>Preuve sociale :</strong> un bandeau de chiffres qui agrège l'audience cumulée sur TikTok, Facebook et YouTube — exactement le type de donnée qui rassure un programmateur avant de signer. <strong>Conversion :</strong> un parcours de contact clair, séparé pour les demandes de booking et les sollicitations média.</p>",
+        results: "<ul><li><strong>640 000+ Barkantéens</strong> réunis et mis en valeur sur une plateforme unique</li><li><strong>Preuve sociale immédiate</strong> grâce à un bandeau de chiffres consolidés (TikTok, Facebook, YouTube)</li><li><strong>Canal de booking structuré</strong>, là où tout passait auparavant par les messages privés</li></ul>",
+        problems_identified: [
+            "Audience de 640 000+ fans dispersée sur 3 plateformes sans plateforme propre",
+            "Aucun point de contact professionnel structuré pour les demandes de booking",
+            "Chiffres d'audience impressionnants mais invisibles pour les partenaires potentiels"
+        ],
+        duration: "7 jours",
+        representative_reason: "Ce projet illustre notre capacité à transformer une audience sociale massive en preuve sociale exploitable, sans diluer l'énergie qui fait le succès de l'artiste.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "Design graphique", slug: "design-graphique" }
+        ],
+        status: "published",
+        created_at: "2025-08-10",
+        seo_title: "Site web Barkantedjo — Identité digitale d'un humoriste africain | Wendooka",
+        meta_description: "Conception du site vitrine de Barkantedjo : plateforme centrale pour son image d'artiste, ses contenus et ses demandes de booking professionnel."
+    },
+    {
+        id: "7",
         title: "Abouscom — Repositionner une agence leader par le digital",
         slug: "abouscom",
         description: "Refonte complète de l'identité web d'Abouscom, agence de communication 360 au Cameroun. Un site conçu pour convertir les visiteurs en clients qualifiés.",
@@ -1395,87 +1534,7 @@ export const projectsData: Project[] = [
         created_at: "2025-06-10"
     },
     {
-        id: "3",
-        title: "Kubaru Sahel — Le premier média digital du Nord-Cameroun",
-        slug: "kubaru-sahel",
-        description: "Conception et lancement du portail d'information Kubaru Sahel : une plateforme média taillée pour fonctionner en conditions réseau difficiles, livrée en 12 jours.",
-        short_description: "Portail d'actualités conçu pour des connexions instables. Chargement sous 3 secondes en 2G. Gestion éditoriale 100% autonome.",
-        tags: ["Portail Média", "Performance Web", "Accessibilité", "CMS"],
-        category: "Application Web",
-        status: "published",
-        image: "/KubaruSahel homepage.webp",
-        gallery: ["/KubaruSahel homepage.webp", "/KubaruSahel single post.webp"],
-        client: "Kubaru Sahel",
-        role: "Architecture Technique & Développement",
-        year: "2026",
-        link: "https://www.kubarusahel24.com/",
-        context: "<p>Le Septentrion camerounais et le Bassin du Lac Tchad sont des zones en pleine mutation où l'accès à une information locale fiable et structurée restait limité. Kubaru Sahel a été fondé pour combler ce vide : un média numérique indépendant, couvrant l'actualité régionale avec rigueur et réactivité.</p><p>Le défi technique était aussi géographique : la majorité du lectorat cible accède au web via mobile, souvent sur des réseaux 2G ou 3G instables. Le portail devait donc être rapide avant tout — chaque kilo-octet comptait.</p>",
-        challenge: "<p>Construire un portail d'information performant pour une zone à faible couverture réseau posait des contraintes techniques rares. Le site devait charger en moins de 3 secondes sur une connexion 2G, gérer un flux de publication de plusieurs articles par jour, et rester maintenable par une équipe éditoriale sans compétences techniques. En parallèle, l'architecture devait supporter les pics de trafic lors d'événements majeurs (élections, crises humanitaires) sans dégradation.</p>",
-        solution: "<p>Nous avons fait de la performance le pilier central du projet. <strong>Architecture :</strong> pages générées côté serveur avec mise en cache agressive, images automatiquement compressées et servies au format WebP, CSS critique en ligne pour un rendu immédiat. <strong>Éditorial :</strong> un CMS intuitif permettant à la rédaction de publier, catégoriser et illustrer ses articles en toute autonomie. <strong>Livraison :</strong> prototypage en 3 jours, développement en 6 jours, tests et optimisations finales en 3 jours.</p><p>Le résultat est un portail qui pèse moins de 200 Ko par page et se charge en conditions réseau dégradées là où d'autres sites restent bloqués.</p>",
-        results: "<ul><li><strong>Moins de 3 secondes</strong> de chargement, même sur un réseau 2G</li><li><strong>Moins de 200 Ko</strong> par page chargée — parmi les portails les plus légers d'Afrique centrale</li><li><strong>100% d'autonomie éditoriale</strong> pour l'équipe Kubaru Sahel</li><li>Plateforme de référence pour l'information du Septentrion camerounais</li></ul>",
-        problems_identified: [
-            "Aucun média numérique structuré couvrant la région",
-            "Lectorat sur connexions 2G/3G nécessitant des pages ultra-légères",
-            "Besoin d'autonomie totale pour l'équipe rédactionnelle"
-        ],
-        duration: "12 jours",
-        representative_reason: "Ce projet illustre notre expertise en performance web extrême : concevoir un produit qui fonctionne là où les autres échouent, dans des délais serrés.",
-        related_services: [
-            { title: "Développement web", slug: "developpement-web" },
-            { title: "Création de sites web", slug: "creation-sites-web" }
-        ],
-        seo_title: "Kubaru Sahel — Portail média ultra-rapide pour le Nord-Cameroun | Wendooka",
-        meta_description: "Portail d'information Kubaru Sahel livré en 12 jours : chargement sous 3s en 2G, pages de 200 Ko, gestion éditoriale autonome. Performance web extrême par Wendooka.",
-        created_at: "2026-01-20",
-        testimonial: {
-            name: "Eric Nguele",
-            role: "Promoteur, Kubaru Sahel",
-            content: "Un travail technique remarquable. Le site est ultra-rapide même en zone rurale, ce qui était notre exigence n°1. Wendooka a parfaitement compris nos contraintes spécifiques.",
-            image: "/Client Eric Nguele Kubaru Sahel 24.jpg"
-        }
-    },
-    {
-        id: "4",
-        title: "Commune de Ngaoundéré 2e — Digitaliser la gouvernance locale au Cameroun",
-        slug: "commune-ngaoundere-2",
-        description: "Conception du portail officiel de la Commune d'Arrondissement de Ngaoundéré 2e : 120 000 habitants connectés aux services municipaux grâce à une plateforme pensée pour l'inclusion numérique.",
-        short_description: "Portail institutionnel pour une commune de 120 000 habitants. Services municipaux en ligne, information citoyenne et accessibilité maximale.",
-        tags: ["Site Institutionnel", "Collectivité Locale", "Accessibilité", "WordPress"],
-        category: "Site Vitrine",
-        status: "published",
-        image: "/commune ngaoundere 2 Home.webp",
-        gallery: ["/commune ngaoundere 2 Home.webp", "/commune ngaoundere 2 about.webp"],
-        client: "Commune d'Arrondissement de Ngaoundéré 2e",
-        role: "Conception, Design & Développement Web",
-        year: "2024",
-        link: "https://communedengaoundere2.cm/",
-        context: "<p>La Commune d'Arrondissement de Ngaoundéré 2e administre un territoire de 513 km² regroupant 31 quartiers et 16 villages dans la région de l'Adamaoua. Fondée en 2007, elle concentre ses actions sur six piliers : services sociaux de base, développement économique local, santé, patrimoine culturel, éducation et gestion environnementale.</p><p>Malgré son rôle central dans la vie de 120 000 habitants, la commune ne disposait d'aucune vitrine numérique. Les citoyens devaient se déplacer physiquement pour toute demande d'information sur les services municipaux, les projets communautaires ou l'état civil. L'objectif : créer un portail officiel qui rapproche l'institution de sa population.</p>",
-        challenge: "<p>Le projet présentait des contraintes propres au secteur public. Premièrement, la diversité des publics : élus, agents municipaux, citoyens ruraux et partenaires internationaux devaient tous trouver l'information pertinente rapidement. Deuxièmement, le volume d'informations à structurer était considérable : organigrammes, services d'état civil, centres de santé, établissements scolaires, comités de quartier et projets de développement. Troisièmement, l'accessibilité était critique : une grande partie de la population accède au web uniquement via mobile avec des connexions modestes.</p>",
-        solution: "<p>Nous avons conçu une architecture d'information hiérarchique qui reflète l'organisation administrative de la commune. <strong>Phase 1 (3 jours) :</strong> audit des besoins avec les services municipaux, cartographie des contenus existants et définition de l'arborescence. <strong>Phase 2 (6 jours) :</strong> développement sur WordPress avec Elementor pour garantir l'autonomie de gestion, intégration d'un design responsive épuré aux couleurs institutionnelles, et mise en place de sections dédiées (services sociaux, économie, tourisme, actualités). <strong>Phase 3 (3 jours) :</strong> formation des agents municipaux à la publication de contenus, optimisation des performances et mise en ligne.</p><p>Chaque section a été structurée pour permettre un accès en 2 clics maximum aux informations clés : état civil, centres de santé, projets en cours et contacts.</p>",
-        results: "<ul><li><strong>Première commune</strong> de la région de l'Adamaoua avec un portail web officiel complet</li><li><strong>120 000 habitants</strong> connectés aux services municipaux en ligne</li><li><strong>Autonomie totale</strong> des agents pour la publication d'actualités et projets</li><li><strong>Réduction</strong> des déplacements physiques pour les demandes d'information courantes</li></ul>",
-        problems_identified: [
-            "Aucune présence numérique pour une commune de 120 000 habitants",
-            "Informations municipales inaccessibles sans déplacement physique",
-            "Multiplicité des publics cibles avec des besoins très différents"
-        ],
-        duration: "12 jours",
-        representative_reason: "Ce projet démontre notre capacité à structurer des volumes d'information complexes en portails clairs et accessibles, même pour des institutions publiques.",
-        related_services: [
-            { title: "Création de sites web", slug: "creation-sites-web" },
-            { title: "UI/UX Design", slug: "ui-ux-design" }
-        ],
-        seo_title: "Portail web Commune Ngaoundéré 2e — Gouvernance digitale locale | Wendooka",
-        meta_description: "Création du portail officiel de la Commune de Ngaoundéré 2e : 120 000 habitants, services municipaux en ligne, autonomie de gestion et accessibilité mobile.",
-        created_at: "2024-09-15",
-        testimonial: {
-            name: "Idrissou Abana",
-            role: "Maire, Commune de Ngaoundéré 2e",
-            content: "La digitalisation de nos services était un défi majeur. Ce portail web rapproche l'administration des citoyens et modernise l'image de notre commune. Une réalisation impeccable.",
-            image: "/Client Idrissou abana commune ngaoundere 2.webp"
-        }
-    },
-    {
-        id: "5",
+        id: "8",
         title: "Sahel Consulting — Crédibiliser l'expertise conseil à l'échelle internationale",
         slug: "sahel-consulting",
         description: "Création du site vitrine de Sahel Consulting, cabinet de conseil en stratégie et entrepreneuriat. Une plateforme conçue pour transformer l'expertise terrain en autorité digitale.",
@@ -1513,6 +1572,46 @@ export const projectsData: Project[] = [
             role: "CEO, Sahel Consulting",
             content: "Wendooka a su traduire la complexité de nos offres en un site clair et percutant. Depuis la mise en ligne, nous constatons un impact réel sur notre image de marque.",
             image: "/Client Hamidou Ahmadou Sahel Consulting.jpeg"
+        }
+    },
+    {
+        id: "9",
+        title: "Commune de Ngaoundéré 2e — Digitaliser la gouvernance locale au Cameroun",
+        slug: "commune-ngaoundere-2",
+        description: "Conception du portail officiel de la Commune d'Arrondissement de Ngaoundéré 2e : 120 000 habitants connectés aux services municipaux grâce à une plateforme pensée pour l'inclusion numérique.",
+        short_description: "Portail institutionnel pour une commune de 120 000 habitants. Services municipaux en ligne, information citoyenne et accessibilité maximale.",
+        tags: ["Site Institutionnel", "Collectivité Locale", "Accessibilité", "WordPress"],
+        category: "Site Vitrine",
+        status: "published",
+        image: "/commune ngaoundere 2 Home.webp",
+        gallery: ["/commune ngaoundere 2 Home.webp", "/commune ngaoundere 2 about.webp"],
+        client: "Commune d'Arrondissement de Ngaoundéré 2e",
+        role: "Conception, Design & Développement Web",
+        year: "2024",
+        link: "https://communedengaoundere2.cm/",
+        context: "<p>La Commune d'Arrondissement de Ngaoundéré 2e administre un territoire de 513 km² regroupant 31 quartiers et 16 villages dans la région de l'Adamaoua. Fondée en 2007, elle concentre ses actions sur six piliers : services sociaux de base, développement économique local, santé, patrimoine culturel, éducation et gestion environnementale.</p><p>Malgré son rôle central dans la vie de 120 000 habitants, la commune ne disposait d'aucune vitrine numérique. Les citoyens devaient se déplacer physiquement pour toute demande d'information sur les services municipaux, les projets communautaires ou l'état civil. L'objectif : créer un portail officiel qui rapproche l'institution de sa population.</p>",
+        challenge: "<p>Le projet présentait des contraintes propres au secteur public. Premièrement, la diversité des publics : élus, agents municipaux, citoyens ruraux et partenaires internationaux devaient tous trouver l'information pertinente rapidement. Deuxièmement, le volume d'informations à structurer était considérable : organigrammes, services d'état civil, centres de santé, établissements scolaires, comités de quartier et projets de développement. Troisièmement, l'accessibilité était critique : une grande partie de la population accède au web uniquement via mobile avec des connexions modestes.</p>",
+        solution: "<p>Nous avons conçu une architecture d'information hiérarchique qui reflète l'organisation administrative de la commune. <strong>Phase 1 (3 jours) :</strong> audit des besoins avec les services municipaux, cartographie des contenus existants et définition de l'arborescence. <strong>Phase 2 (6 jours) :</strong> développement sur WordPress avec Elementor pour garantir l'autonomie de gestion, intégration d'un design responsive épuré aux couleurs institutionnelles, et mise en place de sections dédiées (services sociaux, économie, tourisme, actualités). <strong>Phase 3 (3 jours) :</strong> formation des agents municipaux à la publication de contenus, optimisation des performances et mise en ligne.</p><p>Chaque section a été structurée pour permettre un accès en 2 clics maximum aux informations clés : état civil, centres de santé, projets en cours et contacts.</p>",
+        results: "<ul><li><strong>Première commune</strong> de la région de l'Adamaoua avec un portail web officiel complet</li><li><strong>120 000 habitants</strong> connectés aux services municipaux en ligne</li><li><strong>Autonomie totale</strong> des agents pour la publication d'actualités et projets</li><li><strong>Réduction</strong> des déplacements physiques pour les demandes d'information courantes</li></ul>",
+        problems_identified: [
+            "Aucune présence numérique pour une commune de 120 000 habitants",
+            "Informations municipales inaccessibles sans déplacement physique",
+            "Multiplicité des publics cibles avec des besoins très différents"
+        ],
+        duration: "12 jours",
+        representative_reason: "Ce projet démontre notre capacité à structurer des volumes d'information complexes en portails clairs et accessibles, même pour des institutions publiques.",
+        related_services: [
+            { title: "Création de sites web", slug: "creation-sites-web" },
+            { title: "UI/UX Design", slug: "ui-ux-design" }
+        ],
+        seo_title: "Portail web Commune Ngaoundéré 2e — Gouvernance digitale locale | Wendooka",
+        meta_description: "Création du portail officiel de la Commune de Ngaoundéré 2e : 120 000 habitants, services municipaux en ligne, autonomie de gestion et accessibilité mobile.",
+        created_at: "2024-09-15",
+        testimonial: {
+            name: "Idrissou Abana",
+            role: "Maire, Commune de Ngaoundéré 2e",
+            content: "La digitalisation de nos services était un défi majeur. Ce portail web rapproche l'administration des citoyens et modernise l'image de notre commune. Une réalisation impeccable.",
+            image: "/Client Idrissou abana commune ngaoundere 2.webp"
         }
     }
 ];

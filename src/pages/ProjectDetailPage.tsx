@@ -64,9 +64,9 @@ const ProjectDetailPage: React.FC = () => {
     // SEO Meta Tags
     useEffect(() => {
         if (project) {
-            document.title = `Projet ${project.title} – ${project.category} performant | Wendooka`;
+            document.title = project.seo_title || `${project.title} | Wendooka`;
             const metaDesc = document.querySelector('meta[name="description"]');
-            const content = project.meta_description || `Découvrez comment Wendooka a conçu un ${project.category} pour ${project.title} : approche, solutions et résultats.`;
+            const content = project.meta_description || project.short_description || project.description;
             if (metaDesc) metaDesc.setAttribute('content', content);
         }
     }, [project]);
@@ -84,25 +84,64 @@ const ProjectDetailPage: React.FC = () => {
         return <Navigate to="/404" replace />;
     }
 
+    const [shortTitle, tagline] = project.title.includes('—')
+        ? project.title.split('—').map((part) => part.trim())
+        : [project.title, ''];
+
+    const projectDomain = project.link
+        ? project.link.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '')
+        : 'wendooka.com';
+
     return (
         <div className="bg-dark-black text-white">
             <Header />
             <main>
                 {/* 3. Hero Section (Positionnement Immédiat) */}
-                <div className="relative py-24 md:py-40 bg-cover bg-center" style={{ backgroundImage: `url('${project.image}')` }}>
-                    <div className="absolute inset-0 bg-dark-black/85 z-0"></div>
-                    <div className="container mx-auto px-4 relative z-10 text-center">
-                        <Badge className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 mb-6 px-4 py-1 text-base font-bold uppercase tracking-wider">
-                            {project.category}
-                        </Badge>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins mb-6">
-                            {project.title} – {project.category} orienté performance
-                        </h1>
-                        <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-                            Conception d’un(e) {project.category.toLowerCase()} sur-mesure pour répondre à des objectifs précis de {project.category === 'E-commerce' ? 'conversion' : project.category === 'Application Web' ? 'scalabilité' : 'performance'} et de croissance.
-                        </p>
+                <section className="pt-28 md:pt-36 pb-16 md:pb-20 bg-dark-black">
+                    <div className="container mx-auto px-4">
+                        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                            <div>
+                                <Badge className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 mb-5 px-4 py-1 text-sm font-bold uppercase tracking-wider">
+                                    {project.category}
+                                </Badge>
+                                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins mb-4 leading-tight">
+                                    {shortTitle}
+                                </h1>
+                                {tagline && (
+                                    <p className="text-lg md:text-xl text-gray-300 font-medium mb-5 leading-snug">
+                                        {tagline}
+                                    </p>
+                                )}
+                                <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-8 max-w-xl">
+                                    {project.short_description || project.description}
+                                </p>
+                                {project.link && (
+                                    <Button asChild className="bg-lime-accent text-dark-black hover:bg-lime-accent/90 font-bold rounded-xl px-6 py-6">
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                            Voir le site <ExternalLink className="ml-2 h-4 w-4" />
+                                        </a>
+                                    </Button>
+                                )}
+                            </div>
+
+                            <div className="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl bg-[#161616]">
+                                <div className="flex items-center gap-2 px-4 py-3 bg-[#1c1c1c] border-b border-gray-800">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                                    <span className="ml-3 flex-1 truncate text-xs text-gray-500 bg-black/40 rounded-full px-3 py-1">
+                                        {projectDomain}
+                                    </span>
+                                </div>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-auto"
+                                />
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 <section className="py-16 bg-dark-black border-b border-gray-800">
                     <div className="container mx-auto px-4">

@@ -7,6 +7,7 @@ import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import GlobalCta from "@/components/GlobalCta";
 import AboutIntroSection from "@/components/AboutIntroSection";
+import RealizationsShowcaseSection from "@/components/RealizationsShowcaseSection";
 import HomeServicesBenefits from "@/components/HomeServicesBenefits";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -36,6 +37,7 @@ const Index = () => {
         <HeroSection />
         <MarqueeSection />
         <AboutIntroSection />
+        <RealizationsShowcaseSection />
         <HomeServicesBenefits />
         <PortfolioSection />
         <AnimatedTeamSection
