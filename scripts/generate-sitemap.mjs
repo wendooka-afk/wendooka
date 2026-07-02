@@ -40,12 +40,12 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ─── Pages statiques ──────────────────────────────────────────────────────────
 const STATIC_PAGES = [
-  { loc: '/',          priority: '1.0', changefreq: 'weekly'  },
-  { loc: '/services',  priority: '0.9', changefreq: 'monthly' },
-  { loc: '/portfolio', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/contact',   priority: '0.8', changefreq: 'monthly' },
-  { loc: '/about',     priority: '0.7', changefreq: 'monthly' },
-  { loc: '/blog',      priority: '0.7', changefreq: 'weekly'  },
+  { loc: '/',             priority: '1.0', changefreq: 'weekly'  },
+  { loc: '/services',     priority: '0.9', changefreq: 'monthly' },
+  { loc: '/realisations', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/contact',      priority: '0.8', changefreq: 'monthly' },
+  { loc: '/a-propos',     priority: '0.7', changefreq: 'monthly' },
+  { loc: '/blog',         priority: '0.7', changefreq: 'weekly'  },
 ];
 
 // ─── Contenu statique (src/data/servicesData.ts) ───────────────────────────
@@ -58,16 +58,32 @@ const STATIC_SERVICES = [
 ];
 
 const STATIC_PROJECTS = [
-  { slug: 'bandiko-production',   lastmod: '2025-01-01' },
-  { slug: 'mballen-ong',          lastmod: '2025-01-01' },
-  { slug: 'abouscom',             lastmod: '2025-01-01' },
-  { slug: 'kubaru-sahel',         lastmod: '2025-01-01' },
-  { slug: 'commune-ngaoundere-2', lastmod: '2025-01-01' },
-  { slug: 'sahel-consulting',     lastmod: '2025-01-01' },
+  { slug: 'kubaru-sahel',         lastmod: '2026-01-20' },
+  { slug: 'mballen-ong',          lastmod: '2026-01-15' },
+  { slug: 'oumarousanda',         lastmod: '2026-01-10' },
+  { slug: 'bandiko-production',   lastmod: '2025-12-01' },
+  { slug: 'baladjikwata',         lastmod: '2025-09-05' },
+  { slug: 'barkantedjo',          lastmod: '2025-08-10' },
+  { slug: 'abouscom',             lastmod: '2025-06-10' },
+  { slug: 'sahel-consulting',     lastmod: '2025-03-20' },
+  { slug: 'commune-ngaoundere-2', lastmod: '2024-09-15' },
+];
+
+// Landing pages SEO dynamiques (table `pages`, rendues à /:slug)
+const STATIC_LANDING_PAGES = [
+  { slug: 'agence-web-cameroun',   lastmod: '2026-07-01' },
+  { slug: 'agence-web-ngaoundere', lastmod: '2026-07-01' },
+  { slug: 'agence-web-garoua',     lastmod: '2026-07-01' },
+  { slug: 'agence-web-maroua',     lastmod: '2026-07-01' },
+  { slug: 'agence-web-douala',     lastmod: '2026-07-01' },
+  { slug: 'agence-web-yaounde',    lastmod: '2026-07-01' },
+  { slug: 'agence-web-bafoussam',  lastmod: '2026-07-01' },
+  { slug: 'agence-web-ndjamena',   lastmod: '2026-07-01' },
+  { slug: 'agence-web-bangui',     lastmod: '2026-07-01' },
 ];
 
 const STATIC_BLOG_POSTS = [
-  { slug: 'cout-dun-site-web-sur-mesure-en-2024',          lastmod: '2024-01-15' },
+  { slug: 'combien-coute-site-web-cameroun',               lastmod: '2026-07-01' },
   { slug: 'choisir-entre-site-vitrine-et-e-commerce',      lastmod: '2024-01-20' },
   { slug: 'erreurs-frequentes-projets-web',                lastmod: '2024-02-05' },
   { slug: 'cout-application-web-sur-mesure',               lastmod: '2024-02-10' },
@@ -93,15 +109,18 @@ async function generateSitemap() {
     { data: services, error: errServices },
     { data: projects, error: errProjects },
     { data: posts,    error: errPosts    },
+    { data: landings, error: errLandings },
   ] = await Promise.all([
     supabase.from('services')  .select('slug, updated_at').eq('status', 'published'),
     supabase.from('projects')  .select('slug, created_at').eq('status', 'published'),
     supabase.from('blog_posts').select('slug, updated_at, published_at').eq('status', 'published'),
+    supabase.from('pages')     .select('slug, updated_at').eq('status', 'published'),
   ]);
 
   if (errServices) console.warn('⚠️  services :', errServices.message);
   if (errProjects) console.warn('⚠️  projects :', errProjects.message);
   if (errPosts)    console.warn('⚠️  blog_posts :', errPosts.message);
+  if (errLandings) console.warn('⚠️  pages :', errLandings.message);
 
   const entries = [];
 
@@ -109,6 +128,27 @@ async function generateSitemap() {
   const dbServiceSlugs = new Set((services ?? []).map(s => s.slug));
   const dbProjectSlugs = new Set((projects ?? []).map(p => p.slug));
   const dbPostSlugs    = new Set((posts    ?? []).map(b => b.slug));
+  const dbLandingSlugs = new Set((landings ?? []).map(l => l.slug));
+
+  // Landing pages SEO (table `pages`, rendues à /:slug)
+  for (const l of (landings ?? [])) {
+    entries.push(urlEntry({
+      loc:        `/${l.slug}`,
+      lastmod:    toDate(l.updated_at),
+      changefreq: 'monthly',
+      priority:   '0.8',
+    }));
+  }
+  for (const l of STATIC_LANDING_PAGES) {
+    if (!dbLandingSlugs.has(l.slug)) {
+      entries.push(urlEntry({
+        loc:        `/${l.slug}`,
+        lastmod:    l.lastmod,
+        changefreq: 'monthly',
+        priority:   '0.8',
+      }));
+    }
+  }
 
   // Pages statiques
   for (const page of STATIC_PAGES) {
@@ -139,7 +179,7 @@ async function generateSitemap() {
   // Projets Supabase (priorité)
   for (const p of (projects ?? [])) {
     entries.push(urlEntry({
-      loc:        `/portfolio/${p.slug}`,
+      loc:        `/realisations/${p.slug}`,
       lastmod:    toDate(p.created_at),
       changefreq: 'monthly',
       priority:   '0.7',
@@ -149,7 +189,7 @@ async function generateSitemap() {
   for (const p of STATIC_PROJECTS) {
     if (!dbProjectSlugs.has(p.slug)) {
       entries.push(urlEntry({
-        loc:        `/portfolio/${p.slug}`,
+        loc:        `/realisations/${p.slug}`,
         lastmod:    p.lastmod,
         changefreq: 'monthly',
         priority:   '0.7',

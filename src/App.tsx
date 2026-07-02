@@ -73,6 +73,8 @@ const App = () => (
               <Route path="/a-propos" element={<AboutPage />} />
               {/* Redirect for old URL */}
               <Route path="/about" element={<Navigate to="/a-propos" replace />} />
+              {/* Redirect old blog slug (2024 article updated to evergreen URL) */}
+              <Route path="/blog/cout-dun-site-web-sur-mesure-en-2024" element={<Navigate to="/blog/combien-coute-site-web-cameroun" replace />} />
               <Route path="/blog/:postSlug" element={<BlogPostPage />} />
               <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />

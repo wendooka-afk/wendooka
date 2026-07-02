@@ -148,9 +148,9 @@ export default {
     'mt-2', 'mt-4', 'mt-6', 'mt-8',
     'mb-2', 'mb-3', 'mb-4', 'mb-6', 'mb-8', 'mb-10', 'mb-12',
     // Utilitaires
-    'not-prose',
-    'hover:underline', 'hover:opacity-90',
-    'transition-opacity',
+    'not-prose', 'block',
+    'hover:underline', 'hover:opacity-90', 'hover:border-lime-accent',
+    'transition-opacity', 'transition-all',
     'mx-auto',
   ],
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

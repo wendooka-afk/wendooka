@@ -38,8 +38,8 @@ INSERT INTO public.pages (
     <div class="text-sm text-gray-400 mt-2">Délai de réponse</div>
   </div>
   <div class="bg-dark-gray border border-gray-700 rounded-xl p-6 text-center">
-    <div class="text-4xl font-bold text-lime-accent font-poppins">2–4</div>
-    <div class="text-sm text-gray-400 mt-2">Semaines de livraison</div>
+    <div class="text-4xl font-bold text-lime-accent font-poppins">3–5</div>
+    <div class="text-sm text-gray-400 mt-2">Jours de livraison</div>
   </div>
   <div class="bg-dark-gray border border-gray-700 rounded-xl p-6 text-center">
     <div class="text-4xl font-bold text-lime-accent font-poppins">5★</div>
@@ -88,7 +88,7 @@ INSERT INTO public.pages (
 <h2>Quelques réalisations à Ngaoundéré et au Cameroun</h2>
 
 <div class="not-prose grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 mb-12">
-  <div class="overflow-hidden rounded-xl border border-gray-700 bg-dark-gray">
+  <a href="/realisations/commune-ngaoundere-2" class="block overflow-hidden rounded-xl border border-gray-700 bg-dark-gray hover:border-lime-accent transition-opacity">
     <div class="overflow-hidden aspect-video">
       <img src="/commune%20ngaoundere%202%20Home.webp" alt="Site web Commune de Ngaoundéré 2e réalisé par Wendooka" class="w-full h-full object-cover object-top hover:opacity-90 transition-opacity" width="400" height="225" />
     </div>
@@ -96,8 +96,8 @@ INSERT INTO public.pages (
       <div class="font-semibold text-white text-sm">Commune de Ngaoundéré 2e</div>
       <div class="text-xs text-gray-400 mt-2">Site institutionnel · Ngaoundéré</div>
     </div>
-  </div>
-  <div class="overflow-hidden rounded-xl border border-gray-700 bg-dark-gray">
+  </a>
+  <a href="/realisations/mballen-ong" class="block overflow-hidden rounded-xl border border-gray-700 bg-dark-gray hover:border-lime-accent transition-opacity">
     <div class="overflow-hidden aspect-video">
       <img src="/Mballen%20Homepage%20.webp" alt="Site web ONG MBALLEN réalisé par Wendooka" class="w-full h-full object-cover object-top hover:opacity-90 transition-opacity" width="400" height="225" />
     </div>
@@ -105,8 +105,8 @@ INSERT INTO public.pages (
       <div class="font-semibold text-white text-sm">MBALLEN ONG</div>
       <div class="text-xs text-gray-400 mt-2">Site associatif · Ngaoundéré</div>
     </div>
-  </div>
-  <div class="overflow-hidden rounded-xl border border-gray-700 bg-dark-gray">
+  </a>
+  <a href="/realisations/sahel-consulting" class="block overflow-hidden rounded-xl border border-gray-700 bg-dark-gray hover:border-lime-accent transition-opacity">
     <div class="overflow-hidden aspect-video">
       <img src="/Sahel%20consulting%20home.webp" alt="Site web Sahel Consulting réalisé par Wendooka" class="w-full h-full object-cover object-top hover:opacity-90 transition-opacity" width="400" height="225" />
     </div>
@@ -114,7 +114,7 @@ INSERT INTO public.pages (
       <div class="font-semibold text-white text-sm">Sahel Consulting</div>
       <div class="text-xs text-gray-400 mt-2">Site corporate · Cameroun</div>
     </div>
-  </div>
+  </a>
 </div>
 
 <h2>Ce que disent nos clients</h2>
@@ -190,7 +190,7 @@ INSERT INTO public.pages (
 <p>Absolument. Si notre équipe est physiquement basée à Ngaoundéré, nous collaborons régulièrement avec des clients à Garoua, Douala, Yaoundé, N'Djamena et Bangui, entièrement à distance. Nous utilisons WhatsApp, les appels vidéo et des outils de gestion de projet en ligne pour maintenir une communication fluide et transparente. La distance n'a jamais empêché un projet de réussir chez Wendooka. Notre maîtrise du travail à distance est d'ailleurs l'une de nos forces distinctives sur le marché régional.</p>
 
 <h3>Quel délai faut-il compter pour créer un site web professionnel ?</h3>
-<p>Pour un site vitrine standard de 5 à 8 pages, comptez généralement entre 2 et 4 semaines depuis la validation de la proposition jusqu'à la mise en ligne. Ce délai peut être raccourci si vous nous fournissez rapidement les contenus nécessaires — textes, photos, informations sur votre activité. Pour des projets plus complexes comme une boutique en ligne, un portail institutionnel ou une application web, le délai peut s'étendre à 6 à 10 semaines. Nous établissons toujours un calendrier précis dès le début pour vous permettre de planifier votre communication.</p>
+<p>Pour un site vitrine standard de 5 à 8 pages, comptez généralement entre 3 et 5 jours depuis la validation de la proposition jusqu'à la mise en ligne. Ce délai suppose que vous nous fournissiez rapidement les contenus nécessaires — textes, photos, informations sur votre activité. Pour des projets plus complexes comme une boutique en ligne, un portail institutionnel ou une application web, le délai s'étend généralement de 2 à 6 semaines. Nous établissons toujours un calendrier précis dès le début pour vous permettre de planifier votre communication.</p>
 
 <h3>Proposez-vous des services après la livraison du site ?</h3>
 <p>Oui, et c'est l'un de nos engagements fondamentaux. Wendooka propose des contrats de maintenance mensuels qui incluent les mises à jour de sécurité, les sauvegardes régulières, les petites modifications de contenu et un support technique prioritaire. Nous offrons également des services d'optimisation continue : amélioration du référencement, création de nouvelles pages, intégration de nouveaux outils digitaux. Beaucoup de nos clients de Ngaoundéré nous confient la gestion complète de leur présence en ligne sur le long terme, ce qui représente notre modèle de partenariat préféré.</p>
@@ -269,7 +269,7 @@ INSERT INTO public.pages (
         "name": "Quel délai faut-il compter pour créer un site web professionnel ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pour un site vitrine standard de 5 à 8 pages, comptez 2 à 4 semaines. Pour des projets complexes comme une boutique en ligne ou un portail institutionnel, le délai peut s'étendre à 6 à 10 semaines."
+          "text": "Pour un site vitrine standard de 5 à 8 pages, comptez 3 à 5 jours. Pour des projets complexes comme une boutique en ligne ou un portail institutionnel, le délai s'étend généralement de 2 à 6 semaines."
         }
       },
       {

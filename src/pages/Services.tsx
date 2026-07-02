@@ -12,18 +12,18 @@ import { Globe, Layout, Server, PenTool } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { servicesData } from '@/data/servicesData';
 import { Service } from '@/types/service';
+import { applySeo } from '@/lib/seo';
 
 const ServicesPage: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Services digitaux sur-mesure pour votre croissance | Wendooka";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Création de sites web, développement sur-mesure, UI/UX design, identité visuelle et marketing digital pour des projets performants.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    }
+    applySeo({
+      title: "Services digitaux sur-mesure pour votre croissance | Wendooka",
+      description: "Création de sites web, développement sur-mesure, UI/UX design, identité visuelle et marketing digital pour des projets performants.",
+      canonical: "/services",
+    });
 
     const fetchServices = async () => {
       setLoading(true);

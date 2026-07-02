@@ -12,6 +12,21 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { sanitizeHtml } from '@/lib/sanitize';
 import { Card, CardContent } from '@/components/ui/card';
+import { applySeo, breadcrumbLd, SITE } from '@/lib/seo';
+
+const articleLd = (args: { title: string; description: string; slug: string; image?: string; author: string; datePublished?: string }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: args.title,
+  description: args.description,
+  url: `${SITE.url}/blog/${args.slug}`,
+  mainEntityOfPage: `${SITE.url}/blog/${args.slug}`,
+  ...(args.image ? { image: `${SITE.url}${encodeURI(args.image)}` } : {}),
+  inLanguage: 'fr',
+  author: { '@type': 'Person', name: args.author },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  ...(args.datePublished ? { datePublished: args.datePublished } : {}),
+});
 
 interface Post {
   slug: string;
@@ -60,9 +75,28 @@ const BlogPostPage: React.FC = () => {
 
         // Set SEO Meta
         const seoDesc = mockPost.seo_description || `Découvrez comment ${mockPost.title.toLowerCase()} et faire le bon choix pour votre projet web, sans erreurs coûteuses.`;
-        document.title = `${mockPost.title} | Blog Wendooka`;
-        const metaDescTag = document.querySelector('meta[name="description"]');
-        if (metaDescTag) metaDescTag.setAttribute('content', seoDesc);
+        applySeo({
+          title: `${mockPost.title} | Blog Wendooka`,
+          description: seoDesc,
+          canonical: `/blog/${mockPost.slug}`,
+          image: mockPost.featured_image,
+          ogType: 'article',
+          jsonLd: [
+            breadcrumbLd([
+              { name: 'Accueil', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: mockPost.title, path: `/blog/${mockPost.slug}` },
+            ]),
+            articleLd({
+              title: mockPost.title,
+              description: seoDesc,
+              slug: mockPost.slug,
+              image: mockPost.featured_image,
+              author: (mockPost as any).author || 'Équipe Wendooka',
+              datePublished: mockPost.published_at,
+            }),
+          ],
+        });
 
         setLoading(false);
         return;
@@ -88,9 +122,29 @@ const BlogPostPage: React.FC = () => {
           category: p.category?.name ?? 'Non classé',
         });
 
-        document.title = `${p.title} | Blog Wendooka`;
-        const metaDescTag = document.querySelector('meta[name="description"]');
-        if (metaDescTag) metaDescTag.setAttribute('content', p.meta_description || p.excerpt || '');
+        const desc = p.meta_description || p.excerpt || '';
+        applySeo({
+          title: `${p.title} | Blog Wendooka`,
+          description: desc,
+          canonical: `/blog/${p.slug}`,
+          image: p.featured_image,
+          ogType: 'article',
+          jsonLd: [
+            breadcrumbLd([
+              { name: 'Accueil', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: p.title, path: `/blog/${p.slug}` },
+            ]),
+            articleLd({
+              title: p.title,
+              description: desc,
+              slug: p.slug,
+              image: p.featured_image,
+              author: p.author || 'Équipe Wendooka',
+              datePublished: p.published_at,
+            }),
+          ],
+        });
       } else {
         setError("Article non trouvé.");
         setPost(null);

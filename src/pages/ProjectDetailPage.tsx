@@ -10,6 +10,7 @@ import { projectsData } from '@/data/servicesData';
 import { Project } from '@/types/project';
 import { Badge } from '@/components/ui/badge';
 import { sanitizeHtml } from '@/lib/sanitize';
+import { applySeo, breadcrumbLd, SITE } from '@/lib/seo';
 
 const ProjectDetailPage: React.FC = () => {
     const { projectSlug } = useParams<{ projectSlug: string }>();
@@ -64,10 +65,30 @@ const ProjectDetailPage: React.FC = () => {
     // SEO Meta Tags
     useEffect(() => {
         if (project) {
-            document.title = project.seo_title || `${project.title} | Wendooka`;
-            const metaDesc = document.querySelector('meta[name="description"]');
-            const content = project.meta_description || project.short_description || project.description;
-            if (metaDesc) metaDesc.setAttribute('content', content);
+            const name = project.title.split('—')[0].trim();
+            applySeo({
+                title: project.seo_title || `${project.title} | Wendooka`,
+                description: project.meta_description || project.short_description || project.description,
+                canonical: `/realisations/${project.slug}`,
+                image: project.image,
+                jsonLd: [
+                    breadcrumbLd([
+                        { name: 'Accueil', path: '/' },
+                        { name: 'Réalisations', path: '/realisations' },
+                        { name, path: `/realisations/${project.slug}` },
+                    ]),
+                    {
+                        '@context': 'https://schema.org',
+                        '@type': 'WebSite',
+                        name,
+                        url: project.link || `${SITE.url}/realisations/${project.slug}`,
+                        image: project.image ? `${SITE.url}${encodeURI(project.image)}` : undefined,
+                        creator: { '@id': `${SITE.url}/#organization` },
+                        description: project.short_description || project.description,
+                        ...(project.year ? { dateCreated: project.year } : {}),
+                    },
+                ],
+            });
         }
     }, [project]);
 

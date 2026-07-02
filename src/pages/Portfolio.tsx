@@ -11,6 +11,7 @@ import ExpandOnHover from '@/components/ui/expand-cards';
 import { supabase } from '@/integrations/supabase/client';
 import { projectsData } from '@/data/servicesData';
 import { Project } from '@/types/project';
+import { applySeo } from '@/lib/seo';
 
 const PortfolioPage: React.FC = () => {
   const [allProjects, setAllProjects] = useState<Project[]>([]);
@@ -18,12 +19,11 @@ const PortfolioPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
 
   useEffect(() => {
-    document.title = "Réalisations web & projets digitaux performants | Wendooka";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Découvrez nos réalisations web : sites, applications, e-commerce et stratégies digitales conçus pour générer des résultats concrets.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    }
+    applySeo({
+      title: "Réalisations web & projets digitaux performants | Wendooka",
+      description: "Découvrez nos réalisations web : sites, applications, e-commerce et stratégies digitales conçus pour générer des résultats concrets.",
+      canonical: "/realisations",
+    });
 
     const fetchProjects = async () => {
       setLoading(true);

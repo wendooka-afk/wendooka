@@ -17,6 +17,7 @@ import { sanitizeHtml } from '@/lib/sanitize';
 import DynamicIcon from '@/components/DynamicIcon';
 import { servicesData } from '@/data/servicesData';
 import { Service, ServiceItem, ProcessStep, ResultStat, TestimonialItem } from '@/types/service';
+import { applySeo, breadcrumbLd, faqLd, SITE } from '@/lib/seo';
 
 const ServiceDetailPage: React.FC = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
@@ -65,25 +66,33 @@ const ServiceDetailPage: React.FC = () => {
   // Set SEO meta tags
   useEffect(() => {
     if (service) {
-      document.title = service.seo_title || service.title;
-      const metaDescriptionTag = document.querySelector('meta[name="description"]');
-      if (metaDescriptionTag && service.meta_description) {
-        metaDescriptionTag.setAttribute('content', service.meta_description);
-      } else if (service.meta_description) {
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = service.meta_description;
-        document.head.appendChild(newMetaTag);
+      const jsonLd: object[] = [
+        breadcrumbLd([
+          { name: 'Accueil', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: service.title, path: `/services/${service.slug}` },
+        ]),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          description: service.short_description || service.meta_description,
+          serviceType: service.title,
+          url: `${SITE.url}/services/${service.slug}`,
+          provider: { '@id': `${SITE.url}/#organization` },
+          areaServed: { '@type': 'Place', name: 'Afrique francophone' },
+        },
+      ];
+      if (service.faqs && service.faqs.length > 0) {
+        jsonLd.push(faqLd(service.faqs));
       }
-      const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
-      if (canonicalLinkTag && service.canonical_url) {
-        canonicalLinkTag.setAttribute('href', service.canonical_url);
-      } else if (service.canonical_url) {
-        const newLinkTag = document.createElement('link');
-        newLinkTag.rel = 'canonical';
-        newLinkTag.href = service.canonical_url;
-        document.head.appendChild(newLinkTag);
-      }
+      applySeo({
+        title: service.seo_title || service.title,
+        description: service.meta_description || service.short_description || '',
+        canonical: service.canonical_url || `/services/${service.slug}`,
+        image: service.hero_image,
+        jsonLd,
+      });
     }
   }, [service]);
 

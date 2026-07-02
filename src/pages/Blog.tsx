@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { showError } from '@/utils/toast';
 import { blogPostsData } from '@/data/servicesData';
 import { Button } from '@/components/ui/button';
+import { applySeo } from '@/lib/seo';
 
 interface Post {
   slug: string;
@@ -24,12 +25,11 @@ const BlogPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Blog & conseils pour réussir vos projets web | Wendooka";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Articles, guides et conseils pour réussir vos projets web, digitaux et marketing.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    }
+    applySeo({
+      title: "Blog & conseils pour réussir vos projets web | Wendooka",
+      description: "Articles, guides et conseils pour réussir vos projets web, digitaux et marketing.",
+      canonical: "/blog",
+    });
 
     const fetchPosts = async () => {
       setLoading(true);

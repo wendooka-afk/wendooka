@@ -102,7 +102,7 @@ export const servicesData: Service[] = [
         ],
         canonical_url: "https://wendooka.com/services/creation-sites-web",
         related_articles: [
-            { title: "Coût d’un site web sur-mesure", slug: "cout-dun-site-web-sur-mesure-en-2024" },
+            { title: "Coût d’un site web au Cameroun en 2026", slug: "combien-coute-site-web-cameroun" },
             { title: "Site vitrine ou e-commerce ?", slug: "choisir-entre-site-vitrine-et-e-commerce" }
         ]
     },
@@ -529,13 +529,13 @@ export const servicesData: Service[] = [
 
 export const blogPostsData = [
     {
-        slug: "cout-dun-site-web-sur-mesure-en-2024",
-        title: "Combien coûte un site web sur-mesure ? Les vrais chiffres et ce qui les justifie",
+        slug: "combien-coute-site-web-cameroun",
+        title: "Combien coûte un site web au Cameroun en 2026 ? Tarifs réels et guide complet",
         category: "Création de site web",
-        published_at: "2024-01-15",
+        published_at: "2026-07-01",
         featured_image: "/118355.webp",
         author: "Oumarou Sanda",
-        excerpt: "Entre 300 000 et 5 000 000 FCFA : l'écart de prix entre les sites web est énorme. Voici comment comprendre ce qui fait varier le budget et pourquoi le moins cher coûte souvent le plus cher.",
+        excerpt: "Entre 300 000 et 5 000 000 FCFA : l'écart de prix entre les sites web est énorme. Grille tarifaire 2026, facteurs de coût et méthode de calcul du ROI pour investir intelligemment.",
         content: `
             <div class="bg-lime-accent/10 border-l-4 border-lime-accent p-6 mb-8 rounded-r-lg">
                 <h3 class="text-xl font-bold mb-3 text-lime-accent">⚡ Résumé en 30 secondes</h3>
@@ -544,8 +544,8 @@ export const blogPostsData = [
 
             <p>Quand un entrepreneur camerounais cherche à créer son site web, la première question est invariablement la même : combien ça coûte ? La réponse honnête, c'est que le prix d'un <strong><a href="/services/creation-sites-web">site web sur-mesure</a></strong> dépend de ce que vous attendez de lui. Un site qui « existe » et un site qui génère des clients sont deux projets radicalement différents.</p>
 
-            <h2>Grille tarifaire 2024 : prix réels des sites web au Cameroun</h2>
-            <p>Pour vous donner une vision claire du marché, voici les fourchettes de prix pratiquées au Cameroun en 2024, selon le type de projet et le niveau de prestation :</p>
+            <h2>Grille tarifaire 2026 : prix réels des sites web au Cameroun</h2>
+            <p>Pour vous donner une vision claire du marché, voici les fourchettes de prix pratiquées au Cameroun en 2026, selon le type de projet et le niveau de prestation :</p>
 
             <div class="overflow-x-auto my-8">
                 <table class="w-full border-collapse bg-dark-gray/30 rounded-lg overflow-hidden">
@@ -703,6 +703,16 @@ export const blogPostsData = [
                 </table>
             </div>
 
+            <h2>Ce qui a changé en 2025-2026 : l'impact de l'IA sur les prix</h2>
+            <p>L'intelligence artificielle a transformé la production web. Les outils de génération de code et de design réduisent le temps de développement de 30 à 50% sur certaines tâches. Conséquence directe : à budget égal, vous devez exiger plus.</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-300">
+                <li><strong>Ce qui a baissé :</strong> le coût des sites vitrines simples et des prototypes. Un prestataire outillé IA livre plus vite.</li>
+                <li><strong>Ce qui n'a pas baissé :</strong> la stratégie, le copywriting orienté conversion, le SEO local et la maintenance. L'IA produit du code, pas une stratégie de croissance.</li>
+                <li><strong>Ce qui a augmenté :</strong> les attentes. Un site "qui existe" ne suffit plus — vitesse, référencement et parcours de conversion sont devenus le standard minimum.</li>
+                <li><strong>Nouveau risque :</strong> les sites générés 100% par IA sans expertise humaine. Beaux en démo, ils échouent sur le SEO, la sécurité et la maintenance. Le prix bas cache un coût de refonte à 6 mois.</li>
+            </ul>
+            <p>Chez Wendooka, nous utilisons l'IA pour accélérer la production — et nous réinvestissons ce temps gagné dans ce qui génère du chiffre : la stratégie, les contenus et l'optimisation de conversion. Des projets récents comme <strong><a href="/realisations/kubaru-sahel">le portail média Kubaru Sahel</a></strong> (livré en 12 jours, chargement sous 3 secondes en 2G) ou <strong><a href="/realisations/mballen-ong">le site de l'ONG Mballen</a></strong> (+120% de contacts en 1 mois) illustrent ce que cette approche produit concrètement.</p>
+
             <h2>Comment calculer le vrai retour sur investissement (ROI)</h2>
             <p>Le coût d'un site web ne se mesure pas au prix de la facture, mais au chiffre d'affaires qu'il génère. Voici une méthode simple pour estimer votre ROI :</p>
 
@@ -759,7 +769,7 @@ export const blogPostsData = [
 
             <h2>Questions fréquentes (FAQ)</h2>
             
-            <h3>Combien coûte un site web vitrine simple au Cameroun en 2024 ?</h3>
+            <h3>Combien coûte un site web vitrine simple au Cameroun en 2026 ?</h3>
             <p>Un site vitrine professionnel de 5-7 pages coûte entre 400 000 et 1 500 000 FCFA selon le prestataire et le niveau de personnalisation. Les templates basiques démarrent à 150 000 FCFA mais offrent peu de personnalisation.</p>
 
             <h3>Pourquoi certains sites coûtent 10 fois plus cher que d'autres ?</h3>

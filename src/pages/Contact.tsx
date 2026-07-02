@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import FaqSection from '@/components/FaqSection';
 import { ContactForm } from '@/components/ContactForm';
+import { applySeo } from '@/lib/seo';
 
 const ContactPage: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Contact & devis projet digital | Wendooka";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Contactez Wendooka pour discuter de votre projet web, applicatif ou marketing digital et obtenir un devis personnalisé.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    }
+    applySeo({
+      title: "Contact & devis projet digital | Wendooka",
+      description: "Contactez Wendooka pour discuter de votre projet web, applicatif ou marketing digital et obtenir un devis personnalisé.",
+      canonical: "/contact",
+    });
   }, []);
 
   return (

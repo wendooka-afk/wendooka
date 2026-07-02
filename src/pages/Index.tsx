@@ -14,20 +14,15 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import { useEffect } from "react";
 import { AnimatedTeamSection } from "@/components/ui/team-section";
 import { teamData } from "@/data/team";
+import { applySeo } from "@/lib/seo";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Agence web sur-mesure orientée performance | Wendooka";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Agence web spécialisée en création de sites, développement sur-mesure, design et marketing digital. Plus de 150 projets réalisés.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = "description";
-      meta.content = content;
-      document.head.appendChild(meta);
-    }
+    applySeo({
+      title: "Agence web sur-mesure orientée performance | Wendooka",
+      description: "Agence web à Ngaoundéré, Cameroun : création de sites, développement sur-mesure, UI/UX design et marketing digital. Plus de 150 projets livrés en Afrique francophone.",
+      canonical: "/",
+    });
   }, []);
 
   return (

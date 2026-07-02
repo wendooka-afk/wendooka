@@ -7,15 +7,15 @@ import { CheckCircle, Target, Lightbulb } from 'lucide-react';
 import { teamData } from '@/data/team';
 import { Button } from '@/components/ui/button';
 import { AnimatedTeamSection } from '@/components/ui/team-section';
+import { applySeo } from '@/lib/seo';
 
 const AboutPage: React.FC = () => {
   React.useEffect(() => {
-    document.title = "À propos de Wendooka | Agence web orientée performance";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const content = "Découvrez Wendooka, agence web fondée en 2017, son équipe, sa mission et sa vision orientée performance digitale et résultats business.";
-    if (metaDescription) {
-      metaDescription.setAttribute("content", content);
-    }
+    applySeo({
+      title: "À propos de Wendooka | Agence web orientée performance",
+      description: "Découvrez Wendooka, agence web fondée en 2017, son équipe, sa mission et sa vision orientée performance digitale et résultats business.",
+      canonical: "/a-propos",
+    });
   }, []);
 
   return (
