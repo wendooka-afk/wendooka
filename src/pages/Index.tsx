@@ -9,6 +9,7 @@ import GlobalCta from "@/components/GlobalCta";
 import AboutIntroSection from "@/components/AboutIntroSection";
 import RealizationsShowcaseSection from "@/components/RealizationsShowcaseSection";
 import HomeServicesBenefits from "@/components/HomeServicesBenefits";
+import HostingHighlight from "@/components/HostingHighlight";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { useEffect } from "react";
@@ -34,6 +35,7 @@ const Index = () => {
         <AboutIntroSection />
         <RealizationsShowcaseSection />
         <HomeServicesBenefits />
+        <HostingHighlight />
         <PortfolioSection />
         <AnimatedTeamSection
           title="L'expertise humaine derrière vos succès"

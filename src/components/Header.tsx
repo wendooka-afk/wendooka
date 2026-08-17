@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: "Accueil", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Hébergement", href: "/hebergement-web-cameroun" },
+    { name: "Hébergement", href: "/hebergement-web-cameroun", badge: "Nouveau" },
     { name: "Réalisations", href: "/realisations" },
     { name: "Blog", href: "/blog" },
     { name: "A Propos", href: "/a-propos" },
@@ -20,10 +20,21 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const renderLink = (link: { name: string, href: string }, isMobile = false) => {
+  const renderLink = (link: { name: string, href: string, badge?: string }, isMobile = false) => {
     const className = isMobile
-      ? "text-white hover:text-lime-accent transition-colors text-2xl font-medium"
-      : "text-white hover:text-lime-accent transition-colors text-lg font-medium";
+      ? "text-white hover:text-lime-accent transition-colors text-2xl font-medium inline-flex items-center gap-2"
+      : "text-white hover:text-lime-accent transition-colors text-lg font-medium inline-flex items-center gap-2";
+
+    const content = (
+      <>
+        {link.name}
+        {link.badge && (
+          <span className="bg-lime-accent text-dark-black text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full leading-none">
+            {link.badge}
+          </span>
+        )}
+      </>
+    );
 
     if (link.href.startsWith('/') && !link.href.startsWith('/#')) {
       return (
@@ -33,7 +44,7 @@ const Header: React.FC = () => {
           className={className}
           onClick={isMobile ? toggleMenu : undefined}
         >
-          {link.name}
+          {content}
         </Link>
       );
     }
@@ -45,7 +56,7 @@ const Header: React.FC = () => {
         className={className}
         onClick={isMobile ? toggleMenu : undefined}
       >
-        {link.name}
+        {content}
       </a>
     );
   };
