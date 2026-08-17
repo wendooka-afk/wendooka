@@ -16,6 +16,7 @@ const PortfolioPage = lazy(() => import("./pages/Portfolio"));
 const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
 const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
 const ContactPage = lazy(() => import("./pages/Contact"));
+const HostingPage = lazy(() => import("./pages/Hosting"));
 const BlogPage = lazy(() => import("./pages/Blog"));
 const BlogPostPage = lazy(() => import("./pages/BlogPost"));
 const AboutPage = lazy(() => import("./pages/About"));
@@ -69,6 +70,9 @@ const App = () => (
               <Route path="/portfolio" element={<Navigate to="/realisations" replace />} />
               <Route path="/portfolio/:projectSlug" element={<RedirectProjectSlug />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/hebergement-web-cameroun" element={<HostingPage />} />
+              {/* Alias court vers la page hébergement */}
+              <Route path="/hebergement-web" element={<Navigate to="/hebergement-web-cameroun" replace />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/a-propos" element={<AboutPage />} />
               {/* Redirect for old URL */}

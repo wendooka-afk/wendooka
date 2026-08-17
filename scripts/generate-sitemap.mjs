@@ -42,6 +42,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const STATIC_PAGES = [
   { loc: '/',             priority: '1.0', changefreq: 'weekly'  },
   { loc: '/services',     priority: '0.9', changefreq: 'monthly' },
+  { loc: '/hebergement-web-cameroun', priority: '0.9', changefreq: 'monthly' },
   { loc: '/realisations', priority: '0.8', changefreq: 'monthly' },
   { loc: '/contact',      priority: '0.8', changefreq: 'monthly' },
   { loc: '/a-propos',     priority: '0.7', changefreq: 'monthly' },
